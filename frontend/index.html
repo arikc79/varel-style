@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VAREL everyday style — Чоловічий Стиль</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/products.css">
+  <link rel="stylesheet" href="css/cart.css">
+  <link rel="stylesheet" href="css/checkout.css">
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">VAREL</a>
+  <ul class="nav-links">
+    <li><a href="#catalogue">Каталог</a></li>
+    <li><a href="#about">Про нас</a></li>
+    <li><a href="#contact">Контакти</a></li>
+    <li><a href="#find-us">Як знайти</a></li>
+  </ul>
+  <div>
+    <button class="cart-btn" onclick="toggleCart()">
+      🛍 Кошик <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-overlay"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-content">
+    <p class="hero-label">Преміум чоловічий одяг · Вінниця · Since 2020</p>
+    <h1 class="hero-title">VAREL<br><span>everyday style</span></h1>
+    <p class="hero-sub">Одяг для тих, хто знає собі ціну</p>
+    <div class="hero-cta">
+      <a href="#products" class="btn-primary">Переглянути колекцію</a>
+      <a href="#about" class="btn-outline">Про бренд</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="catalogue">
+  <p class="section-label">Колекція</p>
+  <h2 class="section-title">Категорії</h2>
+  <div class="categories-grid">
+    <div class="cat-card" onclick="goToProducts('Джинси')">
+      <div class="cat-img">👖</div>
+      <div class="cat-overlay"><div class="cat-name">Джинси</div><div class="cat-count">8 моделей</div></div>
+    </div>
+    <div class="cat-card" onclick="goToProducts('Сорочки')">
+      <div class="cat-img">👔</div>
+      <div class="cat-overlay"><div class="cat-name">Сорочки</div><div class="cat-count">12 моделей</div></div>
+    </div>
+    <div class="cat-card" onclick="goToProducts('Костюми')">
+      <div class="cat-img">🤵</div>
+      <div class="cat-overlay"><div class="cat-name">Класичні костюми</div><div class="cat-count">6 моделей</div></div>
+    </div>
+    <div class="cat-card" onclick="goToProducts('Спорт')">
+      <div class="cat-img">🏃</div>
+      <div class="cat-overlay"><div class="cat-name">Спортивні костюми</div><div class="cat-count">5 моделей</div></div>
+    </div>
+    <div class="cat-card" onclick="goToProducts('Куртки')">
+      <div class="cat-img">🧥</div>
+      <div class="cat-overlay"><div class="cat-name">Куртки</div><div class="cat-count">9 моделей</div></div>
+    </div>
+    <div class="cat-card" onclick="goToProducts('Кросівки')">
+      <div class="cat-img">👟</div>
+      <div class="cat-overlay"><div class="cat-name">Кросівки</div><div class="cat-count">14 моделей</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="products-section" id="products">
+  <p class="section-label">Товари</p>
+  <h2 class="section-title">Нова колекція</h2>
+  <div class="filters" id="filtersBar">
+    <button class="filter-btn active" onclick="filterProducts('all', this)">Всі</button>
+    <button class="filter-btn" onclick="filterProducts('Джинси', this)">Джинси</button>
+    <button class="filter-btn" onclick="filterProducts('Сорочки', this)">Сорочки</button>
+    <button class="filter-btn" onclick="filterProducts('Костюми', this)">Костюми</button>
+    <button class="filter-btn" onclick="filterProducts('Спорт', this)">Спорт</button>
+    <button class="filter-btn" onclick="filterProducts('Куртки', this)">Куртки</button>
+    <button class="filter-btn" onclick="filterProducts('Кросівки', this)">Кросівки</button>
+  </div>
+  <div class="products-grid" id="productsGrid"></div>
+</section>
+
+<section class="about-section" id="about">
+  <div class="about-visual fade-in">🎩</div>
+  <div class="about-content fade-in">
+    <p class="section-label">Про нас</p>
+    <h2 class="about-quote">Стиль — це не одяг.<br>Це <em>відношення</em> до себе.</h2>
+    <p class="about-text">VAREL everyday style — це більше ніж магазин. Це концепція чоловічого стилю для тих, хто цінує якість і виглядає впевнено в будь-якій ситуації.</p>
+    <p class="about-text">Від класичного костюму для важливих зустрічей до стильного повсякденного образу — у нас є все.</p>
+    <div class="about-stats">
+      <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Позицій</div></div>
+      <div class="stat"><div class="stat-num">20+</div><div class="stat-label">Роки досвіду</div></div>
+      <div class="stat"><div class="stat-num">10к+</div><div class="stat-label">Клієнтів</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <p class="section-label">Зв'язок</p>
+  <h2 class="section-title">Контакти</h2>
+  <div class="contact-grid">
+    <div class="contact-card fade-in">
+      <div class="contact-icon">📞</div>
+      <div class="contact-type">Телефон</div>
+      <div class="contact-value">+38 (093) 785-80-87</div>
+      <div class="contact-desc">Пн–Сб: 10:00–20:00<br>Нд: 11:00–18:00</div>
+    </div>
+    <div class="contact-card fade-in">
+      <div class="contact-icon">📧</div>
+      <div class="contact-type">Email</div>
+      <div class="contact-value">info@VAREL-style.ua</div>
+      <div class="contact-desc">Відповідаємо протягом 2 годин</div>
+    </div>
+    <div class="contact-card fade-in">
+      <div class="contact-icon">💬</div>
+      <div class="contact-type">Месенджери</div>
+      <div class="contact-value">Instagram · Telegram</div>
+      <div class="contact-desc">@VAREL.style.ua</div>
+    </div>
+  </div>
+</section>
+
+<section class="map-section" id="find-us">
+  <p class="section-label">Локація</p>
+  <h2 class="section-title">Як нас знайти</h2>
+  <div class="map-wrapper">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10358.173992578399!2d28.45437292773304!3d49.219374943458206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472d5b86848059eb%3A0x9738e1a7621a80e4!2z0LLRg9C70LjRhtGPINCX0L7QtNGH0LjRhSwgMiwg0JLRltC90L3QuNGG0Y8sINCS0ZbQvdC90LjRhtGM0LrQsCDQvtCx0LvQsNGB0YLRjCwgMjEwMDA!5e1!3m2!1suk!2sua!4v1773686205527!5m2!1suk!2sua"
+      width="100%" height="420" style="border:0;"
+      allowfullscreen="" loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+    <div class="map-info">
+      <div class="map-info-item">
+        <span class="map-info-icon">📍</span>
+        <div><div class="map-info-title">Адреса</div><div class="map-info-text">вулиця Зодчих, 2, Вінниця</div></div>
+      </div>
+      <div class="map-info-item">
+        <span class="map-info-icon">🏢</span>
+        <div><div class="map-info-title">Орієнтир</div><div class="map-info-text">ТЦ Форум Вінниця, 2 поверх</div></div>
+      </div>
+      <div class="map-info-item">
+        <span class="map-info-icon">🕐</span>
+        <div><div class="map-info-title">Графік</div><div class="map-info-text">Пн–Сб: 10:00–20:00 · Нд: 11:00–18:00</div></div>
+      </div>
+      <a href="https://maps.google.com/?q=вулиця+Зодчих+2+Вінниця" target="_blank" class="map-directions-btn">🧭 Маршрут</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-logo">VAREL</div>
+    <p class="footer-tagline">Преміум чоловічий стиль · Вінниця</p>
+  </div>
+  <div>
+    <div class="footer-col-title">Каталог</div>
+    <ul class="footer-links">
+      <li><a href="#" onclick="goToProducts('Джинси')">Джинси</a></li>
+      <li><a href="#" onclick="goToProducts('Сорочки')">Сорочки</a></li>
+      <li><a href="#" onclick="goToProducts('Костюми')">Костюми</a></li>
+      <li><a href="#" onclick="goToProducts('Куртки')">Куртки</a></li>
+      <li><a href="#" onclick="goToProducts('Кросівки')">Кросівки</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Інформація</div>
+    <ul class="footer-links">
+      <li><a href="#about">Про нас</a></li>
+      <li><a href="#find-us">Доставка</a></li>
+      <li><a href="#contact">Контакти</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Соціальні мережі</div>
+    <ul class="footer-links">
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">Telegram</a></li>
+      <li><a href="#">TikTok</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 VAREL. Всі права захищені.</span>
+    <span>Розроблено з ♥ у Вінниці</span>
+  </div>
+</footer>
+
+<!-- MODALS -->
+<div class="modal-overlay" id="productModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-img" id="modalImg"></div>
+    <div class="modal-content">
+      <div class="modal-cat" id="modalCat"></div>
+      <h2 class="modal-name" id="modalName"></h2>
+      <p class="modal-desc" id="modalDesc"></p>
+      <div class="modal-price" id="modalPrice"></div>
+      <div class="size-label">Оберіть розмір</div>
+      <div class="sizes" id="modalSizes"></div>
+      <div class="qty-label">Кількість</div>
+      <div class="qty-control">
+        <button class="qty-btn" onclick="changeQty(-1)">−</button>
+        <div class="qty-num" id="qtyNum">1</div>
+        <button class="qty-btn" onclick="changeQty(1)">+</button>
+      </div>
+      <button class="modal-add-btn" onclick="addToCartFromModal()">Додати до кошика</button>
+      <div class="modal-details" id="modalDetails"></div>
+    </div>
+  </div>
+</div>
+
+<div class="backdrop" id="backdrop" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h2 class="cart-title">Кошик</h2>
+    <button class="cart-close-btn" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-total-row">
+      <span class="cart-total-label">Разом</span>
+      <span class="cart-total-price" id="cartTotal">0 ₴</span>
+    </div>
+    <button class="checkout-btn" onclick="openCheckout()">Оформити замовлення</button>
+  </div>
+</div>
+
+<div class="checkout-modal" id="checkoutModal">
+  <div class="checkout-box">
+    <button class="modal-close" onclick="closeCheckout()" style="position:absolute;top:20px;right:20px;background:none;border:none;color:#888;font-size:24px;cursor:pointer;">✕</button>
+    <div id="checkoutForm">
+      <h2 class="checkout-title">Оформлення</h2>
+      <p class="checkout-sub">Заповніть дані для замовлення</p>
+      <div class="form-section">
+        <div class="form-section-title">Особисті дані</div>
+        <div class="form-row">
+          <div class="form-group"><label>Ім'я</label><input type="text" id="firstName" placeholder="Олексій"></div>
+          <div class="form-group"><label>Прізвище</label><input type="text" id="lastName" placeholder="Шевченко"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Телефон</label><input type="tel" id="phone" placeholder="+380"></div>
+          <div class="form-group"><label>Email</label><input type="email" id="email" placeholder="email@gmail.com"></div>
+        </div>
+      </div>
+      <div class="form-section">
+        <div class="form-section-title">Доставка</div>
+        <div class="delivery-options">
+          <div class="delivery-option selected" id="del-nova" onclick="selectDelivery('nova')">
+            <div class="delivery-option-icon">🚀</div>
+            <div class="delivery-option-name">Нова Пошта</div>
+            <div class="delivery-option-price">від 70 ₴</div>
+          </div>
+          <div class="delivery-option" id="del-ukr" onclick="selectDelivery('ukr')">
+            <div class="delivery-option-icon">📮</div>
+            <div class="delivery-option-name">Укрпошта</div>
+            <div class="delivery-option-price">від 35 ₴</div>
+          </div>
+        </div>
+        <div class="form-group"><label>Місто</label><input type="text" id="city" placeholder="Вінниця"></div>
+        <div class="form-group"><label>Відділення</label><input type="text" id="branch" placeholder="Відділення №5"></div>
+      </div>
+      <div class="form-section">
+        <div class="form-section-title">Оплата</div>
+        <div class="payment-options">
+          <div class="payment-option selected" id="pay-card" onclick="selectPayment('card')">
+            <div class="payment-option-icon">💳</div>
+            <div><div class="payment-option-name">Карткою онлайн</div><div class="payment-option-desc">Visa, Mastercard, Apple Pay</div></div>
+          </div>
+          <div class="payment-option" id="pay-cash" onclick="selectPayment('cash')">
+            <div class="payment-option-icon">💵</div>
+            <div><div class="payment-option-name">При отриманні</div><div class="payment-option-desc">Готівка або картка на пошті</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="order-summary">
+        <div class="order-summary-title">Ваше замовлення</div>
+        <div id="orderSummaryItems"></div>
+        <div class="order-line total"><span>Разом</span><span id="orderTotal">0 ₴</span></div>
+      </div>
+      <button class="submit-order-btn" onclick="submitOrder()">Підтвердити замовлення →</button>
+    </div>
+    <div class="success-screen" id="successScreen">
+      <div class="success-icon">✅</div>
+      <h2 class="success-title">Замовлення прийнято!</h2>
+      <p class="success-text">Менеджер зв'яжеться з вами протягом 30 хвилин.</p>
+      <button class="btn-primary" onclick="closeCheckout();closeCart();" style="margin:0 auto">Повернутись до покупок</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/checkout.js"></script>
+<script src="js/ui.js"></script>
+</body>
+</html>
