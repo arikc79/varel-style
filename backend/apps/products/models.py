@@ -1,7 +1,6 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 
-
 class Category(models.Model):
     name  = models.CharField(max_length=100, unique=True, verbose_name='Назва')
     emoji = models.CharField(max_length=10, default='👔', verbose_name='Emoji')
@@ -70,13 +69,6 @@ class ProductImage(models.Model):
             qs = qs.exclude(pk=self.pk)
         if qs.count() >= 4:
             raise ValidationError('Максимум 4 фото на товар.')
-
-    def delete(self, *args, **kwargs):
-        image_storage = self.image.storage
-        image_path = self.image.name
-        super().delete(*args, **kwargs)
-        if image_path:
-            image_storage.delete(image_path)
 
     def __str__(self):
         return f'{self.product.name} — фото {self.order + 1}'
