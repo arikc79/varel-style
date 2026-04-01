@@ -20,10 +20,10 @@
 <nav>
   <a href="{% url 'index' %}" class="nav-logo">VAREL</a>
   <ul class="nav-links">
-    <li><a href="{% url 'index' %}#catalogue">Каталог</a></li>
-    <li><a href="{% url 'index' %}#about">Про нас</a></li>
-    <li><a href="{% url 'index' %}#contact">Контакти</a></li>
-    <li><a href="{% url 'index' %}#find-us">Як знайти</a></li>
+    <li><a href="{% url 'catalog' %}">Каталог</a></li>
+    <li><a href="{% url 'about' %}">Про нас</a></li>
+    <li><a href="{% url 'contacts' %}">Контакти</a></li>
+    <li><a href="{% url 'find_us' %}">Де ми</a></li>
   </ul>
   <div>
     <button class="cart-btn" onclick="toggleCart()">
@@ -44,19 +44,19 @@
   <div>
     <div class="footer-col-title">Каталог</div>
     <ul class="footer-links">
-      <li><a href="{% url 'index' %}?category=Джинси#products">Джинси</a></li>
-      <li><a href="{% url 'index' %}?category=Сорочки#products">Сорочки</a></li>
-      <li><a href="{% url 'index' %}?category=Костюми#products">Костюми</a></li>
-      <li><a href="{% url 'index' %}?category=Куртки#products">Куртки</a></li>
-      <li><a href="{% url 'index' %}?category=Кросівки#products">Кросівки</a></li>
+      <li><a href="{% url 'catalog' %}?category=Джинси">Джинси</a></li>
+      <li><a href="{% url 'catalog' %}?category=Сорочки">Сорочки</a></li>
+      <li><a href="{% url 'catalog' %}?category=Костюми">Костюми</a></li>
+      <li><a href="{% url 'catalog' %}?category=Куртки">Куртки</a></li>
+      <li><a href="{% url 'catalog' %}?category=Кросівки">Кросівки</a></li>
     </ul>
   </div>
   <div>
     <div class="footer-col-title">Інформація</div>
     <ul class="footer-links">
-      <li><a href="{% url 'index' %}#about">Про нас</a></li>
-      <li><a href="{% url 'index' %}#find-us">Доставка</a></li>
-      <li><a href="{% url 'index' %}#contact">Контакти</a></li>
+      <li><a href="{% url 'about' %}">Про нас</a></li>
+      <li><a href="{% url 'find_us' %}">Доставка</a></li>
+      <li><a href="{% url 'contacts' %}">Контакти</a></li>
     </ul>
   </div>
   <div>
