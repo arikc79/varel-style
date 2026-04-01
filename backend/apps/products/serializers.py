@@ -3,7 +3,7 @@ from .models import Category, Product, ProductImage
 
 
 class CategorySerializer(serializers.ModelSerializer):
-    product_count = serializers.SerializerMethodField()
+    product_count = serializers.IntegerField(read_only=True)
 
     class Meta:
         model  = Category
@@ -14,17 +14,11 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class ProductImageSerializer(serializers.ModelSerializer):
-    image_url = serializers.SerializerMethodField()
+    image_url = serializers.ImageField(source='image', read_only=True)
 
     class Meta:
         model  = ProductImage
         fields = ['id', 'image_url', 'order']
-
-    def get_image_url(self, obj):
-        request = self.context.get('request')
-        if obj.image:
-            return request.build_absolute_uri(obj.image.url) if request else obj.image.url
-        return None
 
 
 class ProductSerializer(serializers.ModelSerializer):
