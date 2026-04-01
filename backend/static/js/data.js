@@ -1,7 +1,11 @@
-// ── ДАНІ ТОВАРІВ ──
-// TODO: замінити на fetch() з API коли бекенд буде готовий
-// const res = await fetch('/api/products');
-// const products = await res.json();
+// ── LEGACY: ХАРДКОД ДАНІ ТОВАРІВ ──
+// ⚠️  Цей файл НЕ підключений до Django-шаблонів.
+//     Django-проект отримує дані через REST API:
+//       GET /api/products/    → products.js → loadProducts()
+//       GET /api/categories/  → products.js → loadCategories()
+//
+//     Файл залишається як референс / seed-дані для тестування.
+//     Для заповнення БД — використовуй database/seed.sql або Django admin.
 
 const products = [
   {
