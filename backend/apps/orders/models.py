@@ -1,4 +1,5 @@
 from django.db import models
+from apps.products.models import Product
 
 class Order(models.Model):
     STATUS_CHOICES = [
@@ -39,7 +40,13 @@ class Order(models.Model):
 
 class OrderItem(models.Model):
     order      = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
-    product_id = models.PositiveIntegerField()
+    product    = models.ForeignKey(
+        Product,
+        on_delete=models.SET_NULL,
+        null=True, blank=True,
+        related_name='order_items',
+        verbose_name='Товар',
+    )
     name       = models.CharField(max_length=255)
     price      = models.PositiveIntegerField()
     size       = models.CharField(max_length=10)
