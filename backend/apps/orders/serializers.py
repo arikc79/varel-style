@@ -3,9 +3,11 @@ from rest_framework import serializers
 from .models import Order, OrderItem
 
 class OrderItemSerializer(serializers.ModelSerializer):
+    product_id = serializers.IntegerField(required=False, allow_null=True)
+
     class Meta:
         model = OrderItem
-        fields = ['product', 'name', 'price', 'size', 'qty']
+        fields = ['product_id', 'name', 'price', 'size', 'qty']
 
 class OrderSerializer(serializers.ModelSerializer):
     items = OrderItemSerializer(many=True)
@@ -23,6 +25,8 @@ class OrderSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         items_data = validated_data.pop('items')
         order = Order.objects.create(**validated_data)
-        for item in items_data:
-            OrderItem.objects.create(order=order, **item)
+        order_items = [
+            OrderItem(order=order, **item) for item in items_data
+        ]
+        OrderItem.objects.bulk_create(order_items)
         return order

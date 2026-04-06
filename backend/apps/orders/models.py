@@ -17,7 +17,7 @@ class Order(models.Model):
         CASH = 'cash', 'При отриманні'
 
     phone_validator = RegexValidator(
-        regex=r'^\+?\d{9}$',
+        regex=r'^\+?\d{10,15}$',
         message="Телефон повинен бути у форматі +XXXXXXXXXXX"
     )
 
