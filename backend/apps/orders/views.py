@@ -43,6 +43,6 @@ class OrderListView(APIView):
     """GET /api/orders/ — список замовлень (для адміна)"""
 
     def get(self, request):
-        orders = Order.objects.all()[:50]
+        orders = Order.objects.prefetch_related('items').all()[:50]
         serializer = OrderSerializer(orders, many=True)
         return Response(serializer.data)
