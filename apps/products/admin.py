@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.html import format_html
 from .forms import CategoryAdminForm, ProductAdminForm
 from .models import Category, Product, ProductImage
-from django.db.models import Count, Q
+
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -11,17 +11,8 @@ class CategoryAdmin(admin.ModelAdmin):
     list_editable = ['order']
     search_fields = ['name']
 
-    def get_queryset(self, request):
-        qs = super().get_queryset(request)
-        # Анотуємо кількість прямо в запиті
-        return qs.annotate(
-            _product_count=Count('products', filter=Q(products__in_stock=True))
-        )
-
     def product_count(self, obj):
-        # Беремо вже пораховане значення
-        return getattr(obj, '_product_count', 0)
-
+        return obj.products.filter(in_stock=True).count()
     product_count.short_description = 'Товарів'
 
 
@@ -49,7 +40,6 @@ class ProductAdmin(admin.ModelAdmin):
     form            = ProductAdminForm
     list_display    = ['id', 'main_photo', 'name', 'category', 'price', 'old_price', 'badge', 'in_stock', 'created_at']
     list_filter     = ['category', 'in_stock', 'badge']
-    list_select_related = ['category']
     search_fields   = ['name', 'description']
     list_editable   = ['price', 'in_stock']
     readonly_fields = ['created_at']
@@ -61,14 +51,9 @@ class ProductAdmin(admin.ModelAdmin):
         ('Дати',    {'fields': ('created_at',)}),
     )
 
-    def get_queryset(self, request):
-        qs = super().get_queryset(request)
-        return qs.prefetch_related('images')
-
     def main_photo(self, obj):
-        images = obj.images.all()
-        if images:
-            first = images[0]
+        first = obj.images.first()
+        if first:
             return format_html(
                 '<img src="{}" style="height:48px;width:48px;object-fit:cover;border-radius:6px;" />',
                 first.image.url,
@@ -81,7 +66,6 @@ class ProductAdmin(admin.ModelAdmin):
 class ProductImageAdmin(admin.ModelAdmin):
     list_display  = ['id', 'preview', 'product', 'order']
     list_filter   = ['product__category']
-    list_select_related = ['product']
     search_fields = ['product__name']
 
     def preview(self, obj):

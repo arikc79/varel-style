@@ -2,15 +2,12 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Category, Product
 from .serializers import CategorySerializer, ProductSerializer
-from django.db.models import Count, Q
 
 class CategoryListView(APIView):
     """GET /api/categories/"""
 
     def get(self, request):
-        cats = Category.objects.annotate(
-            product_count=Count('products', filter=Q(products__in_stock=True))
-        )
+        cats = Category.objects.all()
         return Response(CategorySerializer(cats, many=True).data)
 
 class ProductListView(APIView):

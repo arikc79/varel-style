@@ -3,25 +3,28 @@ from .models import Category, Product, ProductImage
 
 
 class CategorySerializer(serializers.ModelSerializer):
-    product_count = serializers.IntegerField(read_only=True)
+    product_count = serializers.SerializerMethodField()
 
     class Meta:
         model  = Category
         fields = ['id', 'name', 'emoji', 'order', 'product_count']
 
     def get_product_count(self, obj):
-        # Використовуємо анотацію з view якщо є — уникає зайвих запитів
-        if hasattr(obj, 'product_count'):
-            return obj.product_count
         return obj.products.filter(in_stock=True).count()
 
 
 class ProductImageSerializer(serializers.ModelSerializer):
-    image_url = serializers.ImageField(source='image', read_only=True)
+    image_url = serializers.SerializerMethodField()
 
     class Meta:
         model  = ProductImage
         fields = ['id', 'image_url', 'order']
+
+    def get_image_url(self, obj):
+        request = self.context.get('request')
+        if obj.image:
+            return request.build_absolute_uri(obj.image.url) if request else obj.image.url
+        return None
 
 
 class ProductSerializer(serializers.ModelSerializer):

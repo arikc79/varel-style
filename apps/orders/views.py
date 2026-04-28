@@ -3,7 +3,6 @@ import requests
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.permissions import IsAdminUser
 from .models import Order
 from .serializers import OrderSerializer
 
@@ -41,10 +40,9 @@ class OrderCreateView(APIView):
 
 
 class OrderListView(APIView):
-    """GET /api/orders/list/ — список замовлень (тільки для адміна)"""
-    permission_classes = [IsAdminUser]
+    """GET /api/orders/ — список замовлень (для адміна)"""
 
     def get(self, request):
-        orders = Order.objects.prefetch_related('items').all()[:50]
+        orders = Order.objects.all()[:50]
         serializer = OrderSerializer(orders, many=True)
         return Response(serializer.data)

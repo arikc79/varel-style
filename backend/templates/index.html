@@ -15,8 +15,8 @@
     <h1 class="hero-title">VAREL<br><span>everyday style</span></h1>
     <p class="hero-sub">Одяг для тих, хто знає собі ціну</p>
     <div class="hero-cta">
-      <a href="#products" class="btn-primary">Переглянути колекцію</a>
-      <a href="#about" class="btn-outline">Про бренд</a>
+      <a href="{% url 'catalog' %}" class="btn-primary">Переглянути колекцію</a>
+      <a href="{% url 'about' %}" class="btn-outline">Про бренд</a>
     </div>
   </div>
 </section>
@@ -46,84 +46,29 @@
   <div class="products-grid" id="productsGrid"></div>
 </section>
 
-<!-- ── ПРО НАС ── -->
-<section class="about-section" id="about">
-  <div class="about-visual fade-in">🎩</div>
-  <div class="about-content fade-in">
-    <p class="section-label">Про нас</p>
-    <h2 class="about-quote">Стиль — це не одяг.<br>Це <em>відношення</em> до себе.</h2>
-    <p class="about-text">VAREL everyday style — це більше ніж магазин. Це концепція чоловічого стилю для тих, хто цінує якість і виглядає впевнено в будь-якій ситуації.</p>
-    <p class="about-text">Від класичного костюму для важливих зустрічей до стильного повсякденного образу — у нас є все.</p>
-    <div class="about-stats">
-      <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Позицій</div></div>
-      <div class="stat"><div class="stat-num">20+</div><div class="stat-label">Роки досвіду</div></div>
-      <div class="stat"><div class="stat-num">10к+</div><div class="stat-label">Клієнтів</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ── КОНТАКТИ ── -->
-<section class="contact-section" id="contact">
-  <p class="section-label">Зв'язок</p>
-  <h2 class="section-title">Контакти</h2>
-  <div class="contact-grid">
-    <div class="contact-card fade-in">
+<!-- ── ІНФО-БЛОК: посилання на окремі сторінки ── -->
+<section class="section" id="info-links" style="background:#f8f7f5;">
+  <p class="section-label">Дізнатись більше</p>
+  <h2 class="section-title">VAREL — все про нас</h2>
+  <div class="contact-grid" style="margin-top:40px;">
+    <a href="{% url 'about' %}" class="contact-card fade-in" style="text-decoration:none;color:inherit;cursor:pointer;">
+      <div class="contact-icon">🎩</div>
+      <div class="contact-type">Про нас</div>
+      <div class="contact-value">Наша історія</div>
+      <div class="contact-desc">500+ позицій · 20 років досвіду · 10к+ клієнтів</div>
+    </a>
+    <a href="{% url 'contacts' %}" class="contact-card fade-in" style="text-decoration:none;color:inherit;cursor:pointer;">
       <div class="contact-icon">📞</div>
-      <div class="contact-type">Телефон</div>
+      <div class="contact-type">Контакти</div>
       <div class="contact-value">+38 (093) 785-80-87</div>
-      <div class="contact-desc">Пн–Сб: 10:00–20:00<br>Нд: 11:00–18:00</div>
-    </div>
-    <div class="contact-card fade-in">
-      <div class="contact-icon">📧</div>
-      <div class="contact-type">Email</div>
-      <div class="contact-value">info@varel-style.ua</div>
-      <div class="contact-desc">Відповідаємо протягом 2 годин</div>
-    </div>
-    <div class="contact-card fade-in">
-      <div class="contact-icon">💬</div>
-      <div class="contact-type">Месенджери</div>
-      <div class="contact-value">Instagram · Telegram</div>
-      <div class="contact-desc">@varel.style.ua</div>
-    </div>
-  </div>
-</section>
-
-<!-- ── КАРТА ── -->
-<section class="map-section" id="find-us">
-  <p class="section-label">Локація</p>
-  <h2 class="section-title">Як нас знайти</h2>
-  <div class="map-wrapper">
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10358.173992578399!2d28.45437292773304!3d49.219374943458206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472d5b86848059eb%3A0x9738e1a7621a80e4!2z0LLRg9C70LjRhtGPINCX0L7QtNGH0LjRhSwgMiwg0JLRltC90L3QvdC40YbRjiwg0JLRltC90L3QuNGG0YzQutCwINC-0LHQu9Cw0YHRgtGMLCAyMTAwMA!5e1!3m2!1suk!2sua!4v1773686205527!5m2!1suk!2sua"
-      width="100%" height="420" style="border:0;"
-      allowfullscreen="" loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-    <div class="map-info">
-      <div class="map-info-item">
-        <span class="map-info-icon">📍</span>
-        <div>
-          <div class="map-info-title">Адреса</div>
-          <div class="map-info-text">вулиця Зодчих, 2, Вінниця</div>
-        </div>
-      </div>
-      <div class="map-info-item">
-        <span class="map-info-icon">🏢</span>
-        <div>
-          <div class="map-info-title">Орієнтир</div>
-          <div class="map-info-text">ТЦ Форум Вінниця, 2 поверх</div>
-        </div>
-      </div>
-      <div class="map-info-item">
-        <span class="map-info-icon">🕐</span>
-        <div>
-          <div class="map-info-title">Графік</div>
-          <div class="map-info-text">Пн–Сб: 10:00–20:00 · Нд: 11:00–18:00</div>
-        </div>
-      </div>
-      <a href="https://maps.google.com/?q=вулиця+Зодчих+2+Вінниця"
-         target="_blank" class="map-directions-btn">🧭 Маршрут</a>
-    </div>
+      <div class="contact-desc">Пн–Сб: 10:00–20:00 · Нд: 11:00–18:00</div>
+    </a>
+    <a href="{% url 'find_us' %}" class="contact-card fade-in" style="text-decoration:none;color:inherit;cursor:pointer;">
+      <div class="contact-icon">📍</div>
+      <div class="contact-type">Де ми</div>
+      <div class="contact-value">вул. Зодчих, 2</div>
+      <div class="contact-desc">ТЦ Форум Вінниця, 2 поверх</div>
+    </a>
   </div>
 </section>
 
