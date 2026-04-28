@@ -1,36 +1,32 @@
 from django.db import models
-from django.core.validators import RegexValidator
+from apps.products.models import Product
 
 class Order(models.Model):
-    class Status(models.TextChoices):
-        NEW = 'new', '🆕 Нове'
-        PROCESSING = 'processing', '⚙️ В обробці'
-        SHIPPED = 'shipped', '📦 Відправлено'
-        DONE = 'done', '✅ Виконано'
-
-    class Delivery(models.TextChoices):
-        NOVA_POSHTA = 'nova', 'Нова Пошта'
-        UKRPOSHTA = 'ukr', 'Укрпошта'
-
-    class Payment(models.TextChoices):
-        CARD = 'card', 'Карткою онлайн'
-        CASH = 'cash', 'При отриманні'
-
-    phone_validator = RegexValidator(
-        regex=r'^\+?\d{10,15}$',
-        message="Телефон повинен бути у форматі +XXXXXXXXXXX"
-    )
+    STATUS_CHOICES = [
+        ('new',        '🆕 Нове'),
+        ('processing', '⚙️ В обробці'),
+        ('shipped',    '📦 Відправлено'),
+        ('done',       '✅ Виконано'),
+    ]
+    DELIVERY_CHOICES = [
+        ('nova', 'Нова Пошта'),
+        ('ukr',  'Укрпошта'),
+    ]
+    PAYMENT_CHOICES = [
+        ('card', 'Карткою онлайн'),
+        ('cash', 'При отриманні'),
+    ]
 
     first_name    = models.CharField(max_length=100)
     last_name     = models.CharField(max_length=100, blank=True)
-    phone         = models.CharField(max_length=20, validators=[phone_validator])
+    phone         = models.CharField(max_length=20)
     email         = models.EmailField(blank=True)
-    delivery_type = models.CharField(max_length=10, choices=Delivery)
+    delivery_type = models.CharField(max_length=10, choices=DELIVERY_CHOICES)
     city          = models.CharField(max_length=100, blank=True)
     branch        = models.CharField(max_length=255, blank=True)
-    payment_type  = models.CharField(max_length=10, choices=Payment)
+    payment_type  = models.CharField(max_length=10, choices=PAYMENT_CHOICES)
     total         = models.PositiveIntegerField()
-    status        = models.CharField(max_length=20, choices=Status, default=Status.NEW)
+    status        = models.CharField(max_length=20, choices=STATUS_CHOICES, default='new')
     created_at    = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -44,15 +40,17 @@ class Order(models.Model):
 
 class OrderItem(models.Model):
     order      = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
-    product    = models.ForeignKey("products.Product", on_delete=models.SET_NULL, null=True, blank=True)
+    product    = models.ForeignKey(
+        Product,
+        on_delete=models.SET_NULL,
+        null=True, blank=True,
+        related_name='order_items',
+        verbose_name='Товар',
+    )
     name       = models.CharField(max_length=255)
     price      = models.PositiveIntegerField()
     size       = models.CharField(max_length=10)
     qty        = models.PositiveIntegerField(default=1)
-
-    class Meta:
-        verbose_name = 'Товар у замовленні'
-        verbose_name_plural = 'Товари у замовленні'
 
     def __str__(self):
         return f'{self.name} x{self.qty} ({self.size})'
