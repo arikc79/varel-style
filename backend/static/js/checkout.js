@@ -143,16 +143,11 @@ function normalizePhone(value) {
 
 function extractApiError(err) {
   if (!err || typeof err !== 'object') return '';
-  const priorityKeys = ['phone', 'first_name', 'items', 'non_field_errors'];
-  const keys = [...priorityKeys, ...Object.keys(err)];
-
-  for (const key of keys) {
-    if (!(key in err)) continue;
-    const val = err[key];
-    if (Array.isArray(val) && val.length) return String(val[0]);
-    if (typeof val === 'string' && val.trim()) return val.trim();
-  }
-
+  const firstKey = Object.keys(err)[0];
+  if (!firstKey) return '';
+  const val = err[firstKey];
+  if (Array.isArray(val) && val.length) return String(val[0]);
+  if (typeof val === 'string') return val;
   return '';
 }
 
@@ -190,11 +185,6 @@ function initPhoneInputMask() {
     }
 
     input.value = digits ? `+${digits}` : '';
-  });
-
-  input.addEventListener('blur', () => {
-    const normalized = normalizePhone(input.value);
-    input.value = normalized || input.value.trim();
   });
 }
 

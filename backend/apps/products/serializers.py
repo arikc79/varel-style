@@ -10,9 +10,6 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'emoji', 'order', 'product_count']
 
     def get_product_count(self, obj):
-        # Використовуємо анотацію з view якщо є — уникає зайвих запитів
-        if hasattr(obj, 'product_count'):
-            return obj.product_count
         return obj.products.filter(in_stock=True).count()
 
 
@@ -35,5 +32,5 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'name', 'category', 'category_emoji',
             'price', 'old_price', 'description', 'emoji',
-            'sizes', 'details', 'badge', 'in_stock', 'created_at', 'images',
+            'sizes', 'colors', 'details', 'badge', 'in_stock', 'created_at', 'images',
         ]

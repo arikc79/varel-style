@@ -29,6 +29,7 @@ class Product(models.Model):
     description = models.TextField(verbose_name='Опис')
     emoji       = models.CharField(max_length=10, default='👔', verbose_name='Emoji (fallback без фото)')
     sizes       = models.JSONField(default=list, verbose_name='Розміри')
+    colors      = models.JSONField(default=list, verbose_name='Кольори', help_text='["Чорний", "Білий", "Синій"]')
     details     = models.JSONField(default=dict, blank=True,
                                    help_text='{"Склад":"...", "Країна":"...", "Колір":"..."}',
                                    verbose_name='Деталі')
