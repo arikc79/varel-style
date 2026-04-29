@@ -7,7 +7,7 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY', 'dev-secret-key-change-in-production')
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '10.10.4.193').split(',')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -55,21 +55,26 @@ TEMPLATES = [
     },
 ]
 
+DB_SSLMODE = os.getenv('DB_SSLMODE', '').strip()
+DB_CONN_MAX_AGE = int(os.getenv('DB_CONN_MAX_AGE', '60'))
+
 DATABASES = {
     'default': {
-        'ENGINE':   'django.db.backends.postgresql',
-        'NAME':     os.getenv('DB_NAME', 'postgres'),
-        'USER':     os.getenv('DB_USER', 'postgres'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DB_NAME', 'postgres').strip(),
+        'USER': os.getenv('DB_USER', 'postgres').strip(),
         'PASSWORD': os.getenv('DB_PASSWORD', ''),
-        'HOST':     os.getenv('DB_HOST', 'localhost'),
-        'PORT':     os.getenv('DB_PORT', '5432'),
-    }
-} if os.getenv('DB_NAME') else {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME':   BASE_DIR / 'db.sqlite3',
+        'HOST': os.getenv('DB_HOST', 'localhost').strip(),
+        'PORT': os.getenv('DB_PORT', '5432').strip(),
+        'CONN_MAX_AGE': DB_CONN_MAX_AGE,
+        'OPTIONS': {
+            'client_encoding': 'UTF8',
+        },
     }
 }
+
+if DB_SSLMODE:
+    DATABASES['default']['OPTIONS']['sslmode'] = DB_SSLMODE
 
 # CORS
 CORS_ALLOWED_ORIGINS = [
@@ -89,8 +94,7 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_RENDERER_CLASSES':  ['rest_framework.renderers.JSONRenderer'],
-    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.AllowAny'],
+    'DEFAULT_RENDERER_CLASSES': ['rest_framework.renderers.JSONRenderer'],
 }
 
 STATIC_URL = '/static/'

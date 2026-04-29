@@ -7,9 +7,10 @@ class OrderItemSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = OrderItem
-        fields = ['product_id', 'name', 'price', 'size', 'qty']
+        fields = ['product_id', 'name', 'price', 'size', 'color', 'qty']
 
 class OrderSerializer(serializers.ModelSerializer):
+    phone = serializers.CharField()
     items = OrderItemSerializer(many=True)
 
     class Meta:
@@ -20,6 +21,14 @@ class OrderSerializer(serializers.ModelSerializer):
             'total', 'status', 'items', 'created_at'
         ]
         read_only_fields = ['id', 'status', 'created_at']
+
+    def validate_phone(self, value):
+        # Accept user-friendly phone formats and normalize to +XXXXXXXXXX.
+        raw = str(value or '').strip()
+        digits = ''.join(ch for ch in raw if ch.isdigit())
+        if len(digits) < 10 or len(digits) > 15:
+            raise serializers.ValidationError('Телефон має містити від 10 до 15 цифр.')
+        return f'+{digits}'
 
     @transaction.atomic
     def create(self, validated_data):

@@ -3,7 +3,6 @@ import requests
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.permissions import IsAdminUser
 from .models import Order
 from .serializers import OrderSerializer
 
@@ -28,7 +27,7 @@ class OrderCreateView(APIView):
                         'delivery':   order.delivery_type,
                         'payment':    order.payment_type,
                         'items':      [
-                            {'name': i.name, 'size': i.size, 'qty': i.qty, 'price': i.price}
+                            {'name': i.name, 'size': i.size, 'color': i.color, 'qty': i.qty, 'price': i.price}
                             for i in order.items.all()
                         ],
                     }, timeout=5)
@@ -41,8 +40,7 @@ class OrderCreateView(APIView):
 
 
 class OrderListView(APIView):
-    """GET /api/orders/list/ — список замовлень (тільки для адміна)"""
-    permission_classes = [IsAdminUser]
+    """GET /api/orders/ — список замовлень (для адміна)"""
 
     def get(self, request):
         orders = Order.objects.prefetch_related('items').all()[:50]

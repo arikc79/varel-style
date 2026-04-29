@@ -65,7 +65,12 @@ API доступний за адресою: `http://localhost:8000/api/`
 SECRET_KEY=your-secret-key
 DEBUG=True
 ALLOWED_HOSTS=localhost,127.0.0.1
-DATABASE_URL=postgresql://user:pass@host:5432/dbname
+DB_NAME=postgres
+DB_USER=postgres
+DB_PASSWORD=your-password
+DB_HOST=localhost
+DB_PORT=5432
+DB_SSLMODE=prefer
 ```
 
 ## Гілки

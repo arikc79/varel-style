@@ -57,7 +57,7 @@ class ProductAdmin(admin.ModelAdmin):
     fieldsets = (
         ('Основне', {'fields': ('name', 'category', 'emoji', 'badge', 'in_stock')}),
         ('Ціна',    {'fields': ('price', 'old_price')}),
-        ('Опис',    {'fields': ('description', 'sizes', 'details')}),
+        ('Опис',    {'fields': ('description', 'sizes', 'colors', 'details')}),
         ('Дати',    {'fields': ('created_at',)}),
     )
 
