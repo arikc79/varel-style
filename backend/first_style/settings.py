@@ -59,33 +59,33 @@ DB_SSLMODE = os.getenv('DB_SSLMODE', '').strip()
 DB_CONN_MAX_AGE = int(os.getenv('DB_CONN_MAX_AGE', '60'))
 USE_SQLITE = os.getenv('USE_SQLITE', 'False') == 'True'
 
+# PostgreSQL за замовчуванням
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DB_NAME', 'postgres').strip(),
+        'USER': os.getenv('DB_USER', 'postgres').strip(),
+        'PASSWORD': os.getenv('DB_PASSWORD', ''),
+        'HOST': os.getenv('DB_HOST', 'localhost').strip(),
+        'PORT': os.getenv('DB_PORT', '5432').strip(),
+        'CONN_MAX_AGE': DB_CONN_MAX_AGE,
+        'OPTIONS': {
+            'client_encoding': 'UTF8',
+        },
+    }
+}
+
+if DB_SSLMODE:
+    DATABASES['default']['OPTIONS']['sslmode'] = DB_SSLMODE
+
+# Fallback на SQLite якщо PostgreSQL недоступний (тільки для локального тестування)
 if USE_SQLITE:
-    # Використовуємо SQLite для локального розробки
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-else:
-    # Використовуємо PostgreSQL для продакшена
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.getenv('DB_NAME', 'postgres').strip(),
-            'USER': os.getenv('DB_USER', 'postgres').strip(),
-            'PASSWORD': os.getenv('DB_PASSWORD', ''),
-            'HOST': os.getenv('DB_HOST', 'localhost').strip(),
-            'PORT': os.getenv('DB_PORT', '5432').strip(),
-            'CONN_MAX_AGE': DB_CONN_MAX_AGE,
-            'OPTIONS': {
-                'client_encoding': 'UTF8',
-            },
-        }
-    }
-    
-    if DB_SSLMODE:
-        DATABASES['default']['OPTIONS']['sslmode'] = DB_SSLMODE
 
 # CORS
 CORS_ALLOWED_ORIGINS = [

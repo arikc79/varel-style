@@ -4,9 +4,15 @@
 
 ![Django](https://img.shields.io/badge/Django-6.0.4-green.svg)
 ![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-12+-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 ## 🚀 Швидкий старт (2 кроки!)
+
+### Перед початком:
+**Встановіть PostgreSQL 12+** з https://www.postgresql.org/download/
+
+> 💡 Або використайте SQLite для швидкого тестування (додайте `USE_SQLITE=True` у `.env`)
 
 ### 1️⃣ Клонуйте репозиторій:
 ```bash
@@ -25,7 +31,7 @@ SETUP_AND_RUN.bat
 
 **Готово!** 🎉 Сервер запуститься на http://127.0.0.1:8000
 
-> ⚡ Скрипт автоматично: перевірить Python → створить venv → встановить залежності → налаштує БД → створить адміна → запустить сервер
+> ⚡ Скрипт автоматично: перевірить PostgreSQL → створить venv → встановить залежності → налаштує БД → створить адміна → запустить сервер
 
 ---
 
@@ -58,7 +64,7 @@ SETUP_AND_RUN.bat
 - 👖 **Джинси** - 3 моделі (Berlin Slim Fit, Rio Skinny Fit, Oslo Carrot Fit)
 - 👟 **Кросівки** - 2 моделі AVVA
 - 👔 **Сорочки** - 2 моделі (Britli Striped Seersucker, AVVA)
-- 📸 **25 фото товарів**
+- 📸 **27 фото товарів**
 
 ---
 
@@ -67,10 +73,44 @@ SETUP_AND_RUN.bat
 | Категорія | Технологія |
 |-----------|------------|
 | Backend | Django 6.0.4 + Django REST Framework |
-| Database | SQLite (можна PostgreSQL) |
+| **Database** | **PostgreSQL 12+** (SQLite fallback) |
 | Frontend | Django Templates + Vanilla JavaScript |
 | API | Django REST Framework |
 | Media | Pillow для обробки зображень |
+
+---
+
+## 🗄️ Налаштування бази даних
+
+### PostgreSQL (рекомендовано):
+
+1. **Встановіть PostgreSQL**: https://www.postgresql.org/download/
+
+2. **Створіть базу даних**:
+   ```bash
+   # Windows (через psql)
+   psql -U postgres
+   CREATE DATABASE varel_style;
+   \q
+   ```
+
+3. **Налаштуйте `backend/.env`**:
+   ```env
+   DB_NAME=varel_style
+   DB_USER=postgres
+   DB_PASSWORD=your_password
+   DB_HOST=localhost
+   DB_PORT=5432
+   ```
+
+4. **Запустіть SETUP_AND_RUN.bat** - він автоматично виконає міграції
+
+### SQLite (для швидкого тестування):
+
+Якщо PostgreSQL не встановлений, додайте у `backend/.env`:
+```env
+USE_SQLITE=True
+```
 
 ---
 
@@ -137,6 +177,7 @@ pip install -r requirements.txt
 
 # 4. Налаштуйте .env
 copy .env.example .env
+# Відредагуйте .env з вашими даними PostgreSQL
 
 # 5. Виконайте міграції
 python manage.py migrate
@@ -144,36 +185,41 @@ python manage.py migrate
 # 6. Створіть суперкористувача
 python manage.py createsuperuser
 
-# 7. Запустіть сервер
+# 7. Завантажте демо-дані (опціонально)
+cd ..
+python import_data.py
+
+# 8. Запустіть сервер
+cd backend
 python manage.py runserver
 ```
 
 ---
 
-## 🔧 Налаштування
+## 🔧 Конфігурація
 
-### Перехід на PostgreSQL:
+### Приклад файлу `.env`:
 
-1. Встановіть PostgreSQL
-2. Відредагуйте `backend/.env`:
-   ```env
-   USE_SQLITE=False
-   DB_NAME=varel_style
-   DB_USER=postgres
-   DB_PASSWORD=your_password
-   DB_HOST=localhost
-   DB_PORT=5432
-   ```
-3. Виконайте міграції:
-   ```bash
-   python manage.py migrate
-   ```
-
-### Інтеграція з Make.com:
-
-У файлі `backend/.env` додайте:
 ```env
-MAKE_WEBHOOK_URL=https://hook.eu1.make.com/your-webhook-id
+# Django
+SECRET_KEY=your-secret-key-here
+DEBUG=True
+ALLOWED_HOSTS=localhost,127.0.0.1
+
+# PostgreSQL Database
+DB_NAME=varel_style
+DB_USER=postgres
+DB_PASSWORD=postgres
+DB_HOST=localhost
+DB_PORT=5432
+DB_SSLMODE=prefer
+DB_CONN_MAX_AGE=60
+
+# Fallback на SQLite (опціонально)
+# USE_SQLITE=True
+
+# Make.com Webhook (опціонально)
+MAKE_WEBHOOK_URL=https://hook.eu1.make.com/your-webhook
 ```
 
 ---
@@ -181,6 +227,60 @@ MAKE_WEBHOOK_URL=https://hook.eu1.make.com/your-webhook-id
 ## 🎨 Скріншоти
 
 (Тут можна додати скріншоти вашого сайту)
+
+---
+
+## 📝 Що робить SETUP_AND_RUN.bat
+
+1. ✅ Перевіряє Python 3.10+
+2. ✅ Перевіряє PostgreSQL
+3. ✅ Створює віртуальне середовище
+4. ✅ Встановлює залежності
+5. ✅ Копіює `.env.example` → `.env`
+6. ✅ Виконує міграції
+7. ✅ Створює адміністратора (admin / admin123)
+8. ✅ Імпортує демо-дані
+9. ✅ Запускає сервер
+
+**Якщо PostgreSQL не знайдений**, скрипт автоматично запропонує використати SQLite.
+
+---
+
+## 🐛 Troubleshooting
+
+### PostgreSQL не знайдений:
+```bash
+# Перевірте встановлення
+psql --version
+
+# Якщо не встановлений, завантажте:
+https://www.postgresql.org/download/
+```
+
+### Помилка з'єднання з БД:
+```bash
+# Перевірте, чи запущений PostgreSQL
+# Windows:
+services.msc  # Знайдіть postgresql-x64-XX
+
+# Або використайте SQLite:
+echo USE_SQLITE=True >> backend\.env
+```
+
+### Інші проблеми:
+- Перегляньте `ІНСТРУКЦІЯ_ЗАПУСКУ.md`
+- Створіть [Issue на GitHub](https://github.com/arikc79/varel-style/issues)
+
+---
+
+## 🎯 TODO (майбутні покращення)
+
+- [ ] Додати пошук товарів
+- [ ] Додати відгуки користувачів
+- [ ] Інтегрувати оплату (Stripe/LiqPay)
+- [ ] Додати багатомовність
+- [ ] Створити мобільний додаток
+- [ ] Додати wishlist
 
 ---
 
@@ -196,17 +296,6 @@ MIT License - використовуйте як завгодно!
 1. Перегляньте файл `ІНСТРУКЦІЯ_ЗАПУСКУ.md`
 2. Перевірте [Django документацію](https://docs.djangoproject.com/)
 3. Створіть Issue на GitHub
-
----
-
-## 🎯 TODO (майбутні покращення)
-
-- [ ] Додати пошук товарів
-- [ ] Додати відгуки користувачів
-- [ ] Інтегрувати оплату (Stripe/LiqPay)
-- [ ] Додати багатомовність
-- [ ] Створити мобільний додаток
-- [ ] Додати бажаний список (wishlist)
 
 ---
 

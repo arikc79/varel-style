@@ -60,6 +60,28 @@ if not exist ".env" (
 )
 echo.
 
+REM Перевірка PostgreSQL
+echo [4.5/6] Перевірка PostgreSQL...
+psql --version >nul 2>&1
+if errorlevel 1 (
+    echo ⚠️  PostgreSQL не знайдено!
+    echo.
+    echo 📝 ВАЖЛИВО: Проект використовує PostgreSQL як основну БД.
+    echo.
+    echo Варіанти:
+    echo 1. Встановіть PostgreSQL: https://www.postgresql.org/download/
+    echo 2. Або використайте SQLite для тестування:
+    echo    Відредагуйте .env і додайте рядок: USE_SQLITE=True
+    echo.
+    echo Натисніть будь-яку клавішу для продовження зі SQLite...
+    pause >nul
+    echo USE_SQLITE=True >> .env
+    echo ⚠️  Використовується SQLite замість PostgreSQL
+) else (
+    echo ✅ PostgreSQL встановлено
+)
+echo.
+
 REM Міграції
 echo [5/6] Налаштування бази даних...
 call .venv\Scripts\python.exe manage.py migrate --noinput >nul 2>&1
