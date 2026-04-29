@@ -98,7 +98,8 @@ DB_SSLMODE=prefer
 - ❌ Не пушити напряму в `main`
 - ✅ Кожна задача — окремий PR → `dev`
 - ✅ Формат комітів: `feat:`, `fix:`, `docs:`, `style:`, `refactor:`
-- ❌ Не комітити `.env`, `db.sqlite3`, `media/`
+- ❌ Не комітити `.env`, `db.sqlite3`, користувацький `media/`
+- ✅ Дозволено комітити демо-фото товарів у `backend/media/products/`
 
 ## Ліцензія
 
