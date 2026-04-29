@@ -57,7 +57,9 @@ TEMPLATES = [
 
 DB_SSLMODE = os.getenv('DB_SSLMODE', '').strip()
 DB_CONN_MAX_AGE = int(os.getenv('DB_CONN_MAX_AGE', '60'))
+USE_SQLITE = os.getenv('USE_SQLITE', 'False') == 'True'
 
+# PostgreSQL за замовчуванням
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -75,6 +77,15 @@ DATABASES = {
 
 if DB_SSLMODE:
     DATABASES['default']['OPTIONS']['sslmode'] = DB_SSLMODE
+
+# Fallback на SQLite якщо PostgreSQL недоступний (тільки для локального тестування)
+if USE_SQLITE:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # CORS
 CORS_ALLOWED_ORIGINS = [
