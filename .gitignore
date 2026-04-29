@@ -1,0 +1,49 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Python cache / tooling
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+backend/.venv/
+backend/venv/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+backend/.env
+backend/.env.*
+!backend/.env.example
+
+# Django runtime artifacts
+db.sqlite3
+backend/db.sqlite3
+backend/staticfiles/
+media/
+backend/media/*
+!backend/media/products/
+!backend/media/products/**
+
+# Logs
+*.log
+backend/*.log
+
+# Node/package manager leftovers (just in case)
+node_modules/
+.npm/
+.pnpm-store/
+

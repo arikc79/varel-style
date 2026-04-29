@@ -1,0 +1,1505 @@
+[
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2026-04-29T15:27:23.757Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "products",
+      "product"
+    ],
+    "object_id": "7",
+    "object_repr": "Britli Striped Seersucker",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0424\\u043e\\u0442\\u043e \\u0442\\u043e\\u0432\\u0430\\u0440\\u0443\", \"object\": \"Britli Striped Seersucker \\u2014 \\u0444\\u043e\\u0442\\u043e 1\"}}, {\"added\": {\"name\": \"\\u0424\\u043e\\u0442\\u043e \\u0442\\u043e\\u0432\\u0430\\u0440\\u0443\", \"object\": \"Britli Striped Seersucker \\u2014 \\u0444\\u043e\\u0442\\u043e 1\"}}, {\"added\": {\"name\": \"\\u0424\\u043e\\u0442\\u043e \\u0442\\u043e\\u0432\\u0430\\u0440\\u0443\", \"object\": \"Britli Striped Seersucker \\u2014 \\u0444\\u043e\\u0442\\u043e 1\"}}, {\"added\": {\"name\": \"\\u0424\\u043e\\u0442\\u043e \\u0442\\u043e\\u0432\\u0430\\u0440\\u0443\", \"object\": \"Britli Striped Seersucker \\u2014 \\u0444\\u043e\\u0442\\u043e 1\"}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2026-04-29T10:17:36.327Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "1",
+    "object_repr": "#1 — вам +3809741033636",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2026-04-29T10:17:24.499Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "1",
+    "object_repr": "#1 — вам +3809741033636",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2026-04-29T10:17:14.814Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "1",
+    "object_repr": "#1 — вам +3809741033636",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2026-04-29T10:16:55.898Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "1",
+    "object_repr": "#1 — вам +3809741033636",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2026-04-29T10:10:42.178Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "products",
+      "product"
+    ],
+    "object_id": "6",
+    "object_repr": "Сорочка AVVA",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0424\\u043e\\u0442\\u043e \\u0442\\u043e\\u0432\\u0430\\u0440\\u0443\", \"object\": \"\\u0421\\u043e\\u0440\\u043e\\u0447\\u043a\\u0430 AVVA \\u2014 \\u0444\\u043e\\u0442\\u043e 1\"}}, {\"added\": {\"name\": \"\\u0424\\u043e\\u0442\\u043e \\u0442\\u043e\\u0432\\u0430\\u0440\\u0443\", \"object\": \"\\u0421\\u043e\\u0440\\u043e\\u0447\\u043a\\u0430 AVVA \\u2014 \\u0444\\u043e\\u0442\\u043e 1\"}}, {\"added\": {\"name\": \"\\u0424\\u043e\\u0442\\u043e \\u0442\\u043e\\u0432\\u0430\\u0440\\u0443\", \"object\": \"\\u0421\\u043e\\u0440\\u043e\\u0447\\u043a\\u0430 AVVA \\u2014 \\u0444\\u043e\\u0442\\u043e 1\"}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2026-04-29T10:07:22.727Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "products",
+      "category"
+    ],
+    "object_id": "3",
+    "object_repr": "👔 Сорочки",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2026-04-29T10:03:36.021Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "products",
+      "productimage"
+    ],
+    "object_id": "18",
+    "object_repr": "Кросівки AVVA — фото 1",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0424\\u043e\\u0442\\u043e\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2026-04-29T10:02:04.182Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "products",
+      "product"
+    ],
+    "object_id": "5",
+    "object_repr": "Кросівки AVVA",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0424\\u043e\\u0442\\u043e \\u0442\\u043e\\u0432\\u0430\\u0440\\u0443\", \"object\": \"\\u041a\\u0440\\u043e\\u0441\\u0456\\u0432\\u043a\\u0438 AVVA \\u2014 \\u0444\\u043e\\u0442\\u043e 1\"}}, {\"added\": {\"name\": \"\\u0424\\u043e\\u0442\\u043e \\u0442\\u043e\\u0432\\u0430\\u0440\\u0443\", \"object\": \"\\u041a\\u0440\\u043e\\u0441\\u0456\\u0432\\u043a\\u0438 AVVA \\u2014 \\u0444\\u043e\\u0442\\u043e 1\"}}, {\"added\": {\"name\": \"\\u0424\\u043e\\u0442\\u043e \\u0442\\u043e\\u0432\\u0430\\u0440\\u0443\", \"object\": \"\\u041a\\u0440\\u043e\\u0441\\u0456\\u0432\\u043a\\u0438 AVVA \\u2014 \\u0444\\u043e\\u0442\\u043e 1\"}}, {\"added\": {\"name\": \"\\u0424\\u043e\\u0442\\u043e \\u0442\\u043e\\u0432\\u0430\\u0440\\u0443\", \"object\": \"\\u041a\\u0440\\u043e\\u0441\\u0456\\u0432\\u043a\\u0438 AVVA \\u2014 \\u0444\\u043e\\u0442\\u043e 1\"}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2026-04-29T08:59:32.002Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "products",
+      "product"
+    ],
+    "object_id": "4",
+    "object_repr": "Berlin Slim Fit",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0424\\u043e\\u0442\\u043e \\u0442\\u043e\\u0432\\u0430\\u0440\\u0443\", \"object\": \"Berlin Slim Fit \\u2014 \\u0444\\u043e\\u0442\\u043e 1\"}}, {\"added\": {\"name\": \"\\u0424\\u043e\\u0442\\u043e \\u0442\\u043e\\u0432\\u0430\\u0440\\u0443\", \"object\": \"Berlin Slim Fit \\u2014 \\u0444\\u043e\\u0442\\u043e 1\"}}, {\"added\": {\"name\": \"\\u0424\\u043e\\u0442\\u043e \\u0442\\u043e\\u0432\\u0430\\u0440\\u0443\", \"object\": \"Berlin Slim Fit \\u2014 \\u0444\\u043e\\u0442\\u043e 1\"}}, {\"added\": {\"name\": \"\\u0424\\u043e\\u0442\\u043e \\u0442\\u043e\\u0432\\u0430\\u0440\\u0443\", \"object\": \"Berlin Slim Fit \\u2014 \\u0444\\u043e\\u0442\\u043e 1\"}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2026-04-29T08:44:09.878Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "products",
+      "product"
+    ],
+    "object_id": "3",
+    "object_repr": "Rio Skinny Fit",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0424\\u043e\\u0442\\u043e \\u0442\\u043e\\u0432\\u0430\\u0440\\u0443\", \"object\": \"Rio Skinny Fit \\u2014 \\u0444\\u043e\\u0442\\u043e 1\"}}, {\"added\": {\"name\": \"\\u0424\\u043e\\u0442\\u043e \\u0442\\u043e\\u0432\\u0430\\u0440\\u0443\", \"object\": \"Rio Skinny Fit \\u2014 \\u0444\\u043e\\u0442\\u043e 1\"}}, {\"added\": {\"name\": \"\\u0424\\u043e\\u0442\\u043e \\u0442\\u043e\\u0432\\u0430\\u0440\\u0443\", \"object\": \"Rio Skinny Fit \\u2014 \\u0444\\u043e\\u0442\\u043e 1\"}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2026-04-29T08:38:41.434Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "products",
+      "product"
+    ],
+    "object_id": "2",
+    "object_repr": "Oslo Carrot Fit",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2026-04-29T08:30:58.871Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "products",
+      "product"
+    ],
+    "object_id": "2",
+    "object_repr": "Oslo Carrot Fit",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041a\\u043e\\u043b\\u044c\\u043e\\u0440\\u0438\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2026-04-29T08:29:39.484Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "products",
+      "product"
+    ],
+    "object_id": "2",
+    "object_repr": "Oslo Carrot Fit",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041a\\u043e\\u043b\\u044c\\u043e\\u0440\\u0438\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2026-04-29T08:28:58.919Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "products",
+      "product"
+    ],
+    "object_id": "2",
+    "object_repr": "Oslo Carrot Fit",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041a\\u043e\\u043b\\u044c\\u043e\\u0440\\u0438\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2026-04-29T08:25:20.171Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "products",
+      "product"
+    ],
+    "object_id": "2",
+    "object_repr": "Oslo Carrot Fit",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0424\\u043e\\u0442\\u043e \\u0442\\u043e\\u0432\\u0430\\u0440\\u0443\", \"object\": \"Oslo Carrot Fit \\u2014 \\u0444\\u043e\\u0442\\u043e 1\"}}, {\"added\": {\"name\": \"\\u0424\\u043e\\u0442\\u043e \\u0442\\u043e\\u0432\\u0430\\u0440\\u0443\", \"object\": \"Oslo Carrot Fit \\u2014 \\u0444\\u043e\\u0442\\u043e 1\"}}, {\"added\": {\"name\": \"\\u0424\\u043e\\u0442\\u043e \\u0442\\u043e\\u0432\\u0430\\u0440\\u0443\", \"object\": \"Oslo Carrot Fit \\u2014 \\u0444\\u043e\\u0442\\u043e 1\"}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2026-04-29T08:20:18.395Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "products",
+      "category"
+    ],
+    "object_id": "2",
+    "object_repr": "👖 Джинси",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2026-04-29T08:19:32.506Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "products",
+      "product"
+    ],
+    "object_id": "1",
+    "object_repr": "кросівки AVVA",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0424\\u043e\\u0442\\u043e \\u0442\\u043e\\u0432\\u0430\\u0440\\u0443\", \"object\": \"\\u043a\\u0440\\u043e\\u0441\\u0456\\u0432\\u043a\\u0438 AVVA \\u2014 \\u0444\\u043e\\u0442\\u043e 1\"}}, {\"added\": {\"name\": \"\\u0424\\u043e\\u0442\\u043e \\u0442\\u043e\\u0432\\u0430\\u0440\\u0443\", \"object\": \"\\u043a\\u0440\\u043e\\u0441\\u0456\\u0432\\u043a\\u0438 AVVA \\u2014 \\u0444\\u043e\\u0442\\u043e 1\"}}, {\"added\": {\"name\": \"\\u0424\\u043e\\u0442\\u043e \\u0442\\u043e\\u0432\\u0430\\u0440\\u0443\", \"object\": \"\\u043a\\u0440\\u043e\\u0441\\u0456\\u0432\\u043a\\u0438 AVVA \\u2014 \\u0444\\u043e\\u0442\\u043e 1\"}}, {\"added\": {\"name\": \"\\u0424\\u043e\\u0442\\u043e \\u0442\\u043e\\u0432\\u0430\\u0440\\u0443\", \"object\": \"\\u043a\\u0440\\u043e\\u0441\\u0456\\u0432\\u043a\\u0438 AVVA \\u2014 \\u0444\\u043e\\u0442\\u043e 1\"}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2026-04-29T08:17:07.137Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "products",
+      "category"
+    ],
+    "object_id": "1",
+    "object_repr": "👟 Кросівки",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add Замовлення",
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "codename": "add_order"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change Замовлення",
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "codename": "change_order"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete Замовлення",
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "codename": "delete_order"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view Замовлення",
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "codename": "view_order"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add Товар у замовленні",
+    "content_type": [
+      "orders",
+      "orderitem"
+    ],
+    "codename": "add_orderitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change Товар у замовленні",
+    "content_type": [
+      "orders",
+      "orderitem"
+    ],
+    "codename": "change_orderitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete Товар у замовленні",
+    "content_type": [
+      "orders",
+      "orderitem"
+    ],
+    "codename": "delete_orderitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view Товар у замовленні",
+    "content_type": [
+      "orders",
+      "orderitem"
+    ],
+    "codename": "view_orderitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add Категорія",
+    "content_type": [
+      "products",
+      "category"
+    ],
+    "codename": "add_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change Категорія",
+    "content_type": [
+      "products",
+      "category"
+    ],
+    "codename": "change_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete Категорія",
+    "content_type": [
+      "products",
+      "category"
+    ],
+    "codename": "delete_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view Категорія",
+    "content_type": [
+      "products",
+      "category"
+    ],
+    "codename": "view_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add Товар",
+    "content_type": [
+      "products",
+      "product"
+    ],
+    "codename": "add_product"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change Товар",
+    "content_type": [
+      "products",
+      "product"
+    ],
+    "codename": "change_product"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete Товар",
+    "content_type": [
+      "products",
+      "product"
+    ],
+    "codename": "delete_product"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view Товар",
+    "content_type": [
+      "products",
+      "product"
+    ],
+    "codename": "view_product"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add Фото товару",
+    "content_type": [
+      "products",
+      "productimage"
+    ],
+    "codename": "add_productimage"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change Фото товару",
+    "content_type": [
+      "products",
+      "productimage"
+    ],
+    "codename": "change_productimage"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete Фото товару",
+    "content_type": [
+      "products",
+      "productimage"
+    ],
+    "codename": "delete_productimage"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view Фото товару",
+    "content_type": [
+      "products",
+      "productimage"
+    ],
+    "codename": "view_productimage"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$C1wy8dxDXVK5LXwQrRxlxs$Isa/dallVRgi2xBFjk0i+KX8oSs9G+GYROEAUGRYf+k=",
+    "last_login": "2026-04-29T08:15:23.944Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@varel.ua",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-04-29T08:14:44.987Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "auth",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "orders",
+    "model": "order"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "orders",
+    "model": "orderitem"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "products",
+    "model": "category"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "products",
+    "model": "product"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "products",
+    "model": "productimage"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "oe9nny80sstotshtjiff9dq8tt4wpxys",
+  "fields": {
+    "session_data": ".eJxVjDEOgzAMAP_iuYriGFLC2J03IDtOCm0VJAJT1b9XSAztene6N4y8b9O417SOs0IPCJdfJhyfqRxCH1zui4lL2dZZzJGY01YzLJpet7P9G0xcJ-ihJUKnJCG7hNk6VvK5EXUBW_SdkneWhb1ibK-YqWusSpaMSJFsSPD5AtScN7E:1wI04p:HKdeo8XT-4GcdRDZkM2i93HCbxrCeGQkmaGJ2sozFQY",
+    "expire_date": "2026-05-13T08:15:23.947Z"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 3,
+  "fields": {
+    "first_name": "фвімави",
+    "last_name": "віав",
+    "phone": "+380971233121",
+    "email": "",
+    "delivery_type": "nova",
+    "city": "фіівіам",
+    "branch": "43",
+    "payment_type": "cash",
+    "total": 7000,
+    "status": "new",
+    "created_at": "2026-04-29T10:22:31.029Z"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 2,
+  "fields": {
+    "first_name": "Test",
+    "last_name": "User",
+    "phone": "+380671112233",
+    "email": "",
+    "delivery_type": "nova",
+    "city": "Kyiv",
+    "branch": "1",
+    "payment_type": "card",
+    "total": 100,
+    "status": "new",
+    "created_at": "2026-04-29T10:19:23.022Z"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 1,
+  "fields": {
+    "first_name": "вам",
+    "last_name": "іаппав",
+    "phone": "+3809741033636",
+    "email": "",
+    "delivery_type": "nova",
+    "city": "вінниця",
+    "branch": "№56",
+    "payment_type": "cash",
+    "total": 900,
+    "status": "done",
+    "created_at": "2026-04-29T10:15:58.330Z"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 1,
+  "fields": {
+    "order": 1,
+    "product": 6,
+    "name": "Сорочка AVVA",
+    "price": 900,
+    "size": "L",
+    "color": "бежевий",
+    "qty": 1
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 2,
+  "fields": {
+    "order": 2,
+    "product": 2,
+    "name": "Item",
+    "price": 100,
+    "size": "M",
+    "color": "?????",
+    "qty": 1
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 3,
+  "fields": {
+    "order": 3,
+    "product": 4,
+    "name": "Berlin Slim Fit",
+    "price": 3500,
+    "size": "M",
+    "color": "хакі",
+    "qty": 2
+  }
+},
+{
+  "model": "products.category",
+  "pk": 2,
+  "fields": {
+    "name": "Джинси",
+    "emoji": "👖",
+    "order": 0
+  }
+},
+{
+  "model": "products.category",
+  "pk": 1,
+  "fields": {
+    "name": "Кросівки",
+    "emoji": "👟",
+    "order": 0
+  }
+},
+{
+  "model": "products.category",
+  "pk": 3,
+  "fields": {
+    "name": "Сорочки",
+    "emoji": "👔",
+    "order": 0
+  }
+},
+{
+  "model": "products.product",
+  "pk": 7,
+  "fields": {
+    "category": 3,
+    "name": "Britli Striped Seersucker",
+    "price": 1000,
+    "old_price": 1800,
+    "description": "Сорочка з коміром на ґудзиках (button-down).\r\nМає фактурну тканину гофре — з природною “зім’ятістю”.\r\n\r\nВиготовлена з суміші бавовни та віскози — м’яка на дотик і комфортна в носінні.\r\nЗастібається на ґудзики спереду.\r\n\r\nДизайн у смужку, на грудях є вишитий логотип.\r\nКрій — Comfort Fit (вільніша, не облягає тіло).",
+    "emoji": "👔",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "colors": [
+      "Синій",
+      "Сірий"
+    ],
+    "details": {
+      "Склад": "44% віскоза, 42% ліоцел, 13% бавовна, 1% еластан",
+      "Країна виробництва": "Туреччина"
+    },
+    "badge": "sell",
+    "in_stock": true,
+    "created_at": "2026-04-29T15:27:23.741Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 6,
+  "fields": {
+    "category": 3,
+    "name": "Сорочка AVVA",
+    "price": 900,
+    "old_price": 1300,
+    "description": "Сорочка з класичним коміром на ґудзиках.\r\nВиготовлена з 100% бавовни — натуральна та приємна до тіла.\r\n\r\nТканина типу Oxford — міцна, щільна, але комфортна в носінні.\r\nМатеріал “дихає” і допомагає відчувати прохолоду в спеку.\r\n\r\nПоставляється в подарунковій коробці.\r\nКрій — Regular Fit (звичайна посадка, не облягає і не вільна).",
+    "emoji": "👔",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "colors": [
+      "Білий",
+      "Чорний",
+      "блакитний",
+      "бежевий"
+    ],
+    "details": {
+      "Склад": "100% бавовна",
+      "Країна виробництва": "Туреччина"
+    },
+    "badge": "sale",
+    "in_stock": true,
+    "created_at": "2026-04-29T10:10:42.165Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 5,
+  "fields": {
+    "category": 1,
+    "name": "Кросівки AVVA",
+    "price": 2000,
+    "old_price": null,
+    "description": "Кросівки з товстою підошвою з матеріалу Phylon — вона легка, гнучка та добре амортизує під час ходьби.\r\n\r\nМають текстильні вставки та “дихаючий” верх, тому нога менше пітніє і взуття комфортне в носінні.\r\n\r\nЗзаду є петелька, яка допомагає легко взувати кросівки.\r\nМодель на шнурівці (в комплекті 4 пари шнурків).",
+    "emoji": "👟",
+    "sizes": [
+      "38",
+      "40",
+      "42",
+      "43"
+    ],
+    "colors": [
+      "Чорний",
+      "Бежевий"
+    ],
+    "details": {
+      "Тип": "Кросівки (sneakers)",
+      "Підошва": "Phylon (легка, гнучка, товста)",
+      "Матеріал": "Текстильні вставки",
+      "Особливості": "Дихаючі, петелька ззаду для зручного взування, 4 пари шнурків",
+      "Висота підошви": "4.7 см"
+    },
+    "badge": "new",
+    "in_stock": true,
+    "created_at": "2026-04-29T10:02:04.167Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 4,
+  "fields": {
+    "category": 2,
+    "name": "Berlin Slim Fit",
+    "price": 3500,
+    "old_price": null,
+    "description": "Джинси з ефектом зношеності (вінтажне прання).\r\nЗастібаються на блискавку та ґудзик спереду.\r\nМають задню накладну кишеню.\r\nНа поясі — фірмовий патч (jacron).\r\n\r\nВиготовлені з бавовни, з додаванням еластичних волокон — трохи тягнуться та зручні в носінні.",
+    "emoji": "👖",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "colors": [
+      "хакі"
+    ],
+    "details": {
+      "Склад": "99% бавовна, 1% еластан",
+      "Країна": "Туреччина",
+      "Додатково": "Етикетка зі 100% телячої шкіри",
+      "Розмір на моделі": "32"
+    },
+    "badge": "new",
+    "in_stock": true,
+    "created_at": "2026-04-29T08:59:31.985Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 3,
+  "fields": {
+    "category": 2,
+    "name": "Rio Skinny Fit",
+    "price": 3500,
+    "old_price": null,
+    "description": "Сірі класичні джинси Elastane Wash.\r\nДжинси з ефектом зношеності (легке “вицвітання”), із застібкою на блискавці спереду.\r\nМають задню накладну кишеню. Виготовлені з бавовни, тому приємні до тіла.\r\n\r\nФасон: Rio Skinny Fit\r\nсередня посадка (не низькі і не високі)\r\nоблягають стегна та коліна\r\nдонизу стають ще вужчими\r\nстандартна довжина",
+    "emoji": "👖",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "colors": [
+      "Графіт"
+    ],
+    "details": {
+      "Груди": "94 см",
+      "Склад": "99% бавовна, 1% еластан",
+      "Талія": "85 см",
+      "Країна": "Туреччина",
+      "Додатково": "Етикетка зі 100% телячої шкіри",
+      "Зріст моделі": "189 см",
+      "Розмір на моделі": "32"
+    },
+    "badge": "new",
+    "in_stock": true,
+    "created_at": "2026-04-29T08:44:09.864Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 2,
+  "fields": {
+    "category": 2,
+    "name": "Oslo Carrot Fit",
+    "price": 3000,
+    "old_price": null,
+    "description": "Опис продукту\r\n\r\nПросте прання, бавовна, в'язане, застібка на блискавці, кишені монет, брендування з шкіряним виглядом, лайкра, джинси Oslo Carrot Fit\r\n\r\nOslo Carrot Fit: Комфортна модель з короткими ногами, середньою талією, широкою формою стегон і звуженим розрізом у напрямку коліна до ноги.",
+    "emoji": "👖",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "colors": [
+      "білий",
+      "чорний"
+    ],
+    "details": {
+      "Крій": "Regular Fit",
+      "Бренд": "AVVA",
+      "Колір": "білий",
+      "Комір": "Button-down",
+      "Склад": "98% бавовна, 2% еластан",
+      "Деталі": "Етикетка зі 100% телячої шкіри",
+      "Артикул": "не вказано",
+      "Розміри": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "Тип тканини": "Oxford",
+      "Параметри моделі": {
+        "Груди": "94 см",
+        "Зріст": "189 см",
+        "Талія": "81 см",
+        "Стегна": "92 см",
+        "Розмір на моделі": "32"
+      },
+      "Країна виробництва": "Туреччина"
+    },
+    "badge": "new",
+    "in_stock": true,
+    "created_at": "2026-04-29T08:25:20.150Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 1,
+  "fields": {
+    "category": 1,
+    "name": "кросівки AVVA",
+    "price": 1500,
+    "old_price": null,
+    "description": "Білі дихаючі легкі кросівки",
+    "emoji": "👟",
+    "sizes": [
+      "38",
+      "40",
+      "42",
+      "43"
+    ],
+    "colors": [],
+    "details": {},
+    "badge": "new",
+    "in_stock": true,
+    "created_at": "2026-04-29T08:19:32.489Z"
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 1,
+  "fields": {
+    "product": 1,
+    "image": "products/beyaz-spor-ayakkabi-d27-92.webp",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 2,
+  "fields": {
+    "product": 1,
+    "image": "products/beyaz-spor-ayakkabi--9af6-.webp",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 3,
+  "fields": {
+    "product": 1,
+    "image": "products/beyaz-spor-ayakkabi-6-14fc.webp",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 4,
+  "fields": {
+    "product": 1,
+    "image": "products/beyaz-spor-ayakkabi-e4d7-8.webp",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 5,
+  "fields": {
+    "product": 2,
+    "image": "products/bej-duz-yikama-straight-fit-pantolon--7d73-.webp",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 6,
+  "fields": {
+    "product": 2,
+    "image": "products/bej-duz-yikama-straight-fit-pantolon-5-ca28.webp",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 7,
+  "fields": {
+    "product": 2,
+    "image": "products/bej-duz-yikama-straight-fit-pantolon-16e-63.webp",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 8,
+  "fields": {
+    "product": 3,
+    "image": "products/gri-eskitme-yikama-jean-pantolon-48-41a.webp",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 9,
+  "fields": {
+    "product": 3,
+    "image": "products/gri-eskitme-yikama-jean-pantolon-be1a-f.webp",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 10,
+  "fields": {
+    "product": 3,
+    "image": "products/gri-eskitme-yikama-jean-pantolon-8f-947.webp",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 11,
+  "fields": {
+    "product": 4,
+    "image": "products/haki-eskitme-yikamali-esnek-jean-panto-456-ca.webp",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 12,
+  "fields": {
+    "product": 4,
+    "image": "products/haki-eskitme-yikamali-esnek-jean-panto-3f0-9a.webp",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 13,
+  "fields": {
+    "product": 4,
+    "image": "products/haki-eskitme-yikamali-esnek-jean-panto-29e8d9.webp",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 14,
+  "fields": {
+    "product": 4,
+    "image": "products/haki-eskitme-yikamali-esnek-jean-panto-e2-d3e.webp",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 15,
+  "fields": {
+    "product": 5,
+    "image": "products/siyah-esnek-taban-sneaker-03e927.webp",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 16,
+  "fields": {
+    "product": 5,
+    "image": "products/siyah-esnek-taban-sneaker-ae82-3.webp",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 17,
+  "fields": {
+    "product": 5,
+    "image": "products/siyah-esnek-taban-sneaker-6-445f.webp",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 18,
+  "fields": {
+    "product": 5,
+    "image": "products/bej-esnek-taban-sneaker-72a-d9.webp",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 19,
+  "fields": {
+    "product": 6,
+    "image": "products/beyaz-dugmeli-yaka-100-pamuk-oxford-ba-0-96b2_ayj9Lpa.webp",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 20,
+  "fields": {
+    "product": 6,
+    "image": "products/beyaz-dugmeli-yaka-100-pamuk-oxford-go-0053f0_4cD6LeK.webp",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 21,
+  "fields": {
+    "product": 6,
+    "image": "products/beyaz-dugmeli-yaka-100-pamuk-oxford-go-015-ad_2xI3RcL.webp",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 22,
+  "fields": {
+    "product": 7,
+    "image": "products/gri-alttan-britli-yaka-cizgili-gofreli-3837c6.webp",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 23,
+  "fields": {
+    "product": 7,
+    "image": "products/gri-alttan-britli-yaka-cizgili-gofreli-a7f-33.webp",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 24,
+  "fields": {
+    "product": 7,
+    "image": "products/gri-alttan-britli-yaka-cizgili-gofreli-20aa-4.webp",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 25,
+  "fields": {
+    "product": 7,
+    "image": "products/gri-alttan-britli-yaka-cizgili-gofreli-ce1d51.webp",
+    "order": 0
+  }
+}
+]
