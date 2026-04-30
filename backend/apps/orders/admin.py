@@ -14,7 +14,7 @@ class OrderAdmin(admin.ModelAdmin):
     list_filter     = ['status', 'delivery_type', 'payment_type']
     search_fields   = ['=id','first_name', 'last_name', 'phone', 'email']
     list_editable   = ['status']
-    readonly_fields = ['created_at']
+    readonly_fields = ['first_name', 'last_name', 'phone', 'email', 'total', 'created_at']
     inlines         = [OrderItemInline]
     fieldsets = (
         ('Клієнт',    {'fields': ('first_name', 'last_name', 'phone', 'email')}),
