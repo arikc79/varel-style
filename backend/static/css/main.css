@@ -3,12 +3,12 @@
   --black: #0a0a0a;
   --dark: #111111;
   --card: #161616;
-  --border: #222222;
+  --border: #252525;
   --gold: #c9a84c;
   --gold-light: #e8c97a;
   --white: #f5f5f0;
-  --grey: #888888;
-  --grey-light: #aaaaaa;
+  --grey: #999999;
+  --grey-light: #b8b8b8;
   --red: #c0392b;
   --r: 10px;
   --rs: 6px;
@@ -66,8 +66,8 @@ body {
 
 /* ── SECTION HELPERS ── */
 .section { padding: 100px 60px; }
-.section-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
-.section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px,5vw,60px); font-weight: 300; margin-bottom: 60px; }
+.section-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+.section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px,4vw,52px); font-weight: 300; margin-bottom: 60px; text-wrap: balance; }
 
 /* ── NAV ── */
 nav {
@@ -109,16 +109,71 @@ nav {
 }
 .toast.show { transform: translateY(0); opacity: 1; }
 
+/* ── ABOUT HERO ── */
+.about-hero {
+  height: 60vh;
+  min-height: 400px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  background-size: cover; background-position: center 30%;
+}
+.about-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(10,10,10,.6) 0%, rgba(10,10,10,.8) 100%);
+}
+.about-hero-content {
+  position: relative; z-index: 2; text-align: center; padding: 0 20px;
+}
+.about-hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(48px, 8vw, 80px);
+  font-weight: 300;
+  line-height: .92;
+  letter-spacing: -0.02em;
+  margin: 16px 0 20px;
+  text-wrap: balance;
+}
+.about-hero-title em { color: var(--gold); font-style: oblique 14deg; }
+.about-hero-sub { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--grey-light); }
+
+.about-visual-wrap {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  overflow: hidden;
+}
+.about-stat-block {
+  background: var(--card);
+  padding: 40px 28px;
+  text-align: center;
+}
+.about-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+.about-stat-lbl {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+
 /* ── ABOUT ── */
 .about-section { padding: 120px 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
 .about-visual { height: 500px; background: linear-gradient(135deg,#161616,#1a1a1a); border: 1px solid var(--border); border-radius: var(--r); display: flex; align-items: center; justify-content: center; font-size: 120px; position: relative; overflow: hidden; }
 .about-visual::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center,rgba(201,168,76,.1) 0%,transparent 70%); }
-.about-quote { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 300; line-height: 1.2; margin-bottom: 28px; }
+.about-quote { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px,3.5vw,42px); font-weight: 300; line-height: 1.25; margin-bottom: 28px; text-wrap: balance; }
 .about-quote em { color: var(--gold); font-style: italic; }
-.about-text { font-size: 13px; color: var(--grey-light); line-height: 1.9; margin-bottom: 28px; }
+.about-text { font-size: 13px; color: var(--grey-light); line-height: 1.9; margin-bottom: 20px; max-width: 65ch; }
 .about-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 40px; }
-.stat { border-left: 2px solid var(--gold); padding-left: 16px; }
-.stat-num { font-family: 'Cormorant Garamond', serif; font-size: 36px; color: var(--gold); }
+.stat { border-top: 1px solid var(--border); padding-top: 16px; }
+.stat-num { font-family: 'Cormorant Garamond', serif; font-size: 40px; color: var(--gold); line-height: 1; margin-bottom: 6px; }
 .stat-label { font-size: 10px; letter-spacing: 1px; color: var(--grey); text-transform: uppercase; }
 
 /* ── CONTACT ── */
@@ -178,6 +233,13 @@ footer { padding: 60px; border-top: 1px solid var(--border); display: grid; grid
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* ── RESPONSIVE ── */
+@media(max-width:1024px) {
+  .section { padding: 80px 40px; }
+  .about-section { padding: 80px 40px; gap: 48px; }
+  .contact-grid { gap: 24px; }
+  footer { padding: 48px 40px; }
+}
+
 @media(max-width:768px) {
   nav { padding: 16px 20px; }
   .nav-links {
@@ -198,7 +260,12 @@ footer { padding: 60px; border-top: 1px solid var(--border); display: grid; grid
   .nav-links li:last-child a { border-bottom: none; }
   .hamburger { display: flex; }
   .section { padding: 60px 20px; }
-  .about-section { grid-template-columns: 1fr; padding: 60px 20px; }
+  .about-section { grid-template-columns: 1fr; padding: 60px 20px; gap: 40px; }
+  .about-visual-wrap { grid-template-columns: repeat(3,1fr); }
+  .about-stat-block { padding: 28px 16px; }
+  .about-stat-num { font-size: 36px; }
+  .about-hero { height: 50vh; min-height: 320px; }
+  .about-hero-title { font-size: clamp(36px, 9vw, 64px); }
   .contact-grid { grid-template-columns: 1fr; }
   footer { grid-template-columns: 1fr 1fr; padding: 40px 20px; }
   .map-info { grid-template-columns: 1fr; }
@@ -207,4 +274,21 @@ footer { padding: 60px; border-top: 1px solid var(--border); display: grid; grid
 @media(max-width:480px) {
   footer { grid-template-columns: 1fr; }
   .nav-links { gap: 0; }
+}
+
+/* ── FOCUS VISIBLE (keyboard nav) ── */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+/* ── PLACEHOLDERS ── */
+input::placeholder, textarea::placeholder { color: #666; opacity: 1; }
+
+/* ── REDUCED MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .fade-in { opacity: 1 !important; transform: none !important; }
 }
