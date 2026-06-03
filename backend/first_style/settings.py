@@ -1,4 +1,5 @@
 import os
+import dj_database_url
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -7,7 +8,11 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY', 'dev-secret-key-change-in-production')
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
+
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+RAILWAY_HOST = os.getenv('RAILWAY_PUBLIC_DOMAIN', '')
+if RAILWAY_HOST:
+    ALLOWED_HOSTS.append(RAILWAY_HOST)
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -29,6 +34,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -58,23 +64,24 @@ TEMPLATES = [
 DB_SSLMODE = os.getenv('DB_SSLMODE', '').strip()
 DB_CONN_MAX_AGE = int(os.getenv('DB_CONN_MAX_AGE', '60'))
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME', 'postgres').strip(),
-        'USER': os.getenv('DB_USER', 'postgres').strip(),
-        'PASSWORD': os.getenv('DB_PASSWORD', ''),
-        'HOST': os.getenv('DB_HOST', 'localhost').strip(),
-        'PORT': os.getenv('DB_PORT', '5432').strip(),
-        'CONN_MAX_AGE': DB_CONN_MAX_AGE,
-        'OPTIONS': {
-            'client_encoding': 'UTF8',
-        },
+DATABASE_URL = os.getenv('DATABASE_URL', '')
+if DATABASE_URL:
+    DATABASES = {'default': dj_database_url.parse(DATABASE_URL, conn_max_age=DB_CONN_MAX_AGE)}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.getenv('DB_NAME', 'postgres').strip(),
+            'USER': os.getenv('DB_USER', 'postgres').strip(),
+            'PASSWORD': os.getenv('DB_PASSWORD', ''),
+            'HOST': os.getenv('DB_HOST', 'localhost').strip(),
+            'PORT': os.getenv('DB_PORT', '5432').strip(),
+            'CONN_MAX_AGE': DB_CONN_MAX_AGE,
+            'OPTIONS': {'client_encoding': 'UTF8'},
+        }
     }
-}
-
-if DB_SSLMODE:
-    DATABASES['default']['OPTIONS']['sslmode'] = DB_SSLMODE
+    if DB_SSLMODE:
+        DATABASES['default']['OPTIONS']['sslmode'] = DB_SSLMODE
 
 # CORS
 CORS_ALLOWED_ORIGINS = [
@@ -92,6 +99,8 @@ CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1:8000",
     "https://first-style.ua",
 ]
+if RAILWAY_HOST:
+    CSRF_TRUSTED_ORIGINS.append(f'https://{RAILWAY_HOST}')
 
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': ['rest_framework.renderers.JSONRenderer'],
@@ -100,9 +109,16 @@ REST_FRAMEWORK = {
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+STORAGES = {
+    'default':    {'BACKEND': 'django.core.files.storage.FileSystemStorage'},
+    'staticfiles': {'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage'},
+}
 
 MEDIA_URL  = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LANGUAGE_CODE = 'uk'
 TIME_ZONE = 'Europe/Kyiv'
