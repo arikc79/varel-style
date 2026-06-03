@@ -137,6 +137,9 @@ nav {
   border-left: 1px solid var(--border);
 }
 
+.about-split-content .section-label {
+  animation: fadeUp 1s ease both;
+}
 .about-split-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(44px, 5vw, 72px);
@@ -145,6 +148,7 @@ nav {
   letter-spacing: -0.02em;
   margin: 16px 0 32px;
   text-wrap: balance;
+  animation: fadeUp 1s ease .2s both;
 }
 .about-split-title em { color: var(--gold); font-style: oblique 14deg; }
 
@@ -154,6 +158,12 @@ nav {
   line-height: 1.85;
   margin-bottom: 16px;
   max-width: 52ch;
+  animation: fadeUp 1s ease .4s both;
+}
+.about-split-text:last-of-type { animation-delay: .5s; }
+
+.about-split-stats {
+  animation: fadeUp 1s ease .65s both;
 }
 
 .about-split-stats {
