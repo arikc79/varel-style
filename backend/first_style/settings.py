@@ -115,7 +115,7 @@ STORAGES = {
 }
 
 MEDIA_URL  = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = BASE_DIR / 'static' / 'media'
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
