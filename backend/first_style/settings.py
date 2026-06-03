@@ -14,6 +14,8 @@ RENDER_HOST = os.getenv('RENDER_EXTERNAL_HOSTNAME', '')
 if RENDER_HOST and RENDER_HOST not in ALLOWED_HOSTS:
     ALLOWED_HOSTS.append(RENDER_HOST)
 
+CLOUDINARY_URL = os.getenv('CLOUDINARY_URL', '')
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -30,6 +32,9 @@ INSTALLED_APPS = [
     'apps.products',
     'django_cleanup.apps.CleanupConfig',
 ]
+
+if CLOUDINARY_URL:
+    INSTALLED_APPS += ['cloudinary', 'cloudinary_storage']
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -109,13 +114,21 @@ REST_FRAMEWORK = {
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-STORAGES = {
-    'default':    {'BACKEND': 'django.core.files.storage.FileSystemStorage'},
-    'staticfiles': {'BACKEND': 'whitenoise.storage.CompressedStaticFilesStorage'},
-}
 
-MEDIA_URL  = '/media/'
-MEDIA_ROOT = BASE_DIR / 'static' / 'media'
+if CLOUDINARY_URL:
+    STORAGES = {
+        'default':     {'BACKEND': 'cloudinary_storage.storage.MediaCloudinaryStorage'},
+        'staticfiles': {'BACKEND': 'whitenoise.storage.CompressedStaticFilesStorage'},
+    }
+    MEDIA_URL  = '/media/'
+    MEDIA_ROOT = BASE_DIR / 'static' / 'media'
+else:
+    STORAGES = {
+        'default':     {'BACKEND': 'django.core.files.storage.FileSystemStorage'},
+        'staticfiles': {'BACKEND': 'whitenoise.storage.CompressedStaticFilesStorage'},
+    }
+    MEDIA_URL  = '/media/'
+    MEDIA_ROOT = BASE_DIR / 'static' / 'media'
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
