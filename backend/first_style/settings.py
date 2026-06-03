@@ -10,9 +10,9 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'dev-secret-key-change-in-production')
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
-RAILWAY_HOST = os.getenv('RAILWAY_PUBLIC_DOMAIN', '')
-if RAILWAY_HOST:
-    ALLOWED_HOSTS.append(RAILWAY_HOST)
+RENDER_HOST = os.getenv('RENDER_EXTERNAL_HOSTNAME', '')
+if RENDER_HOST and RENDER_HOST not in ALLOWED_HOSTS:
+    ALLOWED_HOSTS.append(RENDER_HOST)
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -99,8 +99,8 @@ CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1:8000",
     "https://first-style.ua",
 ]
-if RAILWAY_HOST:
-    CSRF_TRUSTED_ORIGINS.append(f'https://{RAILWAY_HOST}')
+if RENDER_HOST:
+    CSRF_TRUSTED_ORIGINS.append(f'https://{RENDER_HOST}')
 
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': ['rest_framework.renderers.JSONRenderer'],
@@ -111,7 +111,7 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STORAGES = {
     'default':    {'BACKEND': 'django.core.files.storage.FileSystemStorage'},
-    'staticfiles': {'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage'},
+    'staticfiles': {'BACKEND': 'whitenoise.storage.CompressedStaticFilesStorage'},
 }
 
 MEDIA_URL  = '/media/'
