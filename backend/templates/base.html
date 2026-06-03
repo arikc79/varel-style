@@ -73,8 +73,21 @@
   <div class="footer-bottom">
     <span>© 2026 VAREL. Всі права захищені.</span>
     <span>Розроблено з ♥ у Вінниці</span>
+    <button class="admin-trigger" onclick="openAdminPanel()" title="Адміністрування">⚙</button>
   </div>
 </footer>
+
+<!-- ── ADMIN MODAL ── -->
+<div class="admin-modal" id="adminModal">
+  <div class="admin-modal-header">
+    <span class="admin-modal-title">⚙ Адміністрування</span>
+    <div class="admin-modal-actions">
+      <a class="admin-modal-link" href="/admin/" target="_blank" title="Відкрити у новій вкладці">↗</a>
+      <button class="admin-modal-close" onclick="closeAdminPanel()">✕</button>
+    </div>
+  </div>
+  <iframe class="admin-modal-iframe" id="adminIframe" src="about:blank"></iframe>
+</div>
 
 <!-- ── MODAL: ТОВАР ── -->
 <div class="modal-overlay" id="productModal">

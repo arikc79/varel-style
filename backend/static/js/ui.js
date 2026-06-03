@@ -37,10 +37,27 @@ document.addEventListener('keydown', e => {
     closeModal();
     closeCheckout();
     closeCart();
+    closeAdminPanel();
     document.querySelector('.nav-links').classList.remove('mobile-open');
     document.getElementById('hamburger')?.classList.remove('open');
   }
 });
+
+// ── ADMIN PANEL MODAL ──
+function openAdminPanel() {
+  const modal  = document.getElementById('adminModal');
+  const iframe = document.getElementById('adminIframe');
+  if (iframe.src === 'about:blank') {
+    iframe.src = '/admin/';
+  }
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeAdminPanel() {
+  document.getElementById('adminModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
 
 // Ініціалізація анімацій при завантаженні
 observeFadeIns();

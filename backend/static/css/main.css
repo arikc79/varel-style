@@ -302,6 +302,94 @@ footer { padding: 60px; border-top: 1px solid var(--border); display: grid; grid
   .nav-links { gap: 0; }
 }
 
+/* ── ADMIN TRIGGER ── */
+.admin-trigger {
+  background: none;
+  border: none;
+  color: #444;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 4px;
+  transition: color .2s;
+  line-height: 1;
+  margin-left: auto;
+}
+.admin-trigger:hover { color: var(--gold); }
+
+/* ── ADMIN MODAL ── */
+.admin-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 6000;
+  display: none;
+  flex-direction: column;
+  background: rgba(0,0,0,.6);
+  backdrop-filter: blur(4px);
+  padding: 40px;
+  align-items: center;
+  justify-content: center;
+}
+.admin-modal.open { display: flex; }
+
+.admin-modal-header {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-bottom: none;
+  border-radius: var(--r) var(--r) 0 0;
+  padding: 14px 20px;
+}
+.admin-modal-title {
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: var(--gold);
+  font-weight: 500;
+}
+.admin-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.admin-modal-link {
+  color: var(--grey);
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 1;
+  transition: color .2s;
+}
+.admin-modal-link:hover { color: var(--gold); }
+.admin-modal-close {
+  background: none;
+  border: none;
+  color: var(--grey);
+  font-size: 20px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  transition: color .2s;
+}
+.admin-modal-close:hover { color: var(--white); }
+
+.admin-modal-iframe {
+  width: 100%;
+  max-width: 1200px;
+  flex: 1;
+  max-height: calc(100vh - 140px);
+  border: 1px solid var(--border);
+  border-radius: 0 0 var(--r) var(--r);
+  background: #fff;
+}
+
+@media(max-width:768px) {
+  .admin-modal { padding: 16px; }
+  .admin-modal-iframe { max-height: calc(100vh - 100px); }
+}
+
 /* ── FOCUS VISIBLE (keyboard nav) ── */
 :focus-visible {
   outline: 2px solid var(--gold);
