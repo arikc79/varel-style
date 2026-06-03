@@ -4,8 +4,8 @@ from .models import Order, OrderItem
 class OrderItemInline(admin.TabularInline):
     model  = OrderItem
     extra  = 0
-    fields = ['product', 'name', 'size', 'qty', 'price']
-    readonly_fields = ['product','name', 'size', 'qty', 'price']
+    fields = ['product', 'name', 'size', 'color', 'qty', 'price']
+    readonly_fields = ['product', 'name', 'size', 'color', 'qty', 'price']
 
 
 @admin.register(Order)

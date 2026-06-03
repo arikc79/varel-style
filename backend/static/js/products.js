@@ -225,8 +225,11 @@ function goToProducts(cat) {
 function quickAdd(id) {
   const p = allProducts.find(x => x.id === id);
   if (!p) return;
-  const defaultColor = (p.colors && p.colors.length > 0) ? p.colors[0] : 'Без кольору';
-  addItem(p, p.sizes[0], defaultColor);
+  if (!p.sizes || !p.sizes.length || (p.colors && p.colors.length > 0)) {
+    openModal(id);
+    return;
+  }
+  addItem(p, p.sizes[0], 'Без кольору');
   showToast('✓ ' + p.name + ' — додано до кошика');
 }
 

@@ -25,9 +25,12 @@
     <li><a href="{% url 'contacts' %}">Контакти</a></li>
     <li><a href="{% url 'find_us' %}">Де ми</a></li>
   </ul>
-  <div>
+  <div style="display:flex;align-items:center;gap:12px;">
     <button class="cart-btn" onclick="toggleCart()">
       🛍 Кошик <span class="cart-count" id="cartCount">0</span>
+    </button>
+    <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Меню">
+      <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
@@ -85,6 +88,8 @@
       <div class="modal-price" id="modalPrice"></div>
       <div class="size-label">Оберіть розмір</div>
       <div class="sizes" id="modalSizes"></div>
+      <div class="size-label" id="modalColorLabel" style="display:none">Оберіть колір</div>
+      <div class="sizes" id="modalColors"></div>
       <div class="qty-label">Кількість</div>
       <div class="qty-control">
         <button class="qty-btn" onclick="changeQty(-1)">−</button>
