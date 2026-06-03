@@ -10,8 +10,8 @@ class CategoryListView(APIView):
     def get(self, request):
         cats = Category.objects.annotate(
             product_count=Count('products', filter=Q(products__in_stock=True))
-        )
-        return Response(CategorySerializer(cats, many=True).data)
+        ).prefetch_related('products__images')
+        return Response(CategorySerializer(cats, many=True, context={'request': request}).data)
 
 class ProductListView(APIView):
     """GET /api/products/"""

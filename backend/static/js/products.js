@@ -22,14 +22,19 @@ async function loadCategories() {
 function renderCategoryCards(cats) {
   const grid = document.getElementById('categoriesGrid');
   if (!grid) return;
-  grid.innerHTML = cats.map(c => `
-    <div class="cat-card" onclick="goToProducts('${c.name}')">
-      <div class="cat-img">${c.emoji}</div>
-      <div class="cat-overlay">
-        <div class="cat-name">${c.name}</div>
-        <div class="cat-count">${c.product_count} товарів</div>
-      </div>
-    </div>`).join('');
+  grid.innerHTML = cats.map(c => {
+    const imgContent = c.cover_image
+      ? `<img class="cat-img-photo" src="${c.cover_image}" alt="${c.name}" loading="lazy">`
+      : `<span class="cat-img-emoji">${c.emoji}</span>`;
+    return `
+      <div class="cat-card" onclick="goToProducts('${c.name}')">
+        <div class="cat-img">${imgContent}</div>
+        <div class="cat-overlay">
+          <div class="cat-name">${c.name}</div>
+          <div class="cat-count">${c.product_count} товарів</div>
+        </div>
+      </div>`;
+  }).join('');
 }
 
 function renderFilterButtons(cats, activeCategory = 'all') {

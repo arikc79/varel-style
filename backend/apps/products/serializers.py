@@ -4,13 +4,26 @@ from .models import Category, Product, ProductImage
 
 class CategorySerializer(serializers.ModelSerializer):
     product_count = serializers.IntegerField(read_only=True)
+    cover_image   = serializers.SerializerMethodField()
 
     class Meta:
         model  = Category
-        fields = ['id', 'name', 'emoji', 'order', 'product_count']
+        fields = ['id', 'name', 'emoji', 'order', 'product_count', 'cover_image']
 
     def get_product_count(self, obj):
         return obj.products.filter(in_stock=True).count()
+
+    def get_cover_image(self, obj):
+        request = self.context.get('request')
+        # Беремо перше фото з довільного товару категорії (уже prefetch'd)
+        for product in obj.products.all():
+            if not product.in_stock:
+                continue
+            imgs = list(product.images.all())
+            if imgs:
+                url = imgs[0].image.url
+                return request.build_absolute_uri(url) if request else url
+        return None
 
 
 class ProductImageSerializer(serializers.ModelSerializer):
