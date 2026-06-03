@@ -5,7 +5,7 @@
 
 {% block content %}
 
-<!-- ── HERO (about) ── -->
+<!-- ── HERO ── -->
 <section class="about-hero"
   style="background-image: url('{% static 'assets/hero.jpg' %}');">
   <div class="about-hero-overlay"></div>
@@ -16,30 +16,31 @@
   </div>
 </section>
 
-<!-- ── ПРО НАС: КОНТЕНТ ── -->
-<section class="about-section" id="about" style="padding-top: 80px; padding-bottom: 80px;">
-  <div class="about-visual-wrap fade-in">
-    <div class="about-stat-block">
-      <div class="about-stat-num">500+</div>
-      <div class="about-stat-lbl">Позицій</div>
-    </div>
-    <div class="about-stat-block">
-      <div class="about-stat-num">20+</div>
-      <div class="about-stat-lbl">Роки досвіду</div>
-    </div>
-    <div class="about-stat-block">
-      <div class="about-stat-num">10к+</div>
-      <div class="about-stat-lbl">Клієнтів</div>
-    </div>
+<!-- ── СТАТИСТИКА ── -->
+<div class="about-stats-strip">
+  <div class="about-stat-item fade-in">
+    <div class="about-stat-num">500+</div>
+    <div class="about-stat-lbl">Позицій в асортименті</div>
   </div>
-  <div class="about-content fade-in">
-    <p class="section-label">Про нас</p>
-    <h2 class="about-quote">Стиль — це не одяг.<br>Це <em>відношення</em> до себе.</h2>
-    <p class="about-text">VAREL everyday style — це більше ніж магазин. Це концепція чоловічого стилю для тих, хто цінує якість і виглядає впевнено в будь-якій ситуації.</p>
-    <p class="about-text">Від класичного костюму для важливих зустрічей до стильного повсякденного образу — у нас є все.</p>
-    <p class="about-text">Наша місія — допомогти кожному чоловікові знайти свій стиль. Ми вибираємо лише найкраще: якісні матеріали, перевірені бренди, справедливі ціни.</p>
+  <div class="about-stat-item fade-in">
+    <div class="about-stat-num">20+</div>
+    <div class="about-stat-lbl">Років досвіду</div>
+  </div>
+  <div class="about-stat-item fade-in">
+    <div class="about-stat-num">10 000+</div>
+    <div class="about-stat-lbl">Задоволених клієнтів</div>
+  </div>
+</div>
+
+<!-- ── ТЕКСТ ── -->
+<section class="about-body">
+  <div class="about-body-inner">
+    <h2 class="about-quote fade-in">Стиль — це не одяг.<br>Це <em>відношення</em> до себе.</h2>
+    <div class="about-text-cols">
+      <p class="about-text fade-in">VAREL everyday style — це більше ніж магазин. Це концепція чоловічого стилю для тих, хто цінує якість і виглядає впевнено в будь-якій ситуації.</p>
+      <p class="about-text fade-in">Від класичного костюму для важливих зустрічей до стильного повсякденного образу — у нас є все. Наша місія — допомогти кожному чоловікові знайти свій стиль.</p>
+    </div>
   </div>
 </section>
 
 {% endblock %}
-
