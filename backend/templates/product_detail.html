@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Товар — VAREL{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/product_detail.css' %}?v=4">
+{% endblock %}
+
+{% block content %}
+<div class="pd-page">
+
+  <!-- Назад -->
+  <div class="pd-back">
+    <a href="javascript:history.back()" class="pd-back-link">&#8592; Назад до колекції</a>
+  </div>
+
+  <!-- Завантаження -->
+  <div class="pd-loading" id="pdLoading">Завантаження…</div>
+
+  <!-- Контент -->
+  <div class="pd-container" id="pdContainer" style="display:none">
+
+    <!-- Ліво: галерея -->
+    <div class="pd-gallery">
+      <div class="pd-main-wrap">
+        <button class="pd-nav pd-prev" onclick="pdNav(-1)">&#8249;</button>
+        <div class="pd-viewport">
+          <div class="pd-track" id="pdTrack"></div>
+        </div>
+        <button class="pd-nav pd-next" onclick="pdNav(1)">&#8250;</button>
+      </div>
+      <div class="pd-thumbs" id="pdThumbs"></div>
+    </div>
+
+    <!-- Право: інфо -->
+    <div class="pd-info">
+      <div class="pd-cat" id="pdCat"></div>
+      <h1 class="pd-name" id="pdName"></h1>
+      <div class="pd-price-row" id="pdPrice"></div>
+      <p class="pd-desc" id="pdDesc"></p>
+
+      <div class="pd-label">Оберіть розмір</div>
+      <div class="pd-sizes" id="pdSizes"></div>
+
+      <div class="pd-label pd-color-label" id="pdColorLabel">Оберіть колір</div>
+      <div class="pd-colors" id="pdColors"></div>
+
+      <div class="pd-label">Кількість</div>
+      <div class="pd-qty-row">
+        <button class="pd-qty-btn" onclick="pdChangeQty(-1)">&#8722;</button>
+        <span class="pd-qty-num" id="pdQtyNum">1</span>
+        <button class="pd-qty-btn" onclick="pdChangeQty(1)">&#43;</button>
+      </div>
+
+      <button class="pd-add-btn" onclick="pdAddToCart()">Додати до кошика</button>
+
+      <div class="pd-details" id="pdDetails"></div>
+    </div>
+  </div>
+
+  <!-- Не знайдено -->
+  <div class="pd-notfound" id="pdNotFound" style="display:none">
+    <div style="font-size:64px">🕵️</div>
+    <p>Товар не знайдено.</p>
+    <a href="/" class="pd-back-link">← На головну</a>
+  </div>
+
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>const PRODUCT_ID = {{ product_id }};</script>
+<script src="{% static 'js/product_detail.js' %}?v=4"></script>
+{% endblock %}
+

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}VAREL — Каталог товарів{% endblock %}
+
+{% block content %}
+
+<!-- ── КАТАЛОГ ── -->
+<section class="products-section" id="products" style="padding-top: 100px;">
+  <p class="section-label">Товари</p>
+  <h2 class="section-title">Нова колекція</h2>
+  <div class="filters" id="filtersBar">
+    <button class="filter-btn active" onclick="filterProducts('all', this)">Всі</button>
+    <button class="filter-btn" onclick="filterProducts('Джинси', this)">Джинси</button>
+    <button class="filter-btn" onclick="filterProducts('Сорочки', this)">Сорочки</button>
+    <button class="filter-btn" onclick="filterProducts('Костюми', this)">Костюми</button>
+    <button class="filter-btn" onclick="filterProducts('Спорт', this)">Спорт</button>
+    <button class="filter-btn" onclick="filterProducts('Куртки', this)">Куртки</button>
+    <button class="filter-btn" onclick="filterProducts('Кросівки', this)">Кросівки</button>
+  </div>
+  <div class="products-grid" id="productsGrid"></div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  // Автоматично застосувати фільтр з URL-параметра ?category=...
+  document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const cat = params.get('category');
+    if (cat) {
+      const btn = [...document.querySelectorAll('.filter-btn')]
+        .find(b => b.textContent.trim() === cat);
+      if (btn) filterProducts(cat, btn);
+    }
+  });
+</script>
+{% endblock %}
+

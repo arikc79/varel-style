@@ -1,0 +1,313 @@
+/* ── PRODUCT DETAIL PAGE ── */
+
+.pd-page {
+  min-height: 100vh;
+  padding: 40px 60px 80px;
+  background: var(--dark);
+}
+
+/* ── BACK ── */
+.pd-back { margin-bottom: 36px; }
+.pd-back-link {
+  color: var(--gold);
+  text-decoration: none;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: opacity .2s;
+}
+.pd-back-link:hover { opacity: .65; }
+
+/* ── LOADING / NOT FOUND ── */
+.pd-loading, .pd-notfound {
+  text-align: center;
+  padding: 80px 0;
+  color: var(--grey);
+  font-size: 18px;
+}
+.pd-notfound { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+
+/* ── LAYOUT ── */
+.pd-container {
+  display: flex;
+  gap: 64px;
+  align-items: flex-start;
+}
+
+/* ══════════════════════════════
+   ГАЛЕРЕЯ (ліво)
+══════════════════════════════ */
+.pd-gallery {
+  flex: 0 0 360px;
+  max-width: 360px;
+  position: sticky;
+  top: 90px;
+}
+
+.pd-main-wrap {
+  position: relative;
+  width: 100%;
+  max-height: 480px;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: var(--r);
+  background: #161616;
+}
+
+.pd-viewport {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.pd-track {
+  display: flex;
+  height: 100%;
+  transition: transform .45s cubic-bezier(.25,.46,.45,.94);
+}
+
+.pd-track img {
+  min-width: 100%;
+  height: 100%;
+  object-fit: contain;
+  flex-shrink: 0;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.pd-emoji-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 120px;
+}
+
+/* Кнопки навігації */
+.pd-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  background: rgba(10,10,10,.7);
+  border: 1px solid rgba(201,168,76,.4);
+  color: var(--gold);
+  font-size: 28px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .2s;
+}
+.pd-nav:hover { background: rgba(201,168,76,.2); border-color: var(--gold); }
+.pd-prev { left: 12px; }
+.pd-next { right: 12px; }
+
+/* Мініатюри */
+.pd-thumbs {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.pd-thumb {
+  width: 72px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  opacity: .55;
+  flex-shrink: 0;
+  transition: all .2s;
+}
+.pd-thumb.active, .pd-thumb:hover { border-color: var(--gold); opacity: 1; }
+
+/* ══════════════════════════════
+   ІНФО (право)
+══════════════════════════════ */
+.pd-info { flex: 1; }
+
+.pd-cat {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.pd-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 44px;
+  font-weight: 300;
+  line-height: 1.1;
+  margin: 0 0 20px;
+  color: var(--white);
+}
+
+.pd-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.pd-old-price {
+  font-size: 18px;
+  color: #666;
+  text-decoration: line-through;
+}
+.pd-new-price {
+  font-size: 34px;
+  color: var(--white);
+  font-weight: 500;
+}
+
+.pd-desc {
+  color: var(--grey);
+  line-height: 1.8;
+  font-size: 14px;
+  margin-bottom: 36px;
+}
+
+.pd-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin-bottom: 14px;
+}
+.pd-color-label {
+  margin-top: 20px;
+}
+
+/* Розміри */
+.pd-sizes {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.pd-size-btn {
+  min-width: 52px;
+  padding: 10px 16px;
+  border: 1px solid var(--border);
+  background: none;
+  color: var(--grey-light);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  border-radius: var(--rp);
+  cursor: pointer;
+  transition: all .2s;
+}
+.pd-size-btn:hover,
+.pd-size-btn.selected { border-color: var(--gold); color: var(--gold); }
+
+/* Кольори */
+.pd-colors {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  min-height: 0;
+}
+.pd-color-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,.25);
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  cursor: pointer;
+  transition: outline-color .15s ease, transform .15s ease, border-color .2s ease;
+  flex-shrink: 0;
+}
+.pd-color-btn:hover {
+  transform: scale(1.15);
+  border-color: rgba(255,255,255,.6);
+}
+.pd-color-btn.selected {
+  outline-color: var(--gold);
+  border-color: rgba(201, 168, 76, .8);
+}
+
+/* Кількість */
+.pd-qty-row {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  border: 1px solid var(--border);
+  border-radius: var(--rp);
+  margin-bottom: 28px;
+}
+.pd-qty-btn {
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 22px;
+  cursor: pointer;
+  transition: background .2s;
+  line-height: 1;
+}
+.pd-qty-btn:hover { background: rgba(255,255,255,.06); }
+.pd-qty-num {
+  min-width: 48px;
+  text-align: center;
+  font-size: 18px;
+  color: var(--white);
+}
+
+/* Кнопка "Додати" */
+.pd-add-btn {
+  width: 100%;
+  padding: 18px;
+  background: var(--gold);
+  color: var(--black);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 700;
+  border: none;
+  border-radius: var(--rp);
+  cursor: pointer;
+  transition: background .3s;
+  margin-bottom: 36px;
+}
+.pd-add-btn:hover { background: #b8962e; }
+
+/* Деталі */
+.pd-details { border-top: 1px solid var(--border); padding-top: 24px; }
+.pd-detail-title {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin-bottom: 16px;
+}
+.pd-detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+.pd-detail-row span:first-child { color: var(--grey); }
+.pd-detail-row span:last-child  { color: var(--white); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .pd-page { padding: 24px 20px 60px; }
+  .pd-container { flex-direction: column; gap: 32px; }
+  .pd-gallery { position: static; }
+  .pd-name { font-size: 30px; }
+  .pd-new-price { font-size: 26px; }
+}
+
