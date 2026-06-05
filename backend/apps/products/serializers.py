@@ -11,7 +11,7 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'emoji', 'order', 'product_count', 'cover_image']
 
     def get_product_count(self, obj):
-        return obj.products.filter(in_stock=True).count()
+        return obj.products.filter(stock__gt=0).count()
 
     def get_cover_image(self, obj):
         request = self.context.get('request')
@@ -40,10 +40,12 @@ class ProductSerializer(serializers.ModelSerializer):
     category       = serializers.CharField(source='category.name',  read_only=True, default='')
     category_emoji = serializers.CharField(source='category.emoji', read_only=True, default='👔')
 
+    in_stock = serializers.BooleanField(read_only=True)
+
     class Meta:
         model  = Product
         fields = [
             'id', 'name', 'category', 'category_emoji',
             'price', 'old_price', 'description', 'emoji',
-            'sizes', 'colors', 'details', 'badge', 'in_stock', 'created_at', 'images',
+            'sizes', 'colors', 'details', 'badge', 'in_stock', 'stock', 'created_at', 'images',
         ]

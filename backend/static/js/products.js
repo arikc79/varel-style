@@ -190,15 +190,24 @@ function carouselGo(pid, idx) {
   carouselState[pid] = idx;
 }
 
-// Touch swipe у картках
+// Touch swipe + mouse wheel у картках
 function initCarouselSwipe() {
   document.querySelectorAll('.product-carousel').forEach(el => {
+    const pid = Number(el.dataset.pid);
+
+    // Touch
     let sx = 0;
     el.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
     el.addEventListener('touchend', e => {
       const diff = sx - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 40) carouselNav(Number(el.dataset.pid), diff > 0 ? 1 : -1);
+      if (Math.abs(diff) > 40) carouselNav(pid, diff > 0 ? 1 : -1);
     });
+
+    // Mouse wheel
+    el.addEventListener('wheel', e => {
+      e.preventDefault();
+      carouselNav(pid, e.deltaY > 0 ? 1 : -1);
+    }, { passive: false });
   });
 }
 

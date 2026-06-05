@@ -34,8 +34,17 @@ class Product(models.Model):
                                    help_text='{"Склад":"...", "Країна":"...", "Колір":"..."}',
                                    verbose_name='Деталі')
     badge       = models.CharField(max_length=50, blank=True, verbose_name='Бейдж')
-    in_stock    = models.BooleanField(default=True, verbose_name='В наявності')
+    stock       = models.PositiveIntegerField(default=0, verbose_name='Кількість на складі')
+    cost_price  = models.PositiveIntegerField(null=True, blank=True, verbose_name='Ціна закупки')
     created_at  = models.DateTimeField(auto_now_add=True, verbose_name='Дата додавання')
+
+    @property
+    def total_stock(self):
+        return sum(s.quantity for s in self.size_stocks.all())
+
+    @property
+    def in_stock(self):
+        return self.total_stock > 0
 
     class Meta:
         ordering            = ['-created_at']
@@ -44,6 +53,21 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class ProductSizeStock(models.Model):
+    product  = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='size_stocks', verbose_name='Товар')
+    size     = models.CharField(max_length=20, verbose_name='Розмір')
+    quantity = models.PositiveIntegerField(default=0, verbose_name='Кількість')
+
+    class Meta:
+        unique_together     = ('product', 'size')
+        ordering            = ['size']
+        verbose_name        = 'Залишок по розміру'
+        verbose_name_plural = 'Залишки по розмірах'
+
+    def __str__(self):
+        return f'{self.product.name} — {self.size}: {self.quantity} шт'
 
 
 class ProductImage(models.Model):

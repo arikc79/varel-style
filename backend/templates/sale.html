@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}VAREL — Розпродаж{% endblock %}
+
+{% block content %}
+
+<section class="sale-hero">
+  <div class="sale-hero-content">
+    <p class="section-label">Спеціальна пропозиція</p>
+    <h1 class="sale-hero-title">Розпродаж</h1>
+    <p class="sale-hero-sub">Знижки до 50% на вибрані позиції</p>
+  </div>
+</section>
+
+<section class="products-section" id="products" style="padding-top: 60px;">
+  <div class="filters" id="filtersBar"></div>
+  <div class="products-grid" id="productsGrid"></div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  // Завантажуємо тільки товари зі знижкою
+  const _origFetch = loadProducts;
+  async function loadProducts() {
+    const grid = document.getElementById('productsGrid');
+    if (!grid) return;
+    grid.innerHTML = '<p style="color:var(--grey);text-align:center;padding:60px 0">Завантаження…</p>';
+    try {
+      const cat = getInitialCategory();
+      let url = '/api/products/?sale=true';
+      if (cat && cat !== 'all') url += '&category=' + encodeURIComponent(cat);
+      const res = await fetch(url);
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      allProducts = await res.json();
+      renderProducts('all');
+      buildSaleFilters();
+      setActiveFilterButton(cat || 'all');
+    } catch (err) {
+      grid.innerHTML = '<div style="text-align:center;padding:60px 0;color:var(--grey)"><div style="font-size:48px;margin-bottom:16px">⚠️</div><p>Не вдалось завантажити товари.</p></div>';
+    }
+  }
+
+  function buildSaleFilters() {
+    const bar = document.getElementById('filtersBar');
+    if (!bar) return;
+    const cats = [...new Set(allProducts.map(p => p.category).filter(Boolean))];
+    bar.innerHTML =
+      '<button class="filter-btn active" onclick="filterProducts(\'all\',this)">Всі</button>' +
+      cats.map(c => `<button class="filter-btn" onclick="filterProducts('${c}',this)">${c}</button>`).join('');
+  }
+
+  if (document.getElementById('productsGrid')) {
+    loadProducts();
+  }
+</script>
+{% endblock %}
