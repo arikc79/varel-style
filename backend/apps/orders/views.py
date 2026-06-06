@@ -27,7 +27,9 @@ def send_telegram(text):
 def send_order_email(order_id):
     recipient = os.getenv('NOTIFY_EMAIL')
     if not recipient:
+        print('[EMAIL] NOTIFY_EMAIL не задано — пропускаємо')
         return
+    print(f'[EMAIL] Відправка на {recipient} для замовлення #{order_id}')
     try:
         order = Order.objects.prefetch_related('items').get(pk=order_id)
         items_text = '\n'.join(
@@ -48,10 +50,11 @@ def send_order_email(order_id):
             ),
             from_email=None,
             recipient_list=[recipient],
-            fail_silently=True,
+            fail_silently=False,
         )
-    except Exception:
-        pass
+        print(f'[EMAIL] Успішно відправлено #{order_id}')
+    except Exception as e:
+        print(f'[EMAIL] Помилка #{order_id}: {e}')
 
 
 class OrderCreateView(APIView):
