@@ -69,11 +69,9 @@ class SalesDashboardAdmin(admin.ModelAdmin):
         top_products = (
             OrderItem.objects
             .filter(order__status='done')
+            .annotate(line_total=F('price') * F('qty'))
             .values('name')
-            .annotate(
-                qty=Sum('qty'),
-                revenue=Sum(ExpressionWrapper(F('price') * F('qty'), output_field=IntegerField())),
-            )
+            .annotate(qty=Sum('qty'), revenue=Sum('line_total'))
             .order_by('-qty')[:5]
         )
 
