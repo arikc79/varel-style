@@ -1,10 +1,56 @@
 import os
 import requests
+from django.core.mail import send_mail
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Order
 from .serializers import OrderSerializer
+
+
+def send_telegram(text):
+    token   = os.getenv('TELEGRAM_TOKEN')
+    chat_id = os.getenv('TELEGRAM_CHAT_ID')
+    if not token or not chat_id:
+        return
+    try:
+        requests.post(
+            f'https://api.telegram.org/bot{token}/sendMessage',
+            json={'chat_id': chat_id, 'text': text, 'parse_mode': 'HTML'},
+            timeout=5,
+        )
+    except Exception:
+        pass
+
+
+def send_order_email(order):
+    recipient = os.getenv('NOTIFY_EMAIL')
+    if not recipient:
+        return
+    items_text = '\n'.join(
+        f'  • {i.name} — {i.size}, {i.color} × {i.qty} = {i.price * i.qty} ₴'
+        for i in order.items.all()
+    )
+    try:
+        send_mail(
+            subject=f'🛍 Нове замовлення #{order.id} — VAREL Style',
+            message=(
+                f'Замовлення #{order.id}\n\n'
+                f'Клієнт: {order.first_name} {order.last_name}\n'
+                f'Телефон: {order.phone}\n'
+                f'Email: {order.email}\n\n'
+                f'Доставка: {order.get_delivery_type_display()} — {order.city}, {order.branch}\n'
+                f'Оплата: {order.get_payment_type_display()}\n\n'
+                f'Товари:\n{items_text}\n\n'
+                f'Разом: {order.total} ₴'
+            ),
+            from_email=None,
+            recipient_list=[recipient],
+            fail_silently=True,
+        )
+    except Exception:
+        pass
+
 
 class OrderCreateView(APIView):
     """POST /api/orders/ — створити нове замовлення"""
@@ -14,25 +60,24 @@ class OrderCreateView(APIView):
         if serializer.is_valid():
             order = serializer.save()
 
-            # Відправляємо в Make.com webhook
-            webhook_url = os.getenv('MAKE_WEBHOOK_URL')
-            if webhook_url:
-                try:
-                    requests.post(webhook_url, json={
-                        'order_id':   order.id,
-                        'first_name': order.first_name,
-                        'phone':      order.phone,
-                        'email':      order.email,
-                        'total':      order.total,
-                        'delivery':   order.delivery_type,
-                        'payment':    order.payment_type,
-                        'items':      [
-                            {'name': i.name, 'size': i.size, 'color': i.color, 'qty': i.qty, 'price': i.price}
-                            for i in order.items.all()
-                        ],
-                    }, timeout=5)
-                except Exception:
-                    pass  # Не блокуємо відповідь якщо Make.com недоступний
+            # Telegram
+            items_text = '\n'.join(
+                f'  • {i.name} ({i.size}, {i.color}) × {i.qty} — {i.price * i.qty} ₴'
+                for i in order.items.all()
+            )
+            send_telegram(
+                f'🛍 <b>Нове замовлення #{order.id}</b>\n\n'
+                f'👤 {order.first_name} {order.last_name}\n'
+                f'📞 {order.phone}\n'
+                f'📧 {order.email}\n\n'
+                f'🚚 {order.get_delivery_type_display()} — {order.city}, {order.branch}\n'
+                f'💳 {order.get_payment_type_display()}\n\n'
+                f'{items_text}\n\n'
+                f'💰 <b>Разом: {order.total} ₴</b>'
+            )
+
+            # Email
+            send_order_email(order)
 
             return Response({'success': True, 'order_id': order.id}, status=status.HTTP_201_CREATED)
 
