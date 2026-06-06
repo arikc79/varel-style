@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.db.models import Sum, Count, Q
+from django.db.models import Sum, Count, Q, F, ExpressionWrapper, IntegerField
 from django.db.models.functions import TruncMonth
 from django.template.response import TemplateResponse
 from django.utils import timezone
@@ -70,7 +70,10 @@ class SalesDashboardAdmin(admin.ModelAdmin):
             OrderItem.objects
             .filter(order__status='done')
             .values('name')
-            .annotate(qty=Sum('qty'), revenue=Sum('total'))
+            .annotate(
+                qty=Sum('qty'),
+                revenue=Sum(ExpressionWrapper(F('price') * F('qty'), output_field=IntegerField())),
+            )
             .order_by('-qty')[:5]
         )
 
