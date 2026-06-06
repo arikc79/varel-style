@@ -1,0 +1,96 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block content %}
+<style>
+  .stat-cards { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
+  .stat-card {
+    background: #fff; border: 1px solid #ddd; border-radius: 6px;
+    padding: 20px 28px; min-width: 180px; flex: 1;
+  }
+  .stat-card .label { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: .5px; }
+  .stat-card .value { font-size: 32px; font-weight: 700; color: #333; margin-top: 4px; }
+  .stat-card .sub   { font-size: 12px; color: #aaa; margin-top: 4px; }
+
+  .section-title { font-size: 15px; font-weight: 600; margin: 28px 0 10px; color: #333; }
+
+  table.stats-table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid #ddd; border-radius: 6px; overflow: hidden; }
+  table.stats-table th { background: #f8f8f8; padding: 10px 14px; text-align: left; font-size: 12px; color: #666; text-transform: uppercase; border-bottom: 1px solid #eee; }
+  table.stats-table td { padding: 10px 14px; border-bottom: 1px solid #f2f2f2; font-size: 14px; }
+  table.stats-table tr:last-child td { border-bottom: none; }
+
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 12px; }
+  .badge-green { background:#e6f4ea; color:#2d7a3a; }
+  .badge-blue  { background:#e8f0fe; color:#1a56c4; }
+  .badge-orange{ background:#fff3e0; color:#e65100; }
+</style>
+
+<div class="stat-cards">
+  <div class="stat-card">
+    <div class="label">Загальна виручка</div>
+    <div class="value">{{ total_revenue }} ₴</div>
+    <div class="sub">тільки виконані</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">Виконано замовлень</div>
+    <div class="value">{{ total_done }}</div>
+    <div class="sub">з {{ total_orders }} усього</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">🆕 Нові</div>
+    <div class="value">{{ new_orders }}</div>
+    <div class="sub">очікують обробки</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">⚙️ В обробці</div>
+    <div class="value">{{ processing }}</div>
+    <div class="sub">зараз виконуються</div>
+  </div>
+</div>
+
+<div class="section-title">Виручка по місяцях (останні 6 місяців)</div>
+<table class="stats-table">
+  <thead>
+    <tr>
+      <th>Місяць</th>
+      <th>Замовлень</th>
+      <th>Виручка</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for m in monthly %}
+    <tr>
+      <td>{{ m.month|date:"F Y" }}</td>
+      <td><span class="badge badge-blue">{{ m.count }}</span></td>
+      <td><strong>{{ m.revenue }} ₴</strong></td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="3" style="color:#aaa;text-align:center;">Немає даних</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<div class="section-title">Топ-5 товарів (за кількістю)</div>
+<table class="stats-table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Товар</th>
+      <th>Продано (шт)</th>
+      <th>Виручка</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for p in top_products %}
+    <tr>
+      <td style="color:#aaa;">{{ forloop.counter }}</td>
+      <td>{{ p.name }}</td>
+      <td><span class="badge badge-green">{{ p.qty }}</span></td>
+      <td><strong>{{ p.revenue }} ₴</strong></td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="4" style="color:#aaa;text-align:center;">Немає даних</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
