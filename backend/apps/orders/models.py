@@ -41,6 +41,26 @@ class Order(models.Model):
     def __str__(self):
         return f'#{self.pk} — {self.first_name} {self.phone}'
 
+    def save(self, *args, **kwargs):
+        if self.pk:
+            old_status = Order.objects.filter(pk=self.pk).values_list('status', flat=True).first()
+            if old_status != self.Status.SHIPPED and self.status == self.Status.SHIPPED:
+                self._deduct_stock()
+        super().save(*args, **kwargs)
+
+    def _deduct_stock(self):
+        from apps.products.models import ProductSizeStock
+        for item in self.items.all():
+            if not item.product_id:
+                continue
+            stock = ProductSizeStock.objects.filter(
+                product_id=item.product_id,
+                size=item.size,
+            ).first()
+            if stock:
+                stock.quantity = max(0, stock.quantity - item.qty)
+                stock.save()
+
 
 class OrderItem(models.Model):
     order      = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
