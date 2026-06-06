@@ -1,13 +1,13 @@
 from django.contrib import admin
 from django.utils.html import format_html
 from django.db.models import Sum, F, ExpressionWrapper, IntegerField, Count, Q
+from django import forms
 from .forms import CategoryAdminForm, ProductAdminForm
 from .models import Category, Product, ProductImage, ProductSizeStock
 
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    form          = CategoryAdminForm
     list_display  = ['name', 'order', 'product_count']
     list_editable = ['order']
     search_fields = ['name']
@@ -27,6 +27,14 @@ class SizeStockInline(admin.TabularInline):
     extra   = 0
     fields  = ['size', 'quantity']
     ordering = ['size']
+
+    def get_formset(self, request, obj=None, **kwargs):
+        formset = super().get_formset(request, obj, **kwargs)
+        if obj and obj.sizes:
+            choices = [('', '---')] + [(s, s) for s in obj.sizes]
+            formset.form.base_fields['size'].widget = forms.Select(choices=choices)
+            formset.form.base_fields['size'].widget.attrs.update({'style': 'width:100px'})
+        return formset
 
 
 class ProductImageInline(admin.TabularInline):

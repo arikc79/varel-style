@@ -160,16 +160,29 @@ function pdUpdateCarousel() {
   });
 }
 
-// ── Touch swipe ──
+// ── Touch swipe + mouse wheel ──
 function initPdSwipe() {
-  const vp = document.querySelector('.pd-viewport');
+  const wrap = document.querySelector('.pd-main-wrap');
+  const vp   = document.querySelector('.pd-viewport');
   if (!vp) return;
+
   let sx = 0;
   vp.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
   vp.addEventListener('touchend',   e => {
     const diff = sx - e.changedTouches[0].clientX;
     if (Math.abs(diff) > 40) pdNav(diff > 0 ? 1 : -1);
   });
+
+  if (wrap) {
+    let lastWheel = 0;
+    wrap.addEventListener('wheel', e => {
+      e.preventDefault();
+      const now = Date.now();
+      if (now - lastWheel < 300) return;
+      lastWheel = now;
+      pdNav(e.deltaY > 0 ? 1 : -1);
+    }, { passive: false });
+  }
 }
 
 // ── Розмір ──
