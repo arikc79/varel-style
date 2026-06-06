@@ -1,7 +1,7 @@
 import os
 import threading
 import requests
-from django.core.mail import send_mail
+import resend  # HTTP API — працює на Render free tier
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -25,9 +25,10 @@ def send_telegram(text):
 
 
 def send_order_email(order_id):
+    api_key   = os.getenv('RESEND_API_KEY')
     recipient = os.getenv('NOTIFY_EMAIL')
-    if not recipient:
-        print('[EMAIL] NOTIFY_EMAIL не задано — пропускаємо')
+    if not api_key or not recipient:
+        print('[EMAIL] RESEND_API_KEY або NOTIFY_EMAIL не задано — пропускаємо')
         return
     print(f'[EMAIL] Відправка на {recipient} для замовлення #{order_id}')
     try:
@@ -36,9 +37,12 @@ def send_order_email(order_id):
             f'  • {i.name} — {i.size}, {i.color} × {i.qty} = {i.price * i.qty} ₴'
             for i in order.items.all()
         )
-        send_mail(
-            subject=f'🛍 Нове замовлення #{order.id} — VAREL Style',
-            message=(
+        resend.api_key = api_key
+        resend.Emails.send({
+            'from': 'VAREL Style <onboarding@resend.dev>',
+            'to':   [recipient],
+            'subject': f'🛍 Нове замовлення #{order.id} — VAREL Style',
+            'text': (
                 f'Замовлення #{order.id}\n\n'
                 f'Клієнт: {order.first_name} {order.last_name}\n'
                 f'Телефон: {order.phone}\n'
@@ -48,10 +52,7 @@ def send_order_email(order_id):
                 f'Товари:\n{items_text}\n\n'
                 f'Разом: {order.total} ₴'
             ),
-            from_email=None,
-            recipient_list=[recipient],
-            fail_silently=False,
-        )
+        })
         print(f'[EMAIL] Успішно відправлено #{order_id}')
     except Exception as e:
         print(f'[EMAIL] Помилка #{order_id}: {e}')
