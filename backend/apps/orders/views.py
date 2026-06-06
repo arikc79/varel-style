@@ -1,4 +1,5 @@
 import os
+import threading
 import requests
 from django.core.mail import send_mail
 from rest_framework.views import APIView
@@ -23,15 +24,16 @@ def send_telegram(text):
         pass
 
 
-def send_order_email(order):
+def send_order_email(order_id):
     recipient = os.getenv('NOTIFY_EMAIL')
     if not recipient:
         return
-    items_text = '\n'.join(
-        f'  • {i.name} — {i.size}, {i.color} × {i.qty} = {i.price * i.qty} ₴'
-        for i in order.items.all()
-    )
     try:
+        order = Order.objects.prefetch_related('items').get(pk=order_id)
+        items_text = '\n'.join(
+            f'  • {i.name} — {i.size}, {i.color} × {i.qty} = {i.price * i.qty} ₴'
+            for i in order.items.all()
+        )
         send_mail(
             subject=f'🛍 Нове замовлення #{order.id} — VAREL Style',
             message=(
@@ -76,8 +78,8 @@ class OrderCreateView(APIView):
                 f'💰 <b>Разом: {order.total} ₴</b>'
             )
 
-            # Email
-            send_order_email(order)
+            # Email (background thread — не блокує відповідь)
+            threading.Thread(target=send_order_email, args=(order.id,), daemon=True).start()
 
             return Response({'success': True, 'order_id': order.id}, status=status.HTTP_201_CREATED)
 
