@@ -1,6 +1,7 @@
 from django.db import transaction
+from django.utils import timezone
 from rest_framework import serializers
-from .models import Order, OrderItem
+from .models import Customer, Order, OrderItem
 
 class OrderItemSerializer(serializers.ModelSerializer):
     product_id = serializers.IntegerField(required=False, allow_null=True)
@@ -35,8 +36,24 @@ class OrderSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         items_data = validated_data.pop('items')
         order = Order.objects.create(**validated_data)
-        order_items = [
+        OrderItem.objects.bulk_create([
             OrderItem(order=order, **item) for item in items_data
-        ]
-        OrderItem.objects.bulk_create(order_items)
+        ])
+        self._sync_customer(order)
         return order
+
+    def _sync_customer(self, order):
+        customer, created = Customer.objects.get_or_create(
+            phone=order.phone,
+            defaults={'first_name': order.first_name, 'email': order.email or ''},
+        )
+        if not created:
+            # оновлюємо email якщо тепер вказали
+            if order.email and not customer.email:
+                customer.email = order.email
+        customer.total_orders += 1
+        customer.total_spent  += order.total
+        customer.last_order_at = timezone.now()
+        customer.save()
+        order.customer = customer
+        order.save(update_fields=['customer'])

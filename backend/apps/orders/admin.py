@@ -3,7 +3,7 @@ from django.db.models import Sum, Count, Q, F, ExpressionWrapper, IntegerField
 from django.db.models.functions import TruncMonth
 from django.template.response import TemplateResponse
 from django.utils import timezone
-from .models import Order, OrderItem
+from .models import Customer, Order, OrderItem
 
 class OrderItemInline(admin.TabularInline):
     model  = OrderItem
@@ -87,3 +87,47 @@ class SalesDashboardAdmin(admin.ModelAdmin):
             'top_products':   top_products,
         }
         return TemplateResponse(request, 'admin/sales_dashboard.html', context)
+
+
+def send_promo_email(modeladmin, request, queryset):
+    import os, resend
+    api_key = os.getenv('RESEND_API_KEY')
+    if not api_key:
+        modeladmin.message_user(request, '❌ RESEND_API_KEY не задано', level='error')
+        return
+    recipients = list(queryset.exclude(email='').values_list('email', flat=True))
+    if not recipients:
+        modeladmin.message_user(request, '⚠️ Немає клієнтів з email', level='warning')
+        return
+    resend.api_key = api_key
+    sent = 0
+    for email in recipients:
+        try:
+            resend.Emails.send({
+                'from': 'VAREL Style <onboarding@resend.dev>',
+                'to':   [email],
+                'subject': '🎁 Акція від VAREL Style',
+                'text': 'Привіт! У нас є спеціальна пропозиція для вас. Заходьте на сайт: https://varel-style.onrender.com',
+            })
+            sent += 1
+        except Exception:
+            pass
+    modeladmin.message_user(request, f'✅ Відправлено {sent} з {len(recipients)} листів')
+
+send_promo_email.short_description = '📧 Надіслати акцію на email'
+
+
+@admin.register(Customer)
+class CustomerAdmin(admin.ModelAdmin):
+    list_display    = ['first_name', 'phone', 'email', 'total_orders', 'total_spent_display', 'last_order_at']
+    search_fields   = ['phone', 'first_name', 'email']
+    readonly_fields = ['phone', 'first_name', 'email', 'total_orders', 'total_spent', 'created_at', 'last_order_at']
+    ordering        = ['-last_order_at']
+    actions         = [send_promo_email]
+
+    def has_add_permission(self, request):    return False
+    def has_delete_permission(self, request, obj=None): return False
+
+    @admin.display(description='Витрачено ₴', ordering='total_spent')
+    def total_spent_display(self, obj):
+        return f'{obj.total_spent} ₴'

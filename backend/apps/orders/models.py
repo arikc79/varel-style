@@ -1,16 +1,36 @@
 from django.db import models
+from django.utils import timezone
 from django.core.validators import RegexValidator
+
+
+class Customer(models.Model):
+    phone         = models.CharField(max_length=20, unique=True, verbose_name='Телефон')
+    first_name    = models.CharField(max_length=100, verbose_name='Ім\'я')
+    email         = models.EmailField(blank=True, verbose_name='Email')
+    total_orders  = models.PositiveIntegerField(default=0, verbose_name='Замовлень')
+    total_spent   = models.PositiveIntegerField(default=0, verbose_name='Витрачено ₴')
+    created_at    = models.DateTimeField(auto_now_add=True, verbose_name='Перше замовлення')
+    last_order_at = models.DateTimeField(null=True, blank=True, verbose_name='Останнє замовлення')
+
+    class Meta:
+        ordering            = ['-last_order_at']
+        verbose_name        = 'Клієнт'
+        verbose_name_plural = 'Клієнти'
+
+    def __str__(self):
+        return f'{self.first_name} {self.phone}'
+
 
 class Order(models.Model):
     class Status(models.TextChoices):
-        NEW = 'new', '🆕 Нове'
+        NEW        = 'new',        '🆕 Нове'
         PROCESSING = 'processing', '⚙️ В обробці'
-        SHIPPED = 'shipped', '📦 Відправлено'
-        DONE = 'done', '✅ Виконано'
+        SHIPPED    = 'shipped',    '📦 Відправлено'
+        DONE       = 'done',       '✅ Виконано'
 
     class Delivery(models.TextChoices):
         NOVA_POSHTA = 'nova', 'Нова Пошта'
-        UKRPOSHTA = 'ukr', 'Укрпошта'
+        UKRPOSHTA   = 'ukr',  'Укрпошта'
 
     class Payment(models.TextChoices):
         CARD = 'card', 'Карткою онлайн'
@@ -21,6 +41,8 @@ class Order(models.Model):
         message="Телефон повинен бути у форматі +XXXXXXXXXXX"
     )
 
+    customer      = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True,
+                                      related_name='orders', verbose_name='Клієнт')
     first_name    = models.CharField(max_length=100)
     last_name     = models.CharField(max_length=100, blank=True)
     phone         = models.CharField(max_length=20, validators=[phone_validator])
@@ -34,8 +56,8 @@ class Order(models.Model):
     created_at    = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['-created_at']
-        verbose_name = 'Замовлення'
+        ordering            = ['-created_at']
+        verbose_name        = 'Замовлення'
         verbose_name_plural = 'Замовлення'
 
     def __str__(self):
@@ -63,16 +85,16 @@ class Order(models.Model):
 
 
 class OrderItem(models.Model):
-    order      = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
-    product    = models.ForeignKey("products.Product", on_delete=models.SET_NULL, null=True, blank=True)
-    name       = models.CharField(max_length=255)
-    price      = models.PositiveIntegerField()
-    size       = models.CharField(max_length=10)
-    color      = models.CharField(max_length=50, default='Без кольору')
-    qty        = models.PositiveIntegerField(default=1)
+    order   = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
+    product = models.ForeignKey("products.Product", on_delete=models.SET_NULL, null=True, blank=True)
+    name    = models.CharField(max_length=255)
+    price   = models.PositiveIntegerField()
+    size    = models.CharField(max_length=10)
+    color   = models.CharField(max_length=50, default='Без кольору')
+    qty     = models.PositiveIntegerField(default=1)
 
     class Meta:
-        verbose_name = 'Товар у замовленні'
+        verbose_name        = 'Товар у замовленні'
         verbose_name_plural = 'Товари у замовленні'
 
     def __str__(self):
