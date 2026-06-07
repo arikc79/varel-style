@@ -9,20 +9,16 @@ class VisitorCounterMiddleware:
     def _maybe_count(self, request):
         if request.method != 'GET':
             return
-        path = request.path
-        # пропускаємо адмінку, API, статику
-        if any(path.startswith(p) for p in ('/admin/', '/api/', '/static/', '/media/')):
+        if any(request.path.startswith(p) for p in ('/admin/', '/api/', '/static/', '/media/')):
             return
-        # пропускаємо staff/superuser (твої відвідування)
         if hasattr(request, 'user') and request.user.is_authenticated and request.user.is_staff:
             return
-        # один раз на сесію
         if request.session.get('counted'):
             return
         try:
-            from apps.core.models import SiteCounter
-            SiteCounter.objects.get_or_create(pk=1)
+            from apps.core.models import SiteCounter, SiteVisitLog
             SiteCounter.increment()
+            SiteVisitLog.increment_today()
             request.session['counted'] = True
         except Exception:
             pass

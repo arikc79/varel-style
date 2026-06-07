@@ -358,11 +358,11 @@ footer { padding: 60px; border-top: 1px solid var(--border); display: grid; grid
   color: var(--gold);
   letter-spacing: 1px;
 }
-.visitor-label {
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+.visitor-sep { color: #333; font-size: 12px; }
+.visitor-week {
+  font-size: 11px;
   color: var(--grey);
+  letter-spacing: 0.5px;
 }
 
 .admin-trigger {
