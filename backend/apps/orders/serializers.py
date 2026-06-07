@@ -11,6 +11,7 @@ class OrderItemSerializer(serializers.ModelSerializer):
 
 class OrderSerializer(serializers.ModelSerializer):
     phone = serializers.CharField()
+    email = serializers.EmailField(required=False, allow_blank=True, default='')
     items = OrderItemSerializer(many=True)
 
     class Meta:
