@@ -15,10 +15,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
     def get_cover_image(self, obj):
         request = self.context.get('request')
-        # Беремо перше фото з довільного товару категорії (уже prefetch'd)
         for product in obj.products.all():
-            if not product.in_stock:
-                continue
             imgs = list(product.images.all())
             if imgs:
                 url = imgs[0].image.url
