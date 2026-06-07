@@ -240,7 +240,7 @@ nav {
 /* ── CONTACT ── */
 .contact-section { padding: 100px 60px; background: var(--dark); }
 .contact-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 40px; margin-top: 60px; }
-.contact-card { border: 1px solid var(--border); border-radius: var(--r); padding: 36px; transition: all .3s; }
+.contact-card { border: 1px solid var(--border); border-radius: var(--r); padding: 36px; transition: all .3s; text-decoration: none; }
 .contact-card:hover { border-color: var(--gold); box-shadow: 0 8px 32px rgba(201,168,76,.1); }
 .contact-icon { font-size: 32px; margin-bottom: 16px; text-decoration: none; }
 .contact-type { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
