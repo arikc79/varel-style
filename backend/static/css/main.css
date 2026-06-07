@@ -344,6 +344,14 @@ footer { padding: 60px; border-top: 1px solid var(--border); display: grid; grid
 }
 
 /* ── ADMIN TRIGGER ── */
+.visitor-counter {
+  font-size: 11px;
+  color: #333;
+  letter-spacing: 1px;
+  margin-left: auto;
+  user-select: none;
+}
+
 .admin-trigger {
   background: none;
   border: none;
@@ -354,7 +362,7 @@ footer { padding: 60px; border-top: 1px solid var(--border); display: grid; grid
   border-radius: 4px;
   transition: color .2s;
   line-height: 1;
-  margin-left: auto;
+  margin-left: 8px;
 }
 .admin-trigger:hover { color: var(--gold); }
 
