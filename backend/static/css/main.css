@@ -18,7 +18,7 @@
 /* ── RESET ── */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 a { text-decoration: none; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body {
   background: var(--black);
   color: var(--white);
@@ -68,7 +68,7 @@ body {
 /* ── SECTION HELPERS ── */
 .section { padding: 100px 60px; }
 .section-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
-.section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px,4vw,52px); font-weight: 300; margin-bottom: 60px; text-wrap: balance; }
+.section-title { font-family: 'EB Garamond', serif; font-size: clamp(32px,4vw,52px); font-weight: 300; margin-bottom: 60px; text-wrap: balance; }
 
 /* ── NAV ── */
 nav {
@@ -79,7 +79,7 @@ nav {
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(12px);
 }
-.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 700; letter-spacing: 8px; color: var(--gold); text-decoration: none; }
+.nav-logo { font-family: 'EB Garamond', serif; font-size: 32px; font-weight: 700; letter-spacing: 8px; color: var(--gold); text-decoration: none; }
 .nav-links { display: flex; gap: 36px; list-style: none; }
 .nav-links a { color: var(--grey-light); text-decoration: none; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; transition: color .3s; }
 .nav-links a:hover { color: var(--gold); }
@@ -142,7 +142,7 @@ nav {
   animation: fadeUp 1s ease both;
 }
 .about-split-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'EB Garamond', serif;
   font-size: clamp(44px, 5vw, 72px);
   font-weight: 300;
   line-height: .92;
@@ -183,7 +183,7 @@ nav {
   text-align: center;
 }
 .about-split-stat-num {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'EB Garamond', serif;
   font-size: clamp(28px, 3vw, 40px);
   color: var(--gold);
   line-height: 1;
@@ -211,7 +211,7 @@ nav {
   right: -20px;
   top: 50%;
   transform: translateY(-50%);
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'EB Garamond', serif;
   font-size: clamp(120px, 20vw, 220px);
   font-weight: 700;
   color: rgba(201,168,76,.04);
@@ -221,7 +221,7 @@ nav {
 }
 .sale-hero-content { position: relative; z-index: 1; }
 .sale-hero-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'EB Garamond', serif;
   font-size: clamp(48px, 7vw, 88px);
   font-weight: 300;
   letter-spacing: -0.02em;
@@ -263,7 +263,7 @@ nav {
 
 /* ── FOOTER ── */
 footer { padding: 60px; border-top: 1px solid var(--border); display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
-.footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 40px; color: var(--gold); letter-spacing: 6px; font-weight: 700; margin-bottom: 16px; }
+.footer-logo { font-family: 'EB Garamond', serif; font-size: 40px; color: var(--gold); letter-spacing: 6px; font-weight: 700; margin-bottom: 16px; }
 .footer-tagline { font-size: 11px; color: var(--grey); letter-spacing: 1px; }
 .footer-col-title { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
 .footer-links { list-style: none; }
@@ -469,4 +469,19 @@ input::placeholder, textarea::placeholder { color: #666; opacity: 1; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .fade-in { opacity: 1 !important; transform: none !important; }
+}
+
+/* ── PAGE TRANSITIONS ── */
+@keyframes page-enter {
+  from { opacity: 0; transform: translateX(48px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes page-exit {
+  to { opacity: 0; transform: translateX(-48px); }
+}
+#pageMain {
+  animation: page-enter .3s ease both;
+}
+#pageMain.page-exit {
+  animation: page-exit .3s ease forwards !important;
 }

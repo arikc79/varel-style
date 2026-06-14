@@ -5,10 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}VAREL everyday style{% endblock %}</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{% static 'css/main.css' %}?v=3">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}?v=4">
   <link rel="stylesheet" href="{% static 'css/hero.css' %}?v=3">
-  <link rel="stylesheet" href="{% static 'css/products.css' %}?v=3">
+  <link rel="stylesheet" href="{% static 'css/products.css' %}?v=4">
   <link rel="stylesheet" href="{% static 'css/cart.css' %}?v=3">
   <link rel="stylesheet" href="{% static 'css/checkout.css' %}?v=3">
   <link rel="stylesheet" href="{% static 'css/lightbox.css' %}?v=3">
@@ -37,7 +37,7 @@
 </nav>
 
 <!-- ── CONTENT ── -->
-{% block content %}{% endblock %}
+<div id="pageMain">{% block content %}{% endblock %}</div>
 
 <!-- ── FOOTER ── -->
 <footer>
@@ -243,6 +243,25 @@
 <script src="{% static 'js/checkout.js' %}?v=4"></script>
 <script src="{% static 'js/lightbox.js' %}?v=3"></script>
 {% block extra_js %}{% endblock %}
+
+<script>
+(function(){
+  var main = document.getElementById('pageMain');
+  if (!main) return;
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href');
+    if (!href || href === '#' || href.startsWith('#') || href.startsWith('javascript:')) return;
+    if (a.target === '_blank') return;
+    if (/^https?:\/\//.test(href) && !href.includes(location.hostname)) return;
+    if (href.includes('/admin')) return;
+    e.preventDefault();
+    main.classList.add('page-exit');
+    setTimeout(function(){ location.href = href; }, 300);
+  });
+})();
+</script>
 
 </body>
 </html>
