@@ -95,7 +95,7 @@ function buildCardMedia(p) {
   if (imgs.length === 1) {
     return `
       <div style="position:absolute;inset:0;pointer-events:none">
-        <img src="${imgs[0].image_url}" alt="${p.name}"
+        <img src="${imgs[0].image_url}" alt="${p.name}" class="product-single-img"
              style="width:100%;height:100%;object-fit:cover;pointer-events:none;">
       </div>`;
   }

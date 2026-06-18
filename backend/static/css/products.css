@@ -40,6 +40,14 @@
   filter: saturate(1) brightness(1);
   transform: scale(1.06);
 }
+.product-single-img {
+  filter: saturate(0.25) brightness(0.75);
+  transition: filter .5s ease, transform .5s ease;
+}
+.product-card:hover .product-single-img {
+  filter: saturate(1) brightness(1);
+  transform: scale(1.06);
+}
 
 .carousel-btn {
   position: absolute; top: 50%; transform: translateY(-50%); z-index: 5;
