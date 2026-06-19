@@ -43,14 +43,15 @@ class ProductImageInline(admin.TabularInline):
     max_num          = 4
     can_delete       = True
     show_change_link = True
-    fields           = ['image', 'order', 'preview']
+    fields           = ['image', 'external_url', 'order', 'preview']
     readonly_fields  = ['preview']
 
     def preview(self, obj):
-        if obj.image:
+        url = obj.external_url or (obj.image.url if obj.image else None)
+        if url:
             return format_html(
                 '<img src="{}" style="height:80px;width:80px;object-fit:cover;border-radius:6px;" />',
-                obj.image.url,
+                url,
             )
         return '—'
     preview.short_description = "Прев'ю"
@@ -87,7 +88,10 @@ class ProductAdmin(admin.ModelAdmin):
     def main_photo(self, obj):
         images = obj.images.all()
         if images:
-            return format_html('<img src="{}" style="height:48px;width:48px;object-fit:cover;border-radius:6px;" />', images[0].image.url)
+            img = images[0]
+            url = img.external_url or (img.image.url if img.image else None)
+            if url:
+                return format_html('<img src="{}" style="height:48px;width:48px;object-fit:cover;border-radius:6px;" />', url)
         return '—'
     main_photo.short_description = 'Фото'
 
@@ -142,7 +146,8 @@ class ProductImageAdmin(admin.ModelAdmin):
     search_fields = ['product__name']
 
     def preview(self, obj):
-        if obj.image:
-            return format_html('<img src="{}" style="height:60px;width:60px;object-fit:cover;border-radius:6px;" />', obj.image.url)
+        url = obj.external_url or (obj.image.url if obj.image else None)
+        if url:
+            return format_html('<img src="{}" style="height:60px;width:60px;object-fit:cover;border-radius:6px;" />', url)
         return '—'
     preview.short_description = "Прев'ю"
