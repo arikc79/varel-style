@@ -75,8 +75,9 @@ class ProductImage(models.Model):
         Product, on_delete=models.CASCADE,
         related_name='images', verbose_name='Товар',
     )
-    image = models.ImageField(upload_to='products/', verbose_name='Фото')
-    order = models.PositiveSmallIntegerField(default=0, verbose_name='Порядок (0 = головне)')
+    image        = models.ImageField(upload_to='products/', blank=True, verbose_name='Фото')
+    external_url = models.URLField(blank=True, default='', verbose_name='URL фото (зовнішнє)')
+    order        = models.PositiveSmallIntegerField(default=0, verbose_name='Порядок (0 = головне)')
 
     class Meta:
         ordering            = ['order']

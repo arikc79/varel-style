@@ -18,17 +18,29 @@ class CategorySerializer(serializers.ModelSerializer):
         for product in obj.products.all():
             imgs = list(product.images.all())
             if imgs:
-                url = imgs[0].image.url
-                return request.build_absolute_uri(url) if request else url
+                if imgs[0].external_url:
+                    return imgs[0].external_url
+                if imgs[0].image:
+                    url = imgs[0].image.url
+                    return request.build_absolute_uri(url) if request else url
         return None
 
 
 class ProductImageSerializer(serializers.ModelSerializer):
-    image_url = serializers.ImageField(source='image', read_only=True)
+    image_url = serializers.SerializerMethodField()
 
     class Meta:
         model  = ProductImage
         fields = ['id', 'image_url', 'order']
+
+    def get_image_url(self, obj):
+        if obj.external_url:
+            return obj.external_url
+        if obj.image:
+            request = self.context.get('request')
+            url = obj.image.url
+            return request.build_absolute_uri(url) if request else url
+        return None
 
 
 class ProductSerializer(serializers.ModelSerializer):

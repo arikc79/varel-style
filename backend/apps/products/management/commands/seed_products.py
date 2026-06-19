@@ -1,6 +1,3 @@
-import requests
-from io import BytesIO
-from django.core.files.base import ContentFile
 from django.core.management.base import BaseCommand
 from apps.products.models import Product, ProductImage, Category
 
@@ -166,19 +163,10 @@ class Command(BaseCommand):
                 stock=50,
             )
 
-            try:
-                response = requests.get(data["photo_url"], timeout=10)
-                if response.status_code == 200:
-                    filename = f"{product.id}_main.jpg"
-                    product_image = ProductImage(product=product, order=0)
-                    product_image.image.save(
-                        filename,
-                        ContentFile(response.content),
-                        save=True
-                    )
-                    self.stdout.write(f"+ {product.name}")
-            except Exception as e:
-                self.stdout.write(f"x Фото не завантажено для {product.name}: {e}")
+            ProductImage.objects.create(
+                product=product, order=0, external_url=data["photo_url"]
+            )
+            self.stdout.write(f"+ {product.name}")
 
             created_count += 1
 
