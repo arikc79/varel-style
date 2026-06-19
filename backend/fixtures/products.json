@@ -1,20 +1,11 @@
 [
 {
   "model": "products.category",
-  "pk": 1,
-  "fields": {
-    "name": "Кросівки",
-    "emoji": "👟",
-    "order": 0
-  }
-},
-{
-  "model": "products.category",
   "pk": 2,
   "fields": {
     "name": "Джинси",
     "emoji": "👖",
-    "order": 0
+    "order": 4
   }
 },
 {
@@ -23,14 +14,86 @@
   "fields": {
     "name": "Сорочки",
     "emoji": "👔",
-    "order": 0
+    "order": 3
+  }
+},
+{
+  "model": "products.category",
+  "pk": 4,
+  "fields": {
+    "name": "Поло",
+    "emoji": "👖",
+    "order": 2
+  }
+},
+{
+  "model": "products.category",
+  "pk": 5,
+  "fields": {
+    "name": "Футболки",
+    "emoji": "👖",
+    "order": 1
+  }
+},
+{
+  "model": "products.category",
+  "pk": 6,
+  "fields": {
+    "name": "Штани",
+    "emoji": "👖",
+    "order": 5
+  }
+},
+{
+  "model": "products.category",
+  "pk": 7,
+  "fields": {
+    "name": "Шорти",
+    "emoji": "👖",
+    "order": 6
+  }
+},
+{
+  "model": "products.category",
+  "pk": 8,
+  "fields": {
+    "name": "Костюми",
+    "emoji": "👖",
+    "order": 7
+  }
+},
+{
+  "model": "products.category",
+  "pk": 9,
+  "fields": {
+    "name": "Носки",
+    "emoji": "👖",
+    "order": 8
+  }
+},
+{
+  "model": "products.category",
+  "pk": 11,
+  "fields": {
+    "name": "Аксесуари",
+    "emoji": "👔",
+    "order": 9
+  }
+},
+{
+  "model": "products.category",
+  "pk": 12,
+  "fields": {
+    "name": "Чоловічий одяг",
+    "emoji": "👔",
+    "order": 1
   }
 },
 {
   "model": "products.product",
   "pk": 1,
   "fields": {
-    "category": 1,
+    "category": null,
     "name": "кросівки AVVA",
     "price": 1500,
     "old_price": null,
@@ -45,7 +108,8 @@
     "colors": [],
     "details": {},
     "badge": "new",
-    "in_stock": true,
+    "stock": 0,
+    "cost_price": null,
     "created_at": "2026-04-29T08:19:32.489Z"
   }
 },
@@ -96,7 +160,8 @@
       "Країна виробництва": "Туреччина"
     },
     "badge": "new",
-    "in_stock": true,
+    "stock": 0,
+    "cost_price": null,
     "created_at": "2026-04-29T08:25:20.150Z"
   }
 },
@@ -130,7 +195,8 @@
       "Розмір на моделі": "32"
     },
     "badge": "new",
-    "in_stock": true,
+    "stock": 0,
+    "cost_price": null,
     "created_at": "2026-04-29T08:44:09.864Z"
   }
 },
@@ -161,7 +227,8 @@
       "Розмір на моделі": "32"
     },
     "badge": "new",
-    "in_stock": true,
+    "stock": 0,
+    "cost_price": null,
     "created_at": "2026-04-29T08:59:31.985Z"
   }
 },
@@ -169,7 +236,7 @@
   "model": "products.product",
   "pk": 5,
   "fields": {
-    "category": 1,
+    "category": null,
     "name": "Кросівки AVVA",
     "price": 2000,
     "old_price": null,
@@ -193,40 +260,9 @@
       "Висота підошви": "4.7 см"
     },
     "badge": "new",
-    "in_stock": true,
+    "stock": 0,
+    "cost_price": null,
     "created_at": "2026-04-29T10:02:04.167Z"
-  }
-},
-{
-  "model": "products.product",
-  "pk": 6,
-  "fields": {
-    "category": 3,
-    "name": "Сорочка AVVA",
-    "price": 900,
-    "old_price": 1300,
-    "description": "Сорочка з класичним коміром на ґудзиках.\r\nВиготовлена з 100% бавовни — натуральна та приємна до тіла.\r\n\r\nТканина типу Oxford — міцна, щільна, але комфортна в носінні.\r\nМатеріал “дихає” і допомагає відчувати прохолоду в спеку.\r\n\r\nПоставляється в подарунковій коробці.\r\nКрій — Regular Fit (звичайна посадка, не облягає і не вільна).",
-    "emoji": "👔",
-    "sizes": [
-      "S",
-      "M",
-      "L",
-      "XL",
-      "XXL"
-    ],
-    "colors": [
-      "Білий",
-      "Чорний",
-      "блакитний",
-      "бежевий"
-    ],
-    "details": {
-      "Склад": "100% бавовна",
-      "Країна виробництва": "Туреччина"
-    },
-    "badge": "sale",
-    "in_stock": true,
-    "created_at": "2026-04-29T10:10:42.165Z"
   }
 },
 {
@@ -255,8 +291,548 @@
       "Країна виробництва": "Туреччина"
     },
     "badge": "sell",
-    "in_stock": true,
+    "stock": 0,
+    "cost_price": 550,
     "created_at": "2026-04-29T15:27:23.741Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 8,
+  "fields": {
+    "category": 12,
+    "name": "Футболка Basic Cotton",
+    "price": 450,
+    "old_price": null,
+    "description": "Класична бавовняна футболка для щоденного носіння. М'яка тканина добре пропускає повітря та забезпечує комфорт протягом дня.",
+    "emoji": "👕",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "colors": [
+      "Чорний",
+      "Білий",
+      "Сірий"
+    ],
+    "details": {
+      "Склад": "100% бавовна"
+    },
+    "badge": "",
+    "stock": 75,
+    "cost_price": 180,
+    "created_at": "2026-06-18T17:49:28.562Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 10,
+  "fields": {
+    "category": 12,
+    "name": "Лляна сорочка Summer",
+    "price": 1350,
+    "old_price": null,
+    "description": "Легка сорочка з натурального льону для теплої погоди. Забезпечує хорошу вентиляцію та елегантний вигляд.",
+    "emoji": "👔",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "colors": [
+      "Білий",
+      "Бежевий",
+      "Блакитний"
+    ],
+    "details": {
+      "Склад": "100% льон"
+    },
+    "badge": "new",
+    "stock": 40,
+    "cost_price": 540,
+    "created_at": "2026-06-18T17:49:28.623Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 11,
+  "fields": {
+    "category": 12,
+    "name": "Класична сорочка Office",
+    "price": 1200,
+    "old_price": null,
+    "description": "Універсальна сорочка для роботи та ділових зустрічей. Має акуратний крій та стриманий дизайн.",
+    "emoji": "👔",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "colors": [
+      "Білий",
+      "Блакитний",
+      "Сірий"
+    ],
+    "details": {
+      "Склад": "100% бавовна",
+      "Тканина": "Oxford"
+    },
+    "badge": "",
+    "stock": 60,
+    "cost_price": 480,
+    "created_at": "2026-06-18T17:49:28.637Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 33,
+  "fields": {
+    "category": 12,
+    "name": "Класична біла сорочка",
+    "price": 890,
+    "old_price": 1200,
+    "description": "Елегантна сорочка з натуральної бавовни. Підходить для офісу та повсякденного носіння. Легко поєднується з будь-яким одягом.",
+    "emoji": "👔",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "білий",
+      "блакитний"
+    ],
+    "details": {
+      "країна": "Туреччина",
+      "матеріал": "100% бавовна"
+    },
+    "badge": "sale",
+    "stock": 50,
+    "cost_price": 600,
+    "created_at": "2026-06-18T18:48:21.420Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 34,
+  "fields": {
+    "category": 12,
+    "name": "Чорні джинси Slim Fit",
+    "price": 1450,
+    "old_price": null,
+    "description": "Стильні джинси зі зручним кроєм slim fit. Виготовлені з якісного денімового матеріалу з додаванням еластану.",
+    "emoji": "👖",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "чорний",
+      "темно-синій"
+    ],
+    "details": {
+      "країна": "Бангладеш",
+      "матеріал": "98% бавовна, 2% еластан"
+    },
+    "badge": "new",
+    "stock": 50,
+    "cost_price": null,
+    "created_at": "2026-06-18T18:48:26.786Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 37,
+  "fields": {
+    "category": 11,
+    "name": "Шкіряний ремінь чоловічий",
+    "price": 450,
+    "old_price": null,
+    "description": "Класичний ремінь з натуральної шкіри. Металева пряжка з антикорозійним покриттям. Підходить до будь-якого стилю.",
+    "emoji": "👜",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "colors": [
+      "коричневий",
+      "чорний"
+    ],
+    "details": {
+      "країна": "Україна",
+      "матеріал": "натуральна шкіра"
+    },
+    "badge": "",
+    "stock": 50,
+    "cost_price": null,
+    "created_at": "2026-06-18T18:48:30.244Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 40,
+  "fields": {
+    "category": 11,
+    "name": "Кросівки білі унісекс",
+    "price": 2200,
+    "old_price": 2800,
+    "description": "Легкі та зручні кросівки для повсякденного носіння. Підошва з піни забезпечує амортизацію. Підходять до будь-якого образу.",
+    "emoji": "👟",
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44"
+    ],
+    "colors": [
+      "білий"
+    ],
+    "details": {
+      "країна": "В'єтнам",
+      "матеріал": "текстиль + гума"
+    },
+    "badge": "sale",
+    "stock": 50,
+    "cost_price": null,
+    "created_at": "2026-06-18T18:48:34.660Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 43,
+  "fields": {
+    "category": 12,
+    "name": "Чоловіча футболка базова",
+    "price": 380,
+    "old_price": null,
+    "description": "Базова футболка з щільної бавовни. Рівний крій, стійкий до деформації після прання. Є в багатьох кольорах.",
+    "emoji": "👕",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "colors": [
+      "білий",
+      "чорний",
+      "сірий",
+      "синій"
+    ],
+    "details": {
+      "країна": "Туреччина",
+      "матеріал": "100% бавовна"
+    },
+    "badge": "",
+    "stock": 50,
+    "cost_price": null,
+    "created_at": "2026-06-18T18:48:37.343Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 44,
+  "fields": {
+    "category": null,
+    "name": "Жіночі легінси спортивні",
+    "price": 650,
+    "old_price": 850,
+    "description": "Легінси з компресійного матеріалу для занять спортом. Широкий пояс не сповзає під час тренування.",
+    "emoji": "🩲",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "colors": [
+      "чорний",
+      "сірий",
+      "рожевий"
+    ],
+    "details": {
+      "країна": "Китай",
+      "матеріал": "80% поліамід, 20% еластан"
+    },
+    "badge": "new",
+    "stock": 50,
+    "cost_price": null,
+    "created_at": "2026-06-18T18:48:38.006Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 45,
+  "fields": {
+    "category": 11,
+    "name": "Краватка шовкова чоловіча",
+    "price": 420,
+    "old_price": null,
+    "description": "Елегантна краватка з натурального шовку. Класичний візерунок у смужку. Підходить для ділових зустрічей.",
+    "emoji": "👔",
+    "sizes": [
+      "one size"
+    ],
+    "colors": [
+      "синій",
+      "бордовий",
+      "сірий"
+    ],
+    "details": {
+      "країна": "Італія",
+      "матеріал": "100% шовк"
+    },
+    "badge": "",
+    "stock": 50,
+    "cost_price": null,
+    "created_at": "2026-06-18T18:48:42.084Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 46,
+  "fields": {
+    "category": 12,
+    "name": "Зимова куртка пухова",
+    "price": 3200,
+    "old_price": 4000,
+    "description": "Тепла пухова куртка для холодної зими. Водовідштовхувальне покриття. Капюшон знімається.",
+    "emoji": "🧥",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "colors": [
+      "чорний",
+      "темно-синій",
+      "хакі"
+    ],
+    "details": {
+      "країна": "Китай",
+      "матеріал": "нейлон + пух 80%"
+    },
+    "badge": "sale",
+    "stock": 50,
+    "cost_price": null,
+    "created_at": "2026-06-18T18:48:44.659Z"
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 1,
+  "fields": {
+    "product": 7,
+    "size": "S",
+    "quantity": 6
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 2,
+  "fields": {
+    "product": 7,
+    "size": "M",
+    "quantity": 5
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 3,
+  "fields": {
+    "product": 7,
+    "size": "L",
+    "quantity": 3
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 4,
+  "fields": {
+    "product": 2,
+    "size": "M",
+    "quantity": 2
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 5,
+  "fields": {
+    "product": 2,
+    "size": "L",
+    "quantity": 1
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 8,
+  "fields": {
+    "product": 8,
+    "size": "S",
+    "quantity": 15
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 9,
+  "fields": {
+    "product": 8,
+    "size": "M",
+    "quantity": 15
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 10,
+  "fields": {
+    "product": 8,
+    "size": "L",
+    "quantity": 15
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 11,
+  "fields": {
+    "product": 8,
+    "size": "XL",
+    "quantity": 15
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 12,
+  "fields": {
+    "product": 8,
+    "size": "XXL",
+    "quantity": 15
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 18,
+  "fields": {
+    "product": 10,
+    "size": "S",
+    "quantity": 8
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 19,
+  "fields": {
+    "product": 10,
+    "size": "M",
+    "quantity": 8
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 20,
+  "fields": {
+    "product": 10,
+    "size": "L",
+    "quantity": 8
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 21,
+  "fields": {
+    "product": 10,
+    "size": "XL",
+    "quantity": 8
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 22,
+  "fields": {
+    "product": 10,
+    "size": "XXL",
+    "quantity": 8
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 23,
+  "fields": {
+    "product": 11,
+    "size": "S",
+    "quantity": 12
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 24,
+  "fields": {
+    "product": 11,
+    "size": "M",
+    "quantity": 12
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 25,
+  "fields": {
+    "product": 11,
+    "size": "L",
+    "quantity": 12
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 26,
+  "fields": {
+    "product": 11,
+    "size": "XL",
+    "quantity": 12
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 27,
+  "fields": {
+    "product": 11,
+    "size": "XXL",
+    "quantity": 12
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 99,
+  "fields": {
+    "product": 33,
+    "size": "M",
+    "quantity": 8
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 100,
+  "fields": {
+    "product": 33,
+    "size": "S",
+    "quantity": 3
   }
 },
 {
@@ -300,7 +876,7 @@
   "pk": 5,
   "fields": {
     "product": 2,
-    "image": "products/bej-duz-yikama-straight-fit-pantolon--7d73-.webp",
+    "image": "products/bej-duz-yikama-straight-fit-pantolon--7d73-_CSDI02x.webp",
     "order": 0
   }
 },
@@ -309,7 +885,7 @@
   "pk": 6,
   "fields": {
     "product": 2,
-    "image": "products/bej-duz-yikama-straight-fit-pantolon-5-ca28.webp",
+    "image": "products/bej-duz-yikama-straight-fit-pantolon-5-ca28_ENx79Ru.webp",
     "order": 0
   }
 },
@@ -318,7 +894,7 @@
   "pk": 7,
   "fields": {
     "product": 2,
-    "image": "products/bej-duz-yikama-straight-fit-pantolon-16e-63.webp",
+    "image": "products/bej-duz-yikama-straight-fit-pantolon-16e-63_jtFCwoX.webp",
     "order": 0
   }
 },
@@ -354,7 +930,7 @@
   "pk": 11,
   "fields": {
     "product": 4,
-    "image": "products/haki-eskitme-yikamali-esnek-jean-panto-456-ca_kX1yM9B.webp",
+    "image": "products/haki-eskitme-yikamali-esnek-jean-panto-456-ca_tU7xgaw.webp",
     "order": 0
   }
 },
@@ -363,7 +939,7 @@
   "pk": 12,
   "fields": {
     "product": 4,
-    "image": "products/haki-eskitme-yikamali-esnek-jean-panto-3f0-9a.webp",
+    "image": "products/haki-eskitme-yikamali-esnek-jean-panto-456-ca_wZAvFJv.webp",
     "order": 0
   }
 },
@@ -372,7 +948,7 @@
   "pk": 13,
   "fields": {
     "product": 4,
-    "image": "products/haki-eskitme-yikamali-esnek-jean-panto-29e8d9.webp",
+    "image": "products/haki-eskitme-yikamali-esnek-jean-panto-29e8d9_rKnSBIY.webp",
     "order": 0
   }
 },
@@ -381,7 +957,7 @@
   "pk": 14,
   "fields": {
     "product": 4,
-    "image": "products/haki-eskitme-yikamali-esnek-jean-panto-e2-d3e.webp",
+    "image": "products/haki-eskitme-yikamali-esnek-jean-panto-3f0-9a_jb9Cdju.webp",
     "order": 0
   }
 },
@@ -423,38 +999,11 @@
 },
 {
   "model": "products.productimage",
-  "pk": 19,
-  "fields": {
-    "product": 6,
-    "image": "products/lacivert-dugmeli-yaka-100-pamuk-oxford-717-db.webp",
-    "order": 1
-  }
-},
-{
-  "model": "products.productimage",
-  "pk": 20,
-  "fields": {
-    "product": 6,
-    "image": "products/lacivert-dugmeli-yaka-100-pamuk-oxford-d57-4d.webp",
-    "order": 0
-  }
-},
-{
-  "model": "products.productimage",
-  "pk": 21,
-  "fields": {
-    "product": 6,
-    "image": "products/lacivert-dugmeli-yaka-100-pamuk-oxford-22-82c.webp",
-    "order": 0
-  }
-},
-{
-  "model": "products.productimage",
   "pk": 22,
   "fields": {
     "product": 7,
     "image": "products/gri-alttan-britli-yaka-cizgili-gofreli-3837c6.webp",
-    "order": 0
+    "order": 2
   }
 },
 {
@@ -463,7 +1012,7 @@
   "fields": {
     "product": 7,
     "image": "products/gri-alttan-britli-yaka-cizgili-gofreli-a7f-33.webp",
-    "order": 0
+    "order": 4
   }
 },
 {
@@ -472,7 +1021,7 @@
   "fields": {
     "product": 7,
     "image": "products/gri-alttan-britli-yaka-cizgili-gofreli-20aa-4.webp",
-    "order": 0
+    "order": 1
   }
 },
 {
@@ -481,6 +1030,132 @@
   "fields": {
     "product": 7,
     "image": "products/gri-alttan-britli-yaka-cizgili-gofreli-ce1d51.webp",
+    "order": 3
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 26,
+  "fields": {
+    "product": 8,
+    "image": "products/футболка_4.jpg",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 27,
+  "fields": {
+    "product": 8,
+    "image": "products/футболка_3.jpg",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 28,
+  "fields": {
+    "product": 10,
+    "image": "products/mavi-dugmeli-yaka-100-pamuk-oxford-gom-0d3-53_6KgtELy.webp",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 29,
+  "fields": {
+    "product": 10,
+    "image": "products/mavi-dugmeli-yaka-100-pamuk-oxford-gom-4-be5b_JRchs54.webp",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 30,
+  "fields": {
+    "product": 11,
+    "image": "products/beyaz-dugmeli-yaka-100-pamuk-oxford-go-0053f0_p3Qzqs1.webp",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 31,
+  "fields": {
+    "product": 11,
+    "image": "products/beyaz-dugmeli-yaka-100-pamuk-oxford-ba-0-96b2_1A0ff9f.webp",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 32,
+  "fields": {
+    "product": 33,
+    "image": "products/33_main.jpg",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 33,
+  "fields": {
+    "product": 34,
+    "image": "products/34_main.jpg",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 36,
+  "fields": {
+    "product": 37,
+    "image": "products/37_main.jpg",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 39,
+  "fields": {
+    "product": 40,
+    "image": "products/40_main.jpg",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 41,
+  "fields": {
+    "product": 43,
+    "image": "products/43_main.jpg",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 42,
+  "fields": {
+    "product": 44,
+    "image": "products/44_main.jpg",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 43,
+  "fields": {
+    "product": 45,
+    "image": "products/45_main.jpg",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 44,
+  "fields": {
+    "product": 46,
+    "image": "products/46_main.jpg",
     "order": 0
   }
 }
