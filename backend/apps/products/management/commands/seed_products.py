@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from apps.products.models import Product, ProductImage, Category
+from apps.products.models import Product, ProductImage, ProductSizeStock, Category
 
 PRODUCTS_DATA = [
     {
@@ -162,6 +162,9 @@ class Command(BaseCommand):
                 badge=data["badge"],
                 stock=50,
             )
+
+            for size in data["sizes"]:
+                ProductSizeStock.objects.create(product=product, size=size, quantity=10)
 
             ProductImage.objects.create(
                 product=product, order=0, external_url=data["photo_url"]
