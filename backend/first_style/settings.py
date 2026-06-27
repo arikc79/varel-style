@@ -1,4 +1,4 @@
-import os
+﻿import os
 import dj_database_url
 from pathlib import Path
 from dotenv import load_dotenv
@@ -97,6 +97,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:5500",
     "https://first-style.ua",
+    "capacitor://localhost",
+    "http://localhost",
 ]
 if DEBUG:
     CORS_ALLOW_ALL_ORIGINS = True
@@ -105,6 +107,7 @@ CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8000",
     "http://127.0.0.1:8000",
     "https://first-style.ua",
+    "http://localhost",
 ]
 if RENDER_HOST:
     CSRF_TRUSTED_ORIGINS.append(f'https://{RENDER_HOST}')
@@ -148,3 +151,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LANGUAGE_CODE = 'uk'
 TIME_ZONE = 'Europe/Kyiv'
 USE_TZ = True
+
