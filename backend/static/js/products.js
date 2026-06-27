@@ -22,14 +22,19 @@ async function loadCategories() {
 function renderCategoryCards(cats) {
   const grid = document.getElementById('categoriesGrid');
   if (!grid) return;
-  grid.innerHTML = cats.map(c => `
-    <div class="cat-card" onclick="goToProducts('${c.name}')">
-      <div class="cat-img">${c.emoji}</div>
-      <div class="cat-overlay">
-        <div class="cat-name">${c.name}</div>
-        <div class="cat-count">${c.product_count} товарів</div>
-      </div>
-    </div>`).join('');
+  grid.innerHTML = cats.map(c => {
+    const imgContent = c.cover_image
+      ? `<img class="cat-img-photo" src="${c.cover_image}" alt="${c.name}" loading="lazy">`
+      : `<span class="cat-img-emoji">${c.emoji}</span>`;
+    return `
+      <div class="cat-card" onclick="goToProducts('${c.name}')">
+        <div class="cat-img">${imgContent}</div>
+        <div class="cat-overlay">
+          <div class="cat-name">${c.name}</div>
+          <div class="cat-count">${c.product_count} товарів</div>
+        </div>
+      </div>`;
+  }).join('');
 }
 
 function renderFilterButtons(cats, activeCategory = 'all') {
@@ -90,7 +95,7 @@ function buildCardMedia(p) {
   if (imgs.length === 1) {
     return `
       <div style="position:absolute;inset:0;pointer-events:none">
-        <img src="${imgs[0].image_url}" alt="${p.name}"
+        <img src="${imgs[0].image_url}" alt="${p.name}" class="product-single-img"
              style="width:100%;height:100%;object-fit:cover;pointer-events:none;">
       </div>`;
   }
@@ -185,15 +190,24 @@ function carouselGo(pid, idx) {
   carouselState[pid] = idx;
 }
 
-// Touch swipe у картках
+// Touch swipe + mouse wheel у картках
 function initCarouselSwipe() {
   document.querySelectorAll('.product-carousel').forEach(el => {
+    const pid = Number(el.dataset.pid);
+
+    // Touch
     let sx = 0;
     el.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
     el.addEventListener('touchend', e => {
       const diff = sx - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 40) carouselNav(Number(el.dataset.pid), diff > 0 ? 1 : -1);
+      if (Math.abs(diff) > 40) carouselNav(pid, diff > 0 ? 1 : -1);
     });
+
+    // Mouse wheel
+    el.addEventListener('wheel', e => {
+      e.preventDefault();
+      carouselNav(pid, e.deltaY > 0 ? 1 : -1);
+    }, { passive: false });
   });
 }
 
@@ -225,7 +239,11 @@ function goToProducts(cat) {
 function quickAdd(id) {
   const p = allProducts.find(x => x.id === id);
   if (!p) return;
-  addItem(p, p.sizes[0]);
+  if (!p.sizes || !p.sizes.length || (p.colors && p.colors.length > 0)) {
+    openModal(id);
+    return;
+  }
+  addItem(p, p.sizes[0], 'Без кольору');
   showToast('✓ ' + p.name + ' — додано до кошика');
 }
 

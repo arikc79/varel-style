@@ -23,18 +23,3 @@
 
 {% endblock %}
 
-{% block extra_js %}
-<script>
-  // Автоматично застосувати фільтр з URL-параметра ?category=...
-  document.addEventListener('DOMContentLoaded', () => {
-    const params = new URLSearchParams(window.location.search);
-    const cat = params.get('category');
-    if (cat) {
-      const btn = [...document.querySelectorAll('.filter-btn')]
-        .find(b => b.textContent.trim() === cat);
-      if (btn) filterProducts(cat, btn);
-    }
-  });
-</script>
-{% endblock %}
-

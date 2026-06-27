@@ -5,22 +5,37 @@
 
 {% block content %}
 
-<!-- ── ПРО НАС ── -->
-<section class="about-section" id="about" style="padding-top: 100px;">
-  <div class="about-visual fade-in">🎩</div>
-  <div class="about-content fade-in">
+<section class="about-split">
+
+  <!-- ── ЛІВО: HERO IMAGE ── -->
+  <div class="about-split-img"
+    style="background-image: url('{% static 'assets/hero.jpg' %}');">
+    <div class="about-split-img-overlay"></div>
+  </div>
+
+  <!-- ── ПРАВО: КОНТЕНТ ── -->
+  <div class="about-split-content">
     <p class="section-label">Про нас</p>
-    <h2 class="about-quote">Стиль — це не одяг.<br>Це <em>відношення</em> до себе.</h2>
-    <p class="about-text">VAREL everyday style — це більше ніж магазин. Це концепція чоловічого стилю для тих, хто цінує якість і виглядає впевнено в будь-якій ситуації.</p>
-    <p class="about-text">Від класичного костюму для важливих зустрічей до стильного повсякденного образу — у нас є все.</p>
-    <p class="about-text">Наша місія — допомогти кожному чоловікові знайти свій стиль. Ми вибираємо лише найкраще: якісні матеріали, перевірені бренди, справедливі ціни.</p>
-    <div class="about-stats">
-      <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Позицій</div></div>
-      <div class="stat"><div class="stat-num">20+</div><div class="stat-label">Роки досвіду</div></div>
-      <div class="stat"><div class="stat-num">10к+</div><div class="stat-label">Клієнтів</div></div>
+    <h1 class="about-split-title">VAREL<br><em>everyday style</em></h1>
+    <p class="about-split-text">Це більше ніж магазин. Це концепція чоловічого стилю для тих, хто цінує якість і виглядає впевнено в будь-якій ситуації.</p>
+    <p class="about-split-text">Від класичного костюму для важливих зустрічей до стильного повсякденного образу — у нас є все.</p>
+
+    <div class="about-split-stats">
+      <div class="about-split-stat">
+        <div class="about-split-stat-num">500+</div>
+        <div class="about-split-stat-lbl">Позицій в асортименті</div>
+      </div>
+      <div class="about-split-stat">
+        <div class="about-split-stat-num">20+</div>
+        <div class="about-split-stat-lbl">Років досвіду</div>
+      </div>
+      <div class="about-split-stat">
+        <div class="about-split-stat-num">10 000+</div>
+        <div class="about-split-stat-lbl">Задоволених клієнтів</div>
+      </div>
     </div>
   </div>
+
 </section>
 
 {% endblock %}
-

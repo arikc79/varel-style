@@ -1,13 +1,13 @@
 // ── КОШИК ──
-// Відновлюємо кошик з localStorage при старті
+
 let cart = JSON.parse(localStorage.getItem('varel_cart') || '[]');
 
 function saveCart() {
   localStorage.setItem('varel_cart', JSON.stringify(cart));
 }
 
-function addItem(product, size) {
-  const ex = cart.find(i => i.id === product.id && i.size === size);
+function addItem(product, size, color = 'Без кольору') {
+  const ex = cart.find(i => i.id === product.id && i.size === size && i.color === color);
   if (ex) {
     ex.qty++;
   } else {
@@ -17,6 +17,7 @@ function addItem(product, size) {
       emoji: product.emoji,
       price: product.price,
       size,
+      color,
       qty:   1,
     });
   }
@@ -44,7 +45,7 @@ function updateCartUI() {
           <div class="cart-item-img">${item.emoji}</div>
           <div>
             <div class="cart-item-name">${item.name}</div>
-            <div class="cart-item-size">Розмір: ${item.size} · К-сть: ${item.qty}</div>
+            <div class="cart-item-size">Розмір: ${item.size} · Колір: ${item.color} · К-сть: ${item.qty}</div>
             <button class="cart-item-remove" onclick="removeItem(${idx})">✕ Видалити</button>
           </div>
           <div class="cart-item-price">${(item.price * item.qty).toLocaleString('uk-UA')} ₴</div>

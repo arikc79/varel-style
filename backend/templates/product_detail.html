@@ -4,7 +4,7 @@
 {% block title %}Товар — VAREL{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/product_detail.css' %}?v=3">
+<link rel="stylesheet" href="{% static 'css/product_detail.css' %}?v=4">
 {% endblock %}
 
 {% block content %}
@@ -43,7 +43,10 @@
       <div class="pd-label">Оберіть розмір</div>
       <div class="pd-sizes" id="pdSizes"></div>
 
-      <div class="pd-label" style="margin-top:20px">Кількість</div>
+      <div class="pd-label pd-color-label" id="pdColorLabel">Оберіть колір</div>
+      <div class="pd-colors" id="pdColors"></div>
+
+      <div class="pd-label">Кількість</div>
       <div class="pd-qty-row">
         <button class="pd-qty-btn" onclick="pdChangeQty(-1)">&#8722;</button>
         <span class="pd-qty-num" id="pdQtyNum">1</span>
@@ -68,6 +71,6 @@
 
 {% block extra_js %}
 <script>const PRODUCT_ID = {{ product_id }};</script>
-<script src="{% static 'js/product_detail.js' %}"></script>
+<script src="{% static 'js/product_detail.js' %}?v=4"></script>
 {% endblock %}
 

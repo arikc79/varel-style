@@ -1,0 +1,1199 @@
+[
+{
+  "model": "products.category",
+  "pk": 17,
+  "fields": {
+    "name": "Чоловічий одяг",
+    "emoji": "👔",
+    "order": 0
+  }
+},
+{
+  "model": "products.category",
+  "pk": 18,
+  "fields": {
+    "name": "Жіночий одяг",
+    "emoji": "👔",
+    "order": 0
+  }
+},
+{
+  "model": "products.category",
+  "pk": 19,
+  "fields": {
+    "name": "Аксесуари",
+    "emoji": "👔",
+    "order": 0
+  }
+},
+{
+  "model": "products.product",
+  "pk": 63,
+  "fields": {
+    "category": 17,
+    "name": "Класична біла сорочка",
+    "price": 890,
+    "old_price": 1200,
+    "description": "Елегантна сорочка з натуральної бавовни. Підходить для офісу та повсякденного носіння. Легко поєднується з будь-яким одягом.",
+    "emoji": "👔",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "білий",
+      "блакитний"
+    ],
+    "details": {
+      "країна": "Туреччина",
+      "матеріал": "100% бавовна"
+    },
+    "badge": "sale",
+    "stock": 50,
+    "cost_price": null,
+    "created_at": "2026-06-19T05:41:19.729Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 64,
+  "fields": {
+    "category": 17,
+    "name": "Чорні джинси Slim Fit",
+    "price": 1450,
+    "old_price": null,
+    "description": "Стильні джинси зі зручним кроєм slim fit. Виготовлені з якісного денімового матеріалу з додаванням еластану.",
+    "emoji": "👖",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "чорний",
+      "темно-синій"
+    ],
+    "details": {
+      "країна": "Бангладеш",
+      "матеріал": "98% бавовна, 2% еластан"
+    },
+    "badge": "new",
+    "stock": 50,
+    "cost_price": null,
+    "created_at": "2026-06-19T05:41:19.751Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 65,
+  "fields": {
+    "category": 18,
+    "name": "Літня сукня в квіти",
+    "price": 1200,
+    "old_price": 1600,
+    "description": "Легка літня сукня з квітковим принтом. Ідеальний вибір для прогулянок та відпочинку. Приємна тканина не викликає дискомфорту.",
+    "emoji": "👗",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "colors": [
+      "рожевий",
+      "жовтий"
+    ],
+    "details": {
+      "країна": "Туреччина",
+      "матеріал": "100% віскоза"
+    },
+    "badge": "sale",
+    "stock": 50,
+    "cost_price": null,
+    "created_at": "2026-06-19T05:41:19.759Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 66,
+  "fields": {
+    "category": 18,
+    "name": "Жіноче пальто оверсайз",
+    "price": 2800,
+    "old_price": null,
+    "description": "Стильне пальто вільного крою для прохолодної погоди. Класичний дизайн поєднується з сучасним силуетом.",
+    "emoji": "🧥",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "бежевий",
+      "сірий",
+      "чорний"
+    ],
+    "details": {
+      "країна": "Польща",
+      "матеріал": "70% вовна, 30% поліестер"
+    },
+    "badge": "new",
+    "stock": 50,
+    "cost_price": null,
+    "created_at": "2026-06-19T05:41:19.767Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 67,
+  "fields": {
+    "category": 19,
+    "name": "Шкіряний ремінь чоловічий",
+    "price": 450,
+    "old_price": null,
+    "description": "Класичний ремінь з натуральної шкіри. Металева пряжка з антикорозійним покриттям. Підходить до будь-якого стилю.",
+    "emoji": "👜",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "colors": [
+      "коричневий",
+      "чорний"
+    ],
+    "details": {
+      "країна": "Україна",
+      "матеріал": "натуральна шкіра"
+    },
+    "badge": "",
+    "stock": 50,
+    "cost_price": null,
+    "created_at": "2026-06-19T05:41:19.774Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 68,
+  "fields": {
+    "category": 17,
+    "name": "Спортивний костюм",
+    "price": 1890,
+    "old_price": 2200,
+    "description": "Зручний спортивний костюм для тренувань та активного відпочинку. Дихаючий матеріал забезпечує комфорт.",
+    "emoji": "🩱",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "colors": [
+      "сірий",
+      "чорний",
+      "синій"
+    ],
+    "details": {
+      "країна": "Китай",
+      "матеріал": "80% бавовна, 20% поліестер"
+    },
+    "badge": "sale",
+    "stock": 50,
+    "cost_price": null,
+    "created_at": "2026-06-19T05:41:19.781Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 69,
+  "fields": {
+    "category": 18,
+    "name": "Жіноча блуза шовкова",
+    "price": 980,
+    "old_price": null,
+    "description": "Елегантна блуза з шовкоподібної тканини. Вільний крій підкреслює жіночність. Підходить для офісу та вечірніх виходів.",
+    "emoji": "👚",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "colors": [
+      "білий",
+      "чорний",
+      "бордовий"
+    ],
+    "details": {
+      "країна": "Туреччина",
+      "матеріал": "100% поліестер (шовковий)"
+    },
+    "badge": "",
+    "stock": 50,
+    "cost_price": null,
+    "created_at": "2026-06-19T05:41:19.791Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 70,
+  "fields": {
+    "category": 19,
+    "name": "Кросівки білі унісекс",
+    "price": 2200,
+    "old_price": 2800,
+    "description": "Легкі та зручні кросівки для повсякденного носіння. Підошва з піни забезпечує амортизацію. Підходять до будь-якого образу.",
+    "emoji": "👟",
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44"
+    ],
+    "colors": [
+      "білий"
+    ],
+    "details": {
+      "країна": "В'єтнам",
+      "матеріал": "текстиль + гума"
+    },
+    "badge": "sale",
+    "stock": 50,
+    "cost_price": null,
+    "created_at": "2026-06-19T05:41:19.799Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 71,
+  "fields": {
+    "category": 17,
+    "name": "Худі оверсайз унісекс",
+    "price": 1100,
+    "old_price": null,
+    "description": "Теплий худі з м'якого флісу. Великий капюшон і кенгуру-кишеня. Ідеально для осені та весни.",
+    "emoji": "🧥",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "colors": [
+      "сірий",
+      "чорний",
+      "зелений"
+    ],
+    "details": {
+      "країна": "Бангладеш",
+      "матеріал": "70% бавовна, 30% поліестер"
+    },
+    "badge": "new",
+    "stock": 50,
+    "cost_price": null,
+    "created_at": "2026-06-19T05:41:19.811Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 72,
+  "fields": {
+    "category": 19,
+    "name": "Сумка шопер жіноча",
+    "price": 750,
+    "old_price": 950,
+    "description": "Практична сумка-шопер з екошкіри. Великий основний відділ і внутрішня кишеня на блискавці. Зручні ручки.",
+    "emoji": "👜",
+    "sizes": [
+      "one size"
+    ],
+    "colors": [
+      "чорний",
+      "бежевий",
+      "червоний"
+    ],
+    "details": {
+      "країна": "Польща",
+      "матеріал": "екошкіра"
+    },
+    "badge": "",
+    "stock": 50,
+    "cost_price": null,
+    "created_at": "2026-06-19T05:41:19.818Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 73,
+  "fields": {
+    "category": 17,
+    "name": "Чоловіча футболка базова",
+    "price": 380,
+    "old_price": null,
+    "description": "Базова футболка з щільної бавовни. Рівний крій, стійкий до деформації після прання. Є в багатьох кольорах.",
+    "emoji": "👕",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "colors": [
+      "білий",
+      "чорний",
+      "сірий",
+      "синій"
+    ],
+    "details": {
+      "країна": "Туреччина",
+      "матеріал": "100% бавовна"
+    },
+    "badge": "",
+    "stock": 50,
+    "cost_price": null,
+    "created_at": "2026-06-19T05:41:19.823Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 74,
+  "fields": {
+    "category": 18,
+    "name": "Жіночі легінси спортивні",
+    "price": 650,
+    "old_price": 850,
+    "description": "Легінси з компресійного матеріалу для занять спортом. Широкий пояс не сповзає під час тренування.",
+    "emoji": "🩲",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "colors": [
+      "чорний",
+      "сірий",
+      "рожевий"
+    ],
+    "details": {
+      "країна": "Китай",
+      "матеріал": "80% поліамід, 20% еластан"
+    },
+    "badge": "new",
+    "stock": 50,
+    "cost_price": null,
+    "created_at": "2026-06-19T05:41:19.832Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 75,
+  "fields": {
+    "category": 19,
+    "name": "Краватка шовкова чоловіча",
+    "price": 420,
+    "old_price": null,
+    "description": "Елегантна краватка з натурального шовку. Класичний візерунок у смужку. Підходить для ділових зустрічей.",
+    "emoji": "👔",
+    "sizes": [
+      "one size"
+    ],
+    "colors": [
+      "синій",
+      "бордовий",
+      "сірий"
+    ],
+    "details": {
+      "країна": "Італія",
+      "матеріал": "100% шовк"
+    },
+    "badge": "",
+    "stock": 50,
+    "cost_price": null,
+    "created_at": "2026-06-19T05:41:19.839Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 76,
+  "fields": {
+    "category": 17,
+    "name": "Зимова куртка пухова",
+    "price": 3200,
+    "old_price": 4000,
+    "description": "Тепла пухова куртка для холодної зими. Водовідштовхувальне покриття. Капюшон знімається.",
+    "emoji": "🧥",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "colors": [
+      "чорний",
+      "темно-синій",
+      "хакі"
+    ],
+    "details": {
+      "країна": "Китай",
+      "матеріал": "нейлон + пух 80%"
+    },
+    "badge": "sale",
+    "stock": 50,
+    "cost_price": null,
+    "created_at": "2026-06-19T05:41:19.843Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 77,
+  "fields": {
+    "category": 18,
+    "name": "Жіноче плаття міді",
+    "price": 1350,
+    "old_price": null,
+    "description": "Елегантне плаття міді довжини з поясом. Підходить для офісу та вечірніх виходів. Є підкладка.",
+    "emoji": "👗",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "colors": [
+      "чорний",
+      "бежевий",
+      "смарагдовий"
+    ],
+    "details": {
+      "країна": "Туреччина",
+      "матеріал": "поліестер з підкладкою"
+    },
+    "badge": "new",
+    "stock": 50,
+    "cost_price": null,
+    "created_at": "2026-06-19T05:41:19.851Z"
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 101,
+  "fields": {
+    "product": 63,
+    "size": "XS",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 102,
+  "fields": {
+    "product": 63,
+    "size": "S",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 103,
+  "fields": {
+    "product": 63,
+    "size": "M",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 104,
+  "fields": {
+    "product": 63,
+    "size": "L",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 105,
+  "fields": {
+    "product": 63,
+    "size": "XL",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 106,
+  "fields": {
+    "product": 64,
+    "size": "S",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 107,
+  "fields": {
+    "product": 64,
+    "size": "M",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 108,
+  "fields": {
+    "product": 64,
+    "size": "L",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 109,
+  "fields": {
+    "product": 64,
+    "size": "XL",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 110,
+  "fields": {
+    "product": 65,
+    "size": "XS",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 111,
+  "fields": {
+    "product": 65,
+    "size": "S",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 112,
+  "fields": {
+    "product": 65,
+    "size": "M",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 113,
+  "fields": {
+    "product": 65,
+    "size": "L",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 114,
+  "fields": {
+    "product": 66,
+    "size": "S",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 115,
+  "fields": {
+    "product": 66,
+    "size": "M",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 116,
+  "fields": {
+    "product": 66,
+    "size": "L",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 117,
+  "fields": {
+    "product": 66,
+    "size": "XL",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 118,
+  "fields": {
+    "product": 67,
+    "size": "S",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 119,
+  "fields": {
+    "product": 67,
+    "size": "M",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 120,
+  "fields": {
+    "product": 67,
+    "size": "L",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 121,
+  "fields": {
+    "product": 68,
+    "size": "S",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 122,
+  "fields": {
+    "product": 68,
+    "size": "M",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 123,
+  "fields": {
+    "product": 68,
+    "size": "L",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 124,
+  "fields": {
+    "product": 68,
+    "size": "XL",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 125,
+  "fields": {
+    "product": 68,
+    "size": "XXL",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 126,
+  "fields": {
+    "product": 69,
+    "size": "XS",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 127,
+  "fields": {
+    "product": 69,
+    "size": "S",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 128,
+  "fields": {
+    "product": 69,
+    "size": "M",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 129,
+  "fields": {
+    "product": 69,
+    "size": "L",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 130,
+  "fields": {
+    "product": 70,
+    "size": "38",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 131,
+  "fields": {
+    "product": 70,
+    "size": "39",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 132,
+  "fields": {
+    "product": 70,
+    "size": "40",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 133,
+  "fields": {
+    "product": 70,
+    "size": "41",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 134,
+  "fields": {
+    "product": 70,
+    "size": "42",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 135,
+  "fields": {
+    "product": 70,
+    "size": "43",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 136,
+  "fields": {
+    "product": 70,
+    "size": "44",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 137,
+  "fields": {
+    "product": 71,
+    "size": "S",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 138,
+  "fields": {
+    "product": 71,
+    "size": "M",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 139,
+  "fields": {
+    "product": 71,
+    "size": "L",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 140,
+  "fields": {
+    "product": 71,
+    "size": "XL",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 141,
+  "fields": {
+    "product": 71,
+    "size": "XXL",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 142,
+  "fields": {
+    "product": 72,
+    "size": "one size",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 143,
+  "fields": {
+    "product": 73,
+    "size": "XS",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 144,
+  "fields": {
+    "product": 73,
+    "size": "S",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 145,
+  "fields": {
+    "product": 73,
+    "size": "M",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 146,
+  "fields": {
+    "product": 73,
+    "size": "L",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 147,
+  "fields": {
+    "product": 73,
+    "size": "XL",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 148,
+  "fields": {
+    "product": 73,
+    "size": "XXL",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 149,
+  "fields": {
+    "product": 74,
+    "size": "XS",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 150,
+  "fields": {
+    "product": 74,
+    "size": "S",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 151,
+  "fields": {
+    "product": 74,
+    "size": "M",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 152,
+  "fields": {
+    "product": 74,
+    "size": "L",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 153,
+  "fields": {
+    "product": 75,
+    "size": "one size",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 154,
+  "fields": {
+    "product": 76,
+    "size": "S",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 155,
+  "fields": {
+    "product": 76,
+    "size": "M",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 156,
+  "fields": {
+    "product": 76,
+    "size": "L",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 157,
+  "fields": {
+    "product": 76,
+    "size": "XL",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 158,
+  "fields": {
+    "product": 76,
+    "size": "XXL",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 159,
+  "fields": {
+    "product": 77,
+    "size": "XS",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 160,
+  "fields": {
+    "product": 77,
+    "size": "S",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 161,
+  "fields": {
+    "product": 77,
+    "size": "M",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productsizestock",
+  "pk": 162,
+  "fields": {
+    "product": 77,
+    "size": "L",
+    "quantity": 10
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 61,
+  "fields": {
+    "product": 63,
+    "image": "",
+    "external_url": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 62,
+  "fields": {
+    "product": 64,
+    "image": "",
+    "external_url": "https://images.unsplash.com/photo-1542272604-787c3835535d?w=600",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 63,
+  "fields": {
+    "product": 65,
+    "image": "",
+    "external_url": "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=600",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 64,
+  "fields": {
+    "product": 66,
+    "image": "",
+    "external_url": "https://images.unsplash.com/photo-1548624313-0396c75e4b1a?w=600",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 65,
+  "fields": {
+    "product": 67,
+    "image": "",
+    "external_url": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 66,
+  "fields": {
+    "product": 68,
+    "image": "",
+    "external_url": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 67,
+  "fields": {
+    "product": 69,
+    "image": "",
+    "external_url": "https://images.unsplash.com/photo-1564257631407-4deb1f99d992?w=600",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 68,
+  "fields": {
+    "product": 70,
+    "image": "",
+    "external_url": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 69,
+  "fields": {
+    "product": 71,
+    "image": "",
+    "external_url": "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=600",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 70,
+  "fields": {
+    "product": 72,
+    "image": "",
+    "external_url": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 71,
+  "fields": {
+    "product": 73,
+    "image": "",
+    "external_url": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 72,
+  "fields": {
+    "product": 74,
+    "image": "",
+    "external_url": "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=600",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 73,
+  "fields": {
+    "product": 75,
+    "image": "",
+    "external_url": "https://images.unsplash.com/photo-1589756823695-278bc923f962?w=600",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 74,
+  "fields": {
+    "product": 76,
+    "image": "",
+    "external_url": "https://images.unsplash.com/photo-1544923246-77307dd654cb?w=600",
+    "order": 0
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 75,
+  "fields": {
+    "product": 77,
+    "image": "",
+    "external_url": "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600",
+    "order": 0
+  }
+}
+]

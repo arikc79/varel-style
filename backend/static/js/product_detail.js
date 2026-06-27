@@ -2,9 +2,43 @@
 let pdProduct  = null;
 let pdQty      = 1;
 let pdSize     = null;
+let pdColor    = null;
 let pdImgIndex = 0;
 
-// ── Завантажити товар з API ──
+const PD_COLOR_MAP = {
+  // нижній регістр → HEX
+  'білий':      '#f5f5f0',
+  'чорний':     '#1a1a1a',
+  'синій':      '#1e3f8f',
+  'темно-синій':'#0d1f5c',
+  'блакитний':  '#5fa8e8',
+  'бежевий':    '#d9d0ba',
+  'молочний':   '#f0ead6',
+  'сірий':      '#8a8a8a',
+  'графіт':     '#3a3d45',
+  'хакі':       '#7a7d5e',
+  'зелений':    '#266b48',
+  'червоний':   '#c0273a',
+  'бордовий':   '#681a28',
+  'коричневий': '#6b472e',
+  // Великий регістр (на всяк)
+  'Білий':      '#f5f5f0',
+  'Чорний':     '#1a1a1a',
+  'Синій':      '#1e3f8f',
+  'Темно-синій':'#0d1f5c',
+  'Блакитний':  '#5fa8e8',
+  'Бежевий':    '#d9d0ba',
+  'Молочний':   '#f0ead6',
+  'Сірий':      '#8a8a8a',
+  'Графіт':     '#3a3d45',
+  'Хакі':       '#7a7d5e',
+  'Зелений':    '#266b48',
+  'Червоний':   '#c0273a',
+  'Бордовий':   '#681a28',
+  'Коричневий': '#6b472e',
+};
+
+
 async function loadProductDetail() {
   try {
     const res = await fetch(`/api/products/${PRODUCT_ID}/`);
@@ -18,9 +52,10 @@ async function loadProductDetail() {
   }
 }
 
-// ── Рендер сторінки ──
+// ── Рендер  ──
 function renderProductDetail() {
   const p = pdProduct;
+  pdColor = null;
   document.title = `${p.name} — VAREL`;
 
   document.getElementById('pdLoading').style.display   = 'none';
@@ -43,7 +78,7 @@ function renderProductDetail() {
     ).join('');
 
     if (imgs.length === 1) {
-      // Ховаємо кнопки навігації, якщо фото одне
+      // Ховаємо кнопки навігації
       document.querySelector('.pd-prev').style.display = 'none';
       document.querySelector('.pd-next').style.display = 'none';
       thumbs.style.display = 'none';
@@ -70,6 +105,26 @@ function renderProductDetail() {
   document.getElementById('pdSizes').innerHTML = (p.sizes || []).map(s =>
     `<button class="pd-size-btn" onclick="pdSelectSize(this,'${s}')">${s}</button>`
   ).join('');
+
+  // ── Кольори ──
+  const colorsContainer = document.getElementById('pdColors');
+  const colorLabel      = document.getElementById('pdColorLabel');
+  if (p.colors && p.colors.length > 0) {
+    if (colorLabel) colorLabel.style.display = '';
+    colorsContainer.style.display = 'flex';
+    colorsContainer.innerHTML = p.colors.map(c => {
+      const colorName  = String(c).trim();
+      const colorValue = pdResolveColor(colorName);
+      return `<button class="pd-color-btn" type="button" title="${pdEscapeHtml(colorName)}" data-color="${pdEscapeHtml(colorName)}" style="background:${colorValue}"></button>`;
+    }).join('');
+    colorsContainer.querySelectorAll('.pd-color-btn').forEach(btn => {
+      btn.addEventListener('click', () => pdSelectColor(btn, btn.dataset.color || ''));
+    });
+  } else {
+    if (colorLabel) colorLabel.style.display = 'none';
+    colorsContainer.style.display = 'none';
+  }
+  pdUpdateColorLabel();
 
   // ── Деталі товару ──
   const details = p.details || {};
@@ -105,16 +160,29 @@ function pdUpdateCarousel() {
   });
 }
 
-// ── Touch swipe ──
+// ── Touch swipe + mouse wheel ──
 function initPdSwipe() {
-  const vp = document.querySelector('.pd-viewport');
+  const wrap = document.querySelector('.pd-main-wrap');
+  const vp   = document.querySelector('.pd-viewport');
   if (!vp) return;
+
   let sx = 0;
   vp.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
   vp.addEventListener('touchend',   e => {
     const diff = sx - e.changedTouches[0].clientX;
     if (Math.abs(diff) > 40) pdNav(diff > 0 ? 1 : -1);
   });
+
+  if (wrap) {
+    let lastWheel = 0;
+    wrap.addEventListener('wheel', e => {
+      e.preventDefault();
+      const now = Date.now();
+      if (now - lastWheel < 300) return;
+      lastWheel = now;
+      pdNav(e.deltaY > 0 ? 1 : -1);
+    }, { passive: false });
+  }
 }
 
 // ── Розмір ──
@@ -122,6 +190,14 @@ function pdSelectSize(btn, size) {
   document.querySelectorAll('.pd-size-btn').forEach(b => b.classList.remove('selected'));
   btn.classList.add('selected');
   pdSize = size;
+}
+
+// ── Колір ──
+function pdSelectColor(btn, color) {
+  document.querySelectorAll('.pd-color-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  pdColor = color;
+  pdUpdateColorLabel();
 }
 
 // ── Кількість ──
@@ -133,10 +209,42 @@ function pdChangeQty(dir) {
 // ── Додати до кошика ──
 function pdAddToCart() {
   if (!pdSize) { showToast('⚠️ Оберіть розмір!'); return; }
-  for (let i = 0; i < pdQty; i++) addItem(pdProduct, pdSize);
+  if ((pdProduct.colors || []).length && !pdColor) { showToast('⚠️ Оберіть колір!'); return; }
+  const color = pdColor || 'Без кольору';
+  for (let i = 0; i < pdQty; i++) addItem(pdProduct, pdSize, color);
   showToast('✓ Додано: ' + pdProduct.name);
 }
 
 // ── Старт ──
 loadProductDetail();
+
+function pdResolveColor(colorName) {
+  const raw = String(colorName || '').trim();
+  if (!raw) return '#888';
+
+  // Пряме HEX значення з API
+  if (/^#([0-9a-f]{3}|[0-9a-f]{6})$/i.test(raw)) return raw;
+
+  // Точний збіг
+  if (PD_COLOR_MAP[raw]) return PD_COLOR_MAP[raw];
+
+  // Fallback: нижній регістр
+  const lower = raw.toLowerCase();
+  return PD_COLOR_MAP[lower] || '#888';
+}
+
+function pdUpdateColorLabel() {
+  const label = document.getElementById('pdColorLabel');
+  if (!label) return;
+  label.textContent = pdColor ? `Оберіть колір: ${pdColor}` : 'Оберіть колір';
+}
+
+function pdEscapeHtml(value) {
+  return String(value)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
+}
 

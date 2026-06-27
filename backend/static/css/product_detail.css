@@ -144,11 +144,12 @@
 
 .pd-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 44px;
+  font-size: clamp(28px, 3vw, 44px);
   font-weight: 300;
   line-height: 1.1;
   margin: 0 0 20px;
   color: var(--white);
+  text-wrap: balance;
 }
 
 .pd-price-row {
@@ -182,6 +183,9 @@
   color: var(--grey);
   margin-bottom: 14px;
 }
+.pd-color-label {
+  margin-top: 20px;
+}
 
 /* Розміри */
 .pd-sizes {
@@ -204,6 +208,34 @@
 }
 .pd-size-btn:hover,
 .pd-size-btn.selected { border-color: var(--gold); color: var(--gold); }
+
+/* Кольори */
+.pd-colors {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  min-height: 0;
+}
+.pd-color-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,.25);
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  cursor: pointer;
+  transition: outline-color .15s ease, transform .15s ease, border-color .2s ease;
+  flex-shrink: 0;
+}
+.pd-color-btn:hover {
+  transform: scale(1.15);
+  border-color: rgba(255,255,255,.6);
+}
+.pd-color-btn.selected {
+  outline-color: var(--gold);
+  border-color: rgba(201, 168, 76, .8);
+}
 
 /* Кількість */
 .pd-qty-row {
@@ -275,8 +307,14 @@
 @media (max-width: 900px) {
   .pd-page { padding: 24px 20px 60px; }
   .pd-container { flex-direction: column; gap: 32px; }
-  .pd-gallery { position: static; }
+  .pd-gallery { position: static; flex: none; width: 100%; max-width: 100%; }
+  .pd-main-wrap { max-height: 360px; }
   .pd-name { font-size: 30px; }
   .pd-new-price { font-size: 26px; }
+}
+
+@media (max-width: 480px) {
+  .pd-main-wrap { max-height: 280px; }
+  .pd-name { font-size: 24px; }
 }
 

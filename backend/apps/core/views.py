@@ -25,3 +25,7 @@ def product_detail(request, pk):
     return render(request, 'product_detail.html', {'product_id': pk})
 
 
+def sale(request):
+    return render(request, 'sale.html')
+
+

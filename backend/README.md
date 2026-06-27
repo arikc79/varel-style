@@ -15,12 +15,24 @@ pip install -r requirements.txt
 
 ```bash
 cp .env.example .env
-# Відкрий .env і заповни дані Supabase
+# Відкрий .env і заповни PostgreSQL дані (локально або Supabase)
+```
+
+Мінімум для локального запуску PostgreSQL:
+
+```bash
+DB_NAME=postgres
+DB_USER=postgres
+DB_PASSWORD=your-password
+DB_HOST=localhost
+DB_PORT=5432
+DB_SSLMODE=prefer
 ```
 
 ## Запуск
 
 ```bash
+python manage.py check --database default
 python manage.py migrate
 python manage.py createsuperuser
 python manage.py runserver
