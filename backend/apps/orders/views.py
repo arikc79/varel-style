@@ -1,3 +1,4 @@
+import hmac
 import os
 import threading
 import requests
@@ -5,6 +6,7 @@ import resend  # HTTP API — працює на Render free tier
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from .backup import send_backup_email
 from .models import Order
 from .serializers import OrderSerializer
 
@@ -97,3 +99,16 @@ class OrderListView(APIView):
         orders = Order.objects.prefetch_related('items').all()[:50]
         serializer = OrderSerializer(orders, many=True)
         return Response(serializer.data)
+
+
+class BackupTriggerView(APIView):
+    """GET /api/orders/backup/?token=... — тригер бекапу для зовнішнього cron (напр. cron-job.org)"""
+
+    def get(self, request):
+        expected = os.getenv('BACKUP_TOKEN')
+        token = request.query_params.get('token', '')
+        if not expected or not hmac.compare_digest(token, expected):
+            return Response({'error': 'forbidden'}, status=status.HTTP_403_FORBIDDEN)
+
+        sent = send_backup_email()
+        return Response({'sent': sent})
