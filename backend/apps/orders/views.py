@@ -6,6 +6,7 @@ import resend  # HTTP API — працює на Render free tier
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.permissions import IsAdminUser
 from .backup import send_backup_email
 from .models import Order
 from .serializers import OrderSerializer
@@ -94,6 +95,7 @@ class OrderCreateView(APIView):
 
 class OrderListView(APIView):
     """GET /api/orders/ — список замовлень (для адміна)"""
+    permission_classes = [IsAdminUser]
 
     def get(self, request):
         orders = Order.objects.prefetch_related('items').all()[:50]
